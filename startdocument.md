@@ -1,9 +1,9 @@
 # Startdocument for ______
 
-Startdocument of **Daan Daling**. Studentnumber **4815580**.
-Startdocument of **Kevin Smulders**. Studentnumber **xxxxxx**.
-Startdocument of **Roan Meijer**. Studentnumber **xxxxxxx**.
-Startdocument of **Simchaja Schonewille**. Studentnumber **xxxxxxx**.
+* Startdocument of **Daan Daling**. Studentnumber **4815580**.
+* Startdocument of **Kevin Smulders**. Studentnumber **xxxxxx**.
+* Startdocument of **Roan Meijer**. Studentnumber **xxxxxxx**.
+* Startdocument of **Simchaja Schonewille**. Studentnumber **xxxxxxx**.
 
 
 ## Problem Description
