@@ -1,7 +1,7 @@
 # Startdocument for C# Periode 4 Year 2
 
 -   Startdocument of **Daan Daling**. Studentnumber **4815580**.
--   Startdocument of **Kevin Smulders**. Studentnumber **xxxxxx**.
+-   Startdocument of **Kevin Smulders**. Studentnumber **4806131**.
 -   Startdocument of **Roan Meijer**. Studentnumber **xxxxxxx**.
 -   Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
 
@@ -57,7 +57,163 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 De testcases die worden gebruikt om de applicatie te testen
 
-### Testcase #1, Verify prefix
+### Testcases voor de schermen
+
+Dit is het testplan voor de verschilende schermen die in beeld komen.
+
+#### Testcase #1, Bij het opstarten van de aplicatie zie je een startmenu
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcase #2, Bij het winnen van een ronde zie je een scherm met de score van de ronde
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcase #3, Bij het verliezen van een ronde zie je een scherm met de score van de ronde
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcase #4, Een menu voor de aanpassing van de AI
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcase #5, Een menu voor het opstarten van een nieuwe ronde
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+### Testplan Game
+
+Dit is het testplan om de game te testen
+
+#### Testcases #1, Auto raakt muur en gaat dood
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #2, Auto raakt checkpoint
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #3, Score gaat omhoog
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #4, Score gaat omlaag
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #5, Auto kan worden bewogen door de speler
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #6, De auto accelereert en de snelheid gaat omhoog
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #7, De auto kan vertragen als de speler het gaspedaal los laat
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #8, De speler kan de score zien
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #9, De speler kan de tijd zien
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #10, De speler kan een leader board zien met de tijden/punten van de spelers
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+### Testplan Ai
+
+Dit is het testplan om de AI te testen
+
+#### Testcases #1, De Ai kan de auto bewegen
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #2, De versies met de hoogste score volgens de reward system worden gekozen voor een nieuwe generatie
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #3, Het is mogelijk om meerdere generaties te gelijk te trainen
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #4, De reward system word getriggerd als de auto een checkpoint raakt
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #5, De auto gaat dood als die een muur raakt en de reward system word getriggerd
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #6, Er kan een nieuwe ronde worden gestart als alle autos dus generaties dood zijn
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #7, Aan het einde van een generatie word er een nieuwe generatie gemaakt en een neiuwe ronde gestart
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #8, Er word een nieuwe ronde gestart na een beapalde tijd
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #9, de generaties/autos kunnen door elkaar heen rijden en houden geen rekening met elkaar
+
+| Step | Input | Action | Expected output |
+| ---- | ----- | ------ | --------------- |
+|      |       |        |                 |
+
+#### Testcases #10, Er kan een nieuwe ronden worden gestart als alle auto's op het einde van de ronde zijn
 
 | Step | Input | Action | Expected output |
 | ---- | ----- | ------ | --------------- |
