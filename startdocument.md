@@ -2,7 +2,7 @@
 
 -   Startdocument of **Daan Daling**. Studentnumber **4815580**.
 -   Startdocument of **Kevin Smulders**. Studentnumber **4806131**.
--   Startdocument of **Roan Meijer**. Studentnumber **xxxxxxx**.
+-   Startdocument of **Roan Meijer**. Studentnumber **4872584**.
 -   Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
 
 Voor het project moet een game worden gemaakt. Voor deze game is gekozen voor een top-down racer game. Deze game is 2d
@@ -39,9 +39,11 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 #### Output
 
-| Case | Type |
-| ---- | ---- |
-|      |      |
+| Case                    | Type           |
+| ----------------------- | -------------- |
+| actions preformed by AI | keys           |
+| scores                  | integer        |
+| best preforming AI      | neural network |
 
 #### Remarks
 
