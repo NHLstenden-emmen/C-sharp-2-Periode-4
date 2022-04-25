@@ -3,7 +3,7 @@
 * Startdocument of **Daan Daling**. Studentnumber **4815580**.
 * Startdocument of **Kevin Smulders**. Studentnumber **xxxxxx**.
 * Startdocument of **Roan Meijer**. Studentnumber **xxxxxxx**.
-* Startdocument of **Simchaja Schonewille**. Studentnumber **xxxxxxx**.
+* Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
 
 
 ## Problem Description
@@ -23,7 +23,10 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 |Case|Type|Conditions|
 |----|----|----------|
-| |||
+|KeyDown("w")|Key|in game|
+|KeyDown("a")|Key|in game|
+|KeyDown("s")|Key|in game|
+|KeyDown("d")|Key|in game|
 
 
 #### Output
