@@ -8,13 +8,11 @@
 ### Problem Discription
 
 Voor het project moet een game worden gemaakt. Voor deze game is gekozen voor een top-down racer game. Deze game is 2d
-en hierin moet een speler zo snel mogelijk een ronde voltooien. De besturing zal worden uitgevoerd met de W A S D toetsen,
+en hierin moet een speler zo snel mogelijk een map voltooien. De besturing zal worden uitgevoerd met de W A S D toetsen,
 ook hebben de spelers acceleratie en deceleratie zodat de spelers niet gelijk van 0 naar 100 kunnen gaan of 100 naar 0.
 In dit spel moet een AI doormiddel van machine learning leren om een rondje in het spel af te leggen. Hierin moet de AI
-met behulp van verschillende generaties zichzelf verbeteren om een zo snel mogelijke ronde tijd af te leggen. Ook moet het
-hierna voor een speler mogelijk zijn om een ronde tegen de AI af te leggen.
-
-### Requirements
+met behulp van verschillende generaties zichzelf verbeteren om een zo snel mogelijke map tijd af te leggen. Ook moet het
+hierna voor een speler mogelijk zijn om een map tegen de AI af te leggen.
 
 -   Maak een top down racer game
 -   Maak de controls voor de racer game
@@ -22,7 +20,7 @@ hierna voor een speler mogelijk zijn om een ronde tegen de AI af te leggen.
 -   Pas toe dat de spelers kunnen accelereren deceleren
 -   Pas machine learning toe met de gebruik van een neural network
 -   Geef de input van de AI weer
--   Geef de score van een ronde weer
+-   Geef de score van een map weer
 -   Geef een timer weer
 -   Maak het mogelijk om met meerdere instanties van de AI te trainen
 -   Pas incentive learning toe (checkpoints, reward systeem etc.)
