@@ -26,6 +26,12 @@ hierna voor een speler mogelijk zijn om een map tegen de AI af te leggen.
 -   Pas incentive learning toe (checkpoints, reward systeem etc.)
 -   Maak het mogelijk tegen de AI te spelen
 
+### Examples
+
+![Example 1](images/sample1.PNG "First sample of a similar game")
+![Example 2](images/sample2.PNG "Second sample of a similar game")
+![Example 3](images/sample3.PNG "Third sample of a similar game")
+
 ### Input & Output
 
 in de volgende sectie wordt de input en output van de applicatie beschreven
