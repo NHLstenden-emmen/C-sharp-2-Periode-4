@@ -7,8 +7,8 @@
 
 ### Problem Discription
 
-Voor het project moet een game worden gemaakt. Voor deze game is gekozen voor een top-down racer game. Deze game is 2d
-en hierin moet een speler zo snel mogelijk een map voltooien. De besturing zal worden uitgevoerd met de W A S D toetsen,
+Voor het project moet een game worden gemaakt, hierbij is gekozen voor een top-down racer game. Deze game is 2d
+en hierin moet een speler zo snel mogelijk een circuit te voltooien. De besturing zal worden uitgevoerd met de W A S D toetsen,
 ook hebben de spelers acceleratie en deceleratie zodat de spelers niet gelijk van 0 naar 100 kunnen gaan of 100 naar 0.
 In dit spel moet een AI doormiddel van machine learning leren om een rondje in het spel af te leggen. Hierin moet de AI
 met behulp van verschillende generaties zichzelf verbeteren om een zo snel mogelijke map tijd af te leggen. Ook moet het
