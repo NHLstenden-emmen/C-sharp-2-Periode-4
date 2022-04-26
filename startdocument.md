@@ -28,8 +28,16 @@ hierna voor een speler mogelijk zijn om een map tegen de AI af te leggen.
 
 ### Examples
 
-![Example 1](images/Sample1.PNG "First sample of a similar game")
+## First example
+
+![Example 1](images/Sample1.png "First sample of a similar game")
+
+## Second example
+
 ![Example 2](images/sample2.jpg "Second sample of a similar game")
+
+## Third example
+
 ![Example 3](images/sample3.PNG "Third sample of a similar game")
 
 ### Input & Output
