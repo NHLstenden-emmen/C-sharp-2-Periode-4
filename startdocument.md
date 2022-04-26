@@ -46,6 +46,8 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 | actions preformed by AI | keys           |
 | scores                  | integer        |
 | best preforming AI      | neural network |
+| timer                   | int            |
+| current generation      | neural network |
 
 #### Remarks
 
