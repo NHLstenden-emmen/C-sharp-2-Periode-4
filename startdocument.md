@@ -5,12 +5,16 @@
 -   Startdocument of **Roan Meijer**. Studentnumber **4872584**.
 -   Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
 
+### Korte intro
+
 Voor het project moet een game worden gemaakt. Voor deze game is gekozen voor een top-down racer game. Deze game is 2d
 en hierin moet een speler zo snel mogelijk een ronde voltooien. De besturing zal worden uitgevoerd met de W A S D toetsen,
 ook hebben de spelers acceleratie en deceleratie zodat de spelers niet gelijk van 0 naar 100 kunnen gaan of 100 naar 0.
 In dit spel moet een AI doormiddel van machine learning leren om een rondje in het spel af te leggen. Hierin moet de AI
 met behulp van verschillende generaties zichzelf verbeteren om een zo snel mogelijke ronde tijd af te leggen. Ook moet het
 hierna voor een speler mogelijk zijn om een ronde tegen de AI af te leggen.
+
+### Requirements
 
 -   Maak een top down racer game
 -   Maak de controls voor de racer game
