@@ -55,6 +55,10 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 ![UML Diagram]()
 
+## MosCow Analyse
+
+![MosCow]()
+
 ## Testplan
 
 De testcases die worden gebruikt om de applicatie te testen
@@ -65,33 +69,23 @@ Dit is het testplan voor de verschilende schermen die in beeld komen.
 
 #### Testcase #1, Bij het opstarten van de aplicatie zie je een startmenu
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
 
 #### Testcase #2, Bij het winnen van een ronde zie je een scherm met de score van de ronde
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
 
 #### Testcase #3, Bij het verliezen van een ronde zie je een scherm met de score van de ronde
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
 
 #### Testcase #4, Een menu voor de aanpassing van de AI
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
 
 #### Testcase #5, Een menu voor het opstarten van een nieuwe ronde
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Hieronder staat een schematiese afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien. en wat voor opties in het scherm komen te staan.
 
 ### Testplan Game
 
@@ -99,63 +93,33 @@ Dit is het testplan om de game te testen
 
 #### Testcases #1, Auto raakt muur en gaat dood
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+| Step | Input | Expected output |
+| ---- | ----- | --------------- |
+|      |       |                 |
 
 #### Testcases #2, Auto raakt checkpoint
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+| Step | Input | Expected output |
+| ---- | ----- | --------------- |
+|      |       |                 |
 
 #### Testcases #3, Score gaat omhoog
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+| Step | Input | Expected output |
+| ---- | ----- | --------------- |
+|      |       |                 |
 
 #### Testcases #4, Score gaat omlaag
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+| Step | Input | Expected output |
+| ---- | ----- | --------------- |
+|      |       |                 |
 
 #### Testcases #5, Auto kan worden bewogen door de speler
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #6, De auto accelereert en de snelheid gaat omhoog
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #7, De auto kan vertragen als de speler het gaspedaal los laat
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #8, De speler kan de score zien
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #9, De speler kan de tijd zien
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #10, De speler kan een leader board zien met de tijden/punten van de spelers
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+| Step | Input | Expected output |
+| ---- | ----- | --------------- |
+|      |       |                 |
 
 ### Testplan Ai
 
@@ -163,60 +127,21 @@ Dit is het testplan om de AI te testen
 
 #### Testcases #1, De Ai kan de auto bewegen
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Dit kan getest worden door te zien dat de auto beweegt
 
-#### Testcases #2, De versies met de hoogste score volgens de reward system worden gekozen voor een nieuwe generatie
+#### Testcases #2, Achteruit rijden over de finish is niet een optie.
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Als de baan een rondjes is gaat de ai niet achteruit rijden om over de finish te rijden
+De ai kan niet achteruit rijden om over de finish te rijden en dan krijgt hij daar geen punten voor.
 
 #### Testcases #3, Het is mogelijk om meerdere generaties te gelijk te trainen
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Bij het trainen van de AI kan je meerdere generaties trainen.
 
-#### Testcases #4, De reward system word getriggerd als de auto een checkpoint raakt
+#### Testcases #4, De nieuwe generatie word gekozen op basis van het reward systeem
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Op basis van de rating van het reward system word de nieuwe generatie voor de AI gekozen.
 
-#### Testcases #5, De auto gaat dood als die een muur raakt en de reward system word getriggerd
+#### Testcases #5, Er kan een nieuwe ronden worden gestart
 
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #6, Er kan een nieuwe ronde worden gestart als alle autos dus generaties dood zijn
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #7, Aan het einde van een generatie word er een nieuwe generatie gemaakt en een neiuwe ronde gestart
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #8, Er word een nieuwe ronde gestart na een beapalde tijd
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #9, de generaties/autos kunnen door elkaar heen rijden en houden geen rekening met elkaar
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
-
-#### Testcases #10, Er kan een nieuwe ronden worden gestart als alle auto's op het einde van de ronde zijn
-
-| Step | Input | Action | Expected output |
-| ---- | ----- | ------ | --------------- |
-|      |       |        |                 |
+Als alle versies van de ai dood zijn word een nieuwe ronden gestart.
