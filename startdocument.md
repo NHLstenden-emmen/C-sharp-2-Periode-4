@@ -5,7 +5,7 @@
 -   Startdocument of **Roan Meijer**. Studentnumber **4872584**.
 -   Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
 
-### Korte intro
+### Problem Discription
 
 Voor het project moet een game worden gemaakt. Voor deze game is gekozen voor een top-down racer game. Deze game is 2d
 en hierin moet een speler zo snel mogelijk een ronde voltooien. De besturing zal worden uitgevoerd met de W A S D toetsen,
