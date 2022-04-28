@@ -75,7 +75,9 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 ## MosCow Analyse
 
-![MosCow]()
+| Must Have | Should Have | Could Have | Won't Have |
+| --------- | ----------- | ---------- | ---------- |
+|           |             |            |            |
 
 ## Testplan
 
