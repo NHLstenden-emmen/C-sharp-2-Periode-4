@@ -1,9 +1,9 @@
 # Startdocument for C# Periode 4 Year 2
 
--   Startdocument of **Daan Daling**. Studentnumber **4815580**.
--   Startdocument of **Kevin Smulders**. Studentnumber **4806131**.
--   Startdocument of **Roan Meijer**. Studentnumber **4872584**.
--   Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
+- Startdocument of **Daan Daling**. Studentnumber **4815580**.
+- Startdocument of **Kevin Smulders**. Studentnumber **4806131**.
+- Startdocument of **Roan Meijer**. Studentnumber **4872584**.
+- Startdocument of **Simchaja Schonewille**. Studentnumber **4733312**.
 
 ### Problem Discription
 
@@ -14,17 +14,17 @@ In dit spel moet een AI doormiddel van machine learning leren om een rondje in h
 met behulp van verschillende generaties zichzelf verbeteren om een zo snel mogelijke map tijd af te leggen. Ook moet het
 hierna voor een speler mogelijk zijn om een map tegen de AI af te leggen.
 
--   Maak een top down racer game
--   Maak de controls voor de racer game
--   Maak het visuele aspect van de game
--   Pas toe dat de spelers kunnen accelereren deceleren
--   Pas machine learning toe met de gebruik van een neural network
--   Geef de input van de AI weer
--   Geef de score van een track weer
--   Geef een timer weer
--   Maak het mogelijk om met meerdere instanties van de AI te trainen
--   Pas incentive learning toe (checkpoints, reward systeem etc.)
--   Maak het mogelijk tegen de AI te spelen
+- Maak een top down racer game
+- Maak de controls voor de racer game
+- Maak het visuele aspect van de game
+- Pas toe dat de spelers kunnen accelereren deceleren
+- Pas machine learning toe met de gebruik van een neural network
+- Geef de input van de AI weer
+- Geef de score van een track weer
+- Geef een timer weer
+- Maak het mogelijk om met meerdere instanties van de AI te trainen
+- Pas incentive learning toe (checkpoints, reward systeem etc.)
+- Maak het mogelijk tegen de AI te spelen
 
 ### Examples
 
@@ -46,12 +46,13 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 #### Input
 
-| Case         | Type | Conditions |
-| ------------ | ---- | ---------- |
-| KeyDown("w") | Key  | in game    |
-| KeyDown("a") | Key  | in game    |
-| KeyDown("s") | Key  | in game    |
-| KeyDown("d") | Key  | in game    |
+| Case                  | Type           | Conditions |
+| --------------------- | -------------- | ---------- |
+| KeyDown("w")          | Key            | in game    |
+| KeyDown("a")          | Key            | in game    |
+| KeyDown("s")          | Key            | in game    |
+| KeyDown("d")          | Key            | in game    |
+| Import neural network | Neural network | in menu    |
 
 #### Output
 
@@ -65,9 +66,9 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 #### Remarks
 
--   VOORBEELD Input wordt gevalideerd
--   VOORBEELD alleen de main bevat XXXX
--   VOORBEELD wordt getest
+- VOORBEELD Input wordt gevalideerd
+- VOORBEELD alleen de main bevat XXXX
+- VOORBEELD wordt getest
 
 ## Class Diagram
 
@@ -78,12 +79,13 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 | Must Have                           | Should Have                                                | Could Have                            | Won't Have              |
 | ----------------------------------- | ---------------------------------------------------------- | ------------------------------------- | ----------------------- |
 | Een top down racer game             | Een mooie/gepolijste weergave van het spel                 | Mogelijkheid om tegen de AI te spelen | Een online speelfunctie |
-| Controls om de game te spelen       | Acceleratie en decceleratie                                |                                       |                         |
-| een 2D weergave van het spel        | Weergave van de keuzes/input van de AI                     |                                       |                         |
-| Een toepassing van machine learning | Weergave van een score in het spel                         |                                       |                         |
-| Toepassing van Incentive learning   | Weergave van de track time in het spel                     |                                       |                         |
-|                                     | Mogelijkheid om meerdere generaties AI tegelijk te trainen |                                       |                         |
-|                                     |                                                            |                                       |                         |
+| Controls om de game te spelen       | Export & import neural network                             | Optie om het thema te veranderen      | Tracking camera         |
+| Een 2D weergave van het spel        | Weergave van de keuzes/input van de AI                     | Optie om de auto te laten driften     | Collisions between cars |
+| Een toepassing van machine learning | Weergave van een score in het spel                         | Scoreboard met highscores             |                         |
+| Toepassing van Incentive learning   | Weergave van de track time in het spel                     | Animaties van de auto                 |                         |
+|                                     | Mogelijkheid om meerdere generaties AI tegelijk te trainen | Pauzemenu                             |                         |
+|                                     | Achtergrond muziek                                         |                                       |                         |
+|                                     | Acceleratie en deceleratie                                 |                                       |                         |
 
 ## Testplan
 
@@ -111,7 +113,7 @@ Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet 
 
 #### Testcase #5, Een menu voor het opstarten van een nieuwe ronde
 
-Hieronder staat een schematiese afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien. en wat voor opties in het scherm komen te staan.
+Hieronder staat een schematische afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien. en wat voor opties in het scherm komen te staan.
 
 ### Testplan Game
 
