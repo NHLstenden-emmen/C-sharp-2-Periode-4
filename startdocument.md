@@ -20,7 +20,7 @@ hierna voor een speler mogelijk zijn om een map tegen de AI af te leggen.
 -   Pas toe dat de spelers kunnen accelereren deceleren
 -   Pas machine learning toe met de gebruik van een neural network
 -   Geef de input van de AI weer
--   Geef de score van een map weer
+-   Geef de score van een track weer
 -   Geef een timer weer
 -   Maak het mogelijk om met meerdere instanties van de AI te trainen
 -   Pas incentive learning toe (checkpoints, reward systeem etc.)
@@ -75,9 +75,15 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 
 ## MosCow Analyse
 
-| Must Have | Should Have | Could Have | Won't Have |
-| --------- | ----------- | ---------- | ---------- |
-|           |             |            |            |
+| Must Have                           | Should Have                                                | Could Have                            | Won't Have              |
+| ----------------------------------- | ---------------------------------------------------------- | ------------------------------------- | ----------------------- |
+| Een top down racer game             | Een mooie/gepolijste weergave van het spel                 | Mogelijkheid om tegen de AI te spelen | Een online speelfunctie |
+| Controls om de game te spelen       | Acceleratie en decceleratie                                |                                       |                         |
+| een 2D weergave van het spel        | Weergave van de keuzes/input van de AI                     |                                       |                         |
+| Een toepassing van machine learning | Weergave van een score in het spel                         |                                       |                         |
+| Toepassing van Incentive learning   | Weergave van de track time in het spel                     |                                       |                         |
+|                                     | Mogelijkheid om meerdere generaties AI tegelijk te trainen |                                       |                         |
+|                                     |                                                            |                                       |                         |
 
 ## Testplan
 
