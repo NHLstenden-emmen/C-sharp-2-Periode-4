@@ -64,15 +64,6 @@ in de volgende sectie wordt de input en output van de applicatie beschreven
 | timer                   | int            |
 | current generation      | neural network |
 
-#### Remarks
-
-- VOORBEELD Input wordt gevalideerd
-- VOORBEELD alleen de main bevat XXXX
-- VOORBEELD wordt getest
-
-## Class Diagram
-
-![UML Diagram]()
 
 ## MosCow Analyse
 
