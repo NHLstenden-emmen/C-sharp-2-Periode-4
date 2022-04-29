@@ -120,34 +120,24 @@ Hieronder staat een schematische afbeelding met een voorbeeld van hoe dit scherm
 Dit is het testplan om de game te testen
 
 #### Testcases #1, Auto raakt muur en gaat dood
+Op het moment dat de auto een muur raakt gaat die speler dood en krijgt hij een game overscherm.
 
-| Step | Input | Expected output |
-| ---- | ----- | --------------- |
-|      |       |                 |
+#### Testcases #2, De camera angle
+De game is tenalle tijden voledig in beeld. er word niet ingezomed op een specefieke speler.
 
-#### Testcases #2, Auto raakt checkpoint
+#### Testcases #3, De timer
+Op het moment dat de race start start er een timer die blijft lopen tot dat alle autos dood zijn.
 
-| Step | Input | Expected output |
-| ---- | ----- | --------------- |
-|      |       |                 |
-
-#### Testcases #3, Score gaat omhoog
-
-| Step | Input | Expected output |
-| ---- | ----- | --------------- |
-|      |       |                 |
-
-#### Testcases #4, Score gaat omlaag
-
-| Step | Input | Expected output |
-| ---- | ----- | --------------- |
-|      |       |                 |
+#### Testcases #4, Ingame score board
+De socre is zichtbaar in beeld en gaat omhoog en omloog op basis van de auto waarmee je speelt.
 
 #### Testcases #5, Auto kan worden bewogen door de speler
+De auto kan 4 richtingen op bewogen worden.
+A = draaien naar links
+S = achteruit
+D = draaien naar rechts
+W = Vooruit
 
-| Step | Input | Expected output |
-| ---- | ----- | --------------- |
-|      |       |                 |
 
 ### Testplan Ai
 
