@@ -22,3 +22,4 @@ C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Per
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.dll
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.pdb
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.genruntimeconfig.cache
+C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\Content\ball.xnb
