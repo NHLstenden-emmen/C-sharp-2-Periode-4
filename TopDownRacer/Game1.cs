@@ -9,12 +9,12 @@ namespace TopDownRacer
         //Declaring a variable of type Texture2D to add an image to
         Texture2D playerTexture;
 
-        //Declaring a vector and variable to track player position and player speed
-        Vector2 playerPosition;
-        float playerSpeed;
-
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Player player1 = new Player();
+
+        public static int ScreenWidth;
+        public static int ScreenHeight;
 
         public Game1()
         {
@@ -22,8 +22,16 @@ namespace TopDownRacer
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             _graphics.ApplyChanges();
+
+            // set graphics resolution to the resolution of the display
             _graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
             _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            ScreenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            _graphics.ApplyChanges();
+
+            // set the window size to fullscreen
+            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
         }
 
@@ -32,9 +40,7 @@ namespace TopDownRacer
             // TODO: Add your initialization logic here
 
             //Initialize the player speed and position
-            playerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2,
-                _graphics.PreferredBackBufferHeight / 2);
-            playerSpeed = 200f;
+            player1.Initialize();
 
             base.Initialize();
         }
@@ -44,9 +50,11 @@ namespace TopDownRacer
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Declare a texture to the variable, Ball is a temporary texture
-            playerTexture = Content.Load<Texture2D>("ball");
-
+            playerTexture = Content.Load<Texture2D>("rectangle");
+            player1.LoadContent(playerTexture);
             // TODO: use this.Content to load your game content here
+            player1.areaHeight = _graphics.PreferredBackBufferHeight;
+            player1.areaWidth= _graphics.PreferredBackBufferWidth;
         }
 
         protected override void Update(GameTime gameTime)
@@ -57,33 +65,7 @@ namespace TopDownRacer
 
             // TODO: Add your update logic here
 
-            //Declaring basic player controls
-            var kstate = Keyboard.GetState();
-
-            if (kstate.IsKeyDown(Keys.W))
-                playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (kstate.IsKeyDown(Keys.S))
-                playerPosition.Y += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (kstate.IsKeyDown(Keys.A))
-                playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (kstate.IsKeyDown(Keys.D))
-                playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-
-
-            //Declaring basic physics so the player does not go out of bounds
-            if (playerPosition.X > _graphics.PreferredBackBufferWidth - playerTexture.Width / 2)
-                playerPosition.X = _graphics.PreferredBackBufferWidth - playerTexture.Width / 2;
-            else if (playerPosition.X < playerTexture.Width / 2)
-                playerPosition.X = playerTexture.Width / 2;
-
-            if (playerPosition.Y > _graphics.PreferredBackBufferHeight - playerTexture.Height / 2)
-                playerPosition.Y = _graphics.PreferredBackBufferHeight - playerTexture.Height / 2;
-            else if (playerPosition.Y < playerTexture.Height / 2)
-                playerPosition.Y = playerTexture.Height / 2;
+            player1.Move();
 
             base.Update(gameTime);
         }
@@ -93,11 +75,13 @@ namespace TopDownRacer
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
             //Draw the car in the game
             _spriteBatch.Begin();
-            _spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, 0f, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-            Vector2.One, SpriteEffects.None, 0f);
+
+            player1.Draw(_spriteBatch);
+
+            /*_spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, 0f, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
+            Vector2.One, SpriteEffects.None, 0f);*/
             _spriteBatch.End();
 
             base.Draw(gameTime);
