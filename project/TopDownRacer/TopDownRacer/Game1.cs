@@ -21,6 +21,10 @@ namespace TopDownRacer
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            _graphics.ApplyChanges();
+            _graphics.PreferredBackBufferWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            _graphics.ApplyChanges();
         }
 
         protected override void Initialize()
@@ -47,6 +51,7 @@ namespace TopDownRacer
 
         protected override void Update(GameTime gameTime)
         {
+            //Press esc to close the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -66,6 +71,7 @@ namespace TopDownRacer
 
             if (kstate.IsKeyDown(Keys.D))
                 playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
 
 
             //Declaring basic physics so the player does not go out of bounds

@@ -23,3 +23,28 @@ C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Per
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.pdb
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.genruntimeconfig.cache
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\Content\ball.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\Content\ball.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\TopDownRacer.exe
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\TopDownRacer.deps.json
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\TopDownRacer.runtimeconfig.json
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\TopDownRacer.runtimeconfig.dev.json
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\TopDownRacer.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\TopDownRacer.pdb
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\MonoGame.Framework.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libSDL2-2.0.so.0
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libopenal.so.1
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\osx\native\libSDL2-2.0.0.dylib
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\osx\native\libopenal.1.dylib
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SDL2.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\soft_oal.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SDL2.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.csproj.AssemblyReference.cache
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.AssemblyInfoInputs.cache
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.AssemblyInfo.cs
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.csproj.CoreCompileInputs.cache
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.csproj.CopyComplete
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.dll
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.pdb
+D:\Programming\Github\C-sharp-2-Periode-4\project\TopDownRacer\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.genruntimeconfig.cache
