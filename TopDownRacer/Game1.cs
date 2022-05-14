@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TopDownRacer.States;
 
 namespace TopDownRacer
 {
@@ -10,11 +11,20 @@ namespace TopDownRacer
         Texture2D playerTexture;
 
         //Declaring a vector and variable to track player position and player speed
-        Vector2 playerPosition;
-        float playerSpeed;
+        public Vector2 playerPosition;
+        public float playerSpeed;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        private State _currentState;
+
+        private State _nextState;
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
 
         public Game1()
         {
@@ -46,11 +56,22 @@ namespace TopDownRacer
             //Declare a texture to the variable, Ball is a temporary texture
             playerTexture = Content.Load<Texture2D>("ball");
 
-            // TODO: use this.Content to load your game content here
+            _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+
+                _nextState = null;
+            }
+
+            _currentState.Update(gameTime);
+
+            _currentState.PostUpdate(gameTime);
+
             //Press esc to close the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -92,13 +113,7 @@ namespace TopDownRacer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-
-            //Draw the car in the game
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, 0f, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-            Vector2.One, SpriteEffects.None, 0f);
-            _spriteBatch.End();
+            _currentState.Draw(gameTime, _spriteBatch, playerTexture, playerPosition);
 
             base.Draw(gameTime);
         }
