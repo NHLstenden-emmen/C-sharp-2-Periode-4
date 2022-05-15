@@ -4,10 +4,12 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
-    <File>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
+    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
+    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
+    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/rectangle.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
