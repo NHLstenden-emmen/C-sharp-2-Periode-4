@@ -20,7 +20,7 @@ namespace TopDownRacer.States
         //Methods
 
         //Basis methode voor de draw van de game/sprite
-        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition);
+        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition, float playerRotation);
 
         //kan worden gebruikt om components te verwijderen
         public abstract void PostUpdate(GameTime gameTime);

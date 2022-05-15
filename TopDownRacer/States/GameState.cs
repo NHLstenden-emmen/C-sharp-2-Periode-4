@@ -13,13 +13,14 @@ namespace TopDownRacer.States
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
+
         }
 
         //Het starten van het spel
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition, float playerRotation = 0f)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, 0f, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
+            spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, playerRotation, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
             Vector2.One, SpriteEffects.None, 0f);
             spriteBatch.End();
         }

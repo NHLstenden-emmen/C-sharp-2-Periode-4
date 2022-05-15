@@ -12,8 +12,8 @@ namespace TopDownRacer
         Texture2D playerTexture;
 
 
-        private Vector2 Position { get; set; }
-        private float Rotation { get; set; }
+        public Vector2 Position { get; set; }
+        public float Rotation { get; set; }
         private int MaxPositionSpeed { get; set; } = 15;
         private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }

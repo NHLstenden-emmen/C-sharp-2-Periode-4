@@ -47,7 +47,7 @@ namespace TopDownRacer.States
         }
 
         //Het maken van de buttons op basis van de buttons die aan de component list is toegevoegd
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition, float playerRotation = 0f)
         {
             spriteBatch.Begin();
 

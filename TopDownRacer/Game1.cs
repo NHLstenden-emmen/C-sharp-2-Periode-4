@@ -97,8 +97,8 @@ namespace TopDownRacer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            player1.Draw(_spriteBatch);
-            _currentState.Draw(gameTime, _spriteBatch, playerTexture, playerPosition);
+            //player1.Draw(_spriteBatch);
+            _currentState.Draw(gameTime, _spriteBatch, playerTexture, player1.Position, player1.Rotation);
 
             base.Draw(gameTime);
         }

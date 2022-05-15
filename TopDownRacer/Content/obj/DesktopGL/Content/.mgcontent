@@ -5,8 +5,8 @@
   <Config />
   <SourceFiles>
     <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/rectangle.png</File>
-    <File>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
-    <File>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

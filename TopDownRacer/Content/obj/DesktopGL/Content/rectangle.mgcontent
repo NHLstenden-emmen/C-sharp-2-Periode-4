@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/rectangle.png</SourceFile>
-  <SourceTime>2022-05-13T21:17:56.7059575+02:00</SourceTime>
+  <SourceTime>2022-05-15T12:37:44.6563826+02:00</SourceTime>
   <DestFile>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/rectangle.xnb</DestFile>
-  <DestTime>2022-05-13T21:18:33.5468974+02:00</DestTime>
+  <DestTime>2022-05-15T12:46:43.3644886+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
