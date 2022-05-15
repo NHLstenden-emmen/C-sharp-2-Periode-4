@@ -2,13 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Diagnostics;
 
-namespace TopDownRacer
+namespace TopDownRacer.Sprites
 {
-    class Player
-    {
-        //Declaring a variable of type Texture2D to add an image to
+    public class Player : Sprite
+    {//Declaring a variable of type Texture2D to add an image to
         Texture2D playerTexture;
 
 
@@ -49,7 +47,7 @@ namespace TopDownRacer
                 Rotation -= MathHelper.ToRadians(RotationSpeed);
             if (kstate.IsKeyDown(Keys.D))
                 Rotation += MathHelper.ToRadians(RotationSpeed);
-                
+
 
             var direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
 
@@ -61,21 +59,24 @@ namespace TopDownRacer
                     ChangePositionSpeed += 0.15f;
                     CurrentPositionSpeed += ChangePositionSpeed;
                 }
-            } else if (kstate.IsKeyDown(Keys.S))
+            }
+            else if (kstate.IsKeyDown(Keys.S))
             {
                 // if the current speed is not above the max speed accelerate the car backwards
-                if (CurrentPositionSpeed > (0 - MaxPositionSpeed)) 
+                if (CurrentPositionSpeed > (0 - MaxPositionSpeed))
                 {
                     ChangePositionSpeed += -0.15f;
                     CurrentPositionSpeed += ChangePositionSpeed;
                 }
-            } else
+            }
+            else
             {
                 // automatic braking if no key is pressed
                 if (CurrentPositionSpeed > 0.25f || CurrentPositionSpeed < -0.25f)
                 {
                     ChangePositionSpeed -= CurrentPositionSpeed * 0.01f;
-                } else
+                }
+                else
                 {
                     CurrentPositionSpeed = 0;
                 }
@@ -85,7 +86,7 @@ namespace TopDownRacer
             // if the car is driving faster than the maxSpeed set the speed to the maxSpeed
             if (ChangePositionSpeed > MaxPositionSpeed / 20)
                 ChangePositionSpeed = MaxPositionSpeed / 20;
-            if (ChangePositionSpeed < -1*(MaxPositionSpeed / 20))
+            if (ChangePositionSpeed < -1 * (MaxPositionSpeed / 20))
                 ChangePositionSpeed = -1 * MaxPositionSpeed / 20;
 
             Position += direction * CurrentPositionSpeed;
