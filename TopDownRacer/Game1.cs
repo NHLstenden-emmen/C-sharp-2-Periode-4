@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TopDownRacer.States;
 
 namespace TopDownRacer
 {
@@ -15,6 +16,15 @@ namespace TopDownRacer
 
         public static int ScreenWidth;
         public static int ScreenHeight;
+
+        private State _currentState;
+
+        private State _nextState;
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
 
         public Game1()
         {
@@ -55,10 +65,23 @@ namespace TopDownRacer
             // TODO: use this.Content to load your game content here
             player1.areaHeight = _graphics.PreferredBackBufferHeight;
             player1.areaWidth= _graphics.PreferredBackBufferWidth;
+
+            _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+
+                _nextState = null;
+            }
+
+            _currentState.Update(gameTime);
+
+            _currentState.PostUpdate(gameTime);
+
             //Press esc to close the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -74,15 +97,8 @@ namespace TopDownRacer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            //Draw the car in the game
-            _spriteBatch.Begin();
-
             player1.Draw(_spriteBatch);
-
-            /*_spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, 0f, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-            Vector2.One, SpriteEffects.None, 0f);*/
-            _spriteBatch.End();
+            _currentState.Draw(gameTime, _spriteBatch, playerTexture, playerPosition);
 
             base.Draw(gameTime);
         }
