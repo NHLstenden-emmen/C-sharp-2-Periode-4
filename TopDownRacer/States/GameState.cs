@@ -1,6 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using TopDownRacer.Models;
+using TopDownRacer.Sprites;
+using TopDownRacer.States;
 
 namespace TopDownRacer.States
 {
@@ -12,12 +17,31 @@ namespace TopDownRacer.States
         {
         }
 
+        
+
         //Het starten van het spel
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition, float playerRotation = 0f)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font)
         {
-            spriteBatch.Begin();
-            spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, playerRotation, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-            Vector2.One, SpriteEffects.None, 0f);
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
+
+            int fontY = 50;
+
+            foreach (Sprite sprite in _sprites)
+            {
+                if (sprite is Player)
+                {
+                    if (!((Player)sprite).Dead)
+                        sprite.Draw(spriteBatch);
+                    spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(70, fontY += 20), ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                }
+                else
+                {
+                    sprite.Draw(spriteBatch);
+                }
+            }
+            spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((Game1.ScreenWidth / 2) - 150, 10), Color.Black);
+
             spriteBatch.End();
         }
 

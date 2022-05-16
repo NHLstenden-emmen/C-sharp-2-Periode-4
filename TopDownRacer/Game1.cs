@@ -164,26 +164,7 @@ namespace TopDownRacer
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
-
-            int fontY = 50;
-
-            foreach (Sprite sprite in _sprites)
-            {
-                if (sprite is Player)
-                {
-                    if (!((Player)sprite).Dead)
-                        sprite.Draw(_spriteBatch);
-                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(70, fontY += 20), ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
-                } else
-                {
-                    sprite.Draw(_spriteBatch);
-                }
-            }
-            _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth / 2) - 150, 10), Color.Black);
-
-            _spriteBatch.End();
+            _currentState.Draw(gameTime, _spriteBatch, _sprites, _font);
 
             base.Draw(gameTime);
         }

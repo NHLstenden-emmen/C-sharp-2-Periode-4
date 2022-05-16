@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using TopDownRacer.MenuControls;
+using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
@@ -46,7 +47,7 @@ namespace TopDownRacer.States
         }
 
         //Het maken van de buttons op basis van de buttons die aan de component list is toegevoegd
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition, float playerRotation = 0f)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font)
         {
             spriteBatch.Begin();
 

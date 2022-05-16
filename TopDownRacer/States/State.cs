@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
@@ -17,7 +19,7 @@ namespace TopDownRacer.States
         //Methods
 
         //Basis methode voor de draw van de game/sprite
-        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, Texture2D playerTexture, Vector2 playerPosition, float playerRotation);
+        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font);
 
         //kan worden gebruikt om components te verwijderen
         public abstract void PostUpdate(GameTime gameTime);
