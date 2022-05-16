@@ -67,6 +67,7 @@ namespace TopDownRacer
               {
                 new Player(playerTexture)
                 {
+                  Name = "Simchaja",
                   Input = new Input()
                   {},
                   Position = new Vector2(100, 100),
@@ -74,6 +75,7 @@ namespace TopDownRacer
                 },
                 new Player(playerTexture)
                 {
+                  Name = "Roan",
                   Input = new Input()
                   {
                     Left = Keys.Left,
@@ -81,7 +83,7 @@ namespace TopDownRacer
                     Up = Keys.Up,
                     Down = Keys.Down,
                   },
-                  Position = new Vector2(200, 100),
+                  Position = new Vector2(100, 200),
                   Color = Color.Green,
                 },
             };
@@ -128,19 +130,15 @@ namespace TopDownRacer
 
             _spriteBatch.Begin();
 
-            foreach (Sprite sprite in _sprites)
-            {
-                sprite.Draw(_spriteBatch);
-            }
-
             int fontY = 10;
-            int i = 0;
 
             foreach (Sprite sprite in _sprites)
             {
                 if (sprite is Player)
                 {
-                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ++i, ((Player)sprite).Score), new Vector2(10, fontY += 20), Color.Black);
+                    if (!((Player)sprite).Dead)
+                        sprite.Draw(_spriteBatch);
+                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(10, fontY += 20), ((Player)sprite).Color);
                 }
             }
             _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth / 2) - 150, 10), Color.Black);

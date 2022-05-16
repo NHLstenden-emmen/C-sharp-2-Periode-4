@@ -8,7 +8,9 @@ namespace TopDownRacer.Sprites
 {
     public class Player : Sprite
     {
+        public String Name = "kevin";
         public int Score;
+        public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
         private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
@@ -33,12 +35,14 @@ namespace TopDownRacer.Sprites
 
             foreach (Sprite sprite in sprites)
             {
-                //if (sprite is Player)
-                //  continue;
-                if (CurrentPositionSpeed > 10.0)
-                {
-                    Score++;
-                }
+                if (sprite! is Player)
+                    if (!((Player)sprite).Dead)
+                        if (CurrentPositionSpeed > 10.0)
+                        {
+                            Score++;
+                            if (Score > 100)
+                                Dead = true;
+                        }
             }
         }
 
