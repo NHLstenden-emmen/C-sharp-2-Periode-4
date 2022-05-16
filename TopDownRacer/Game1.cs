@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 using TopDownRacer.States;
 
@@ -15,7 +17,7 @@ namespace TopDownRacer
         public static int ScreenHeight;
         //Declaring a variable of type Texture2D to add an image to
         Texture2D playerTexture;
-        private Player player1 = new Player();
+        private List<Sprite> _sprites;
 
         private State _currentState;
 
@@ -48,7 +50,6 @@ namespace TopDownRacer
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-            player1.Initialize();
 
             base.Initialize();
         }
@@ -58,10 +59,34 @@ namespace TopDownRacer
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             playerTexture = Content.Load<Texture2D>("Player/rectangle");
-            player1.LoadContent(playerTexture);
-            // TODO: use this.Content to load your game content here
-            player1.areaHeight = _graphics.PreferredBackBufferHeight;
-            player1.areaWidth = _graphics.PreferredBackBufferWidth;
+
+            _sprites = new List<Sprite>()
+              {
+                new Player(playerTexture)
+                {
+                  Input = new Input()
+                  {
+                    Left = Keys.A,
+                    Right = Keys.D,
+                    Up = Keys.W,
+                    Down = Keys.S,
+                  },
+                  Position = new Vector2(100, 100),
+                  Color = Color.Blue,
+                },
+                new Player(playerTexture)
+                {
+                  Input = new Input()
+                  {
+                    Left = Keys.Left,
+                    Right = Keys.Right,
+                    Up = Keys.Up,
+                    Down = Keys.Down,
+                  },
+                  Position = new Vector2(ScreenWidth - 100 - playerTexture.Width, 100),
+                  Color = Color.Green,
+                },
+            };
 
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
@@ -79,6 +104,9 @@ namespace TopDownRacer
                 _nextState = null;
             }
 
+            foreach (var sprite in _sprites)
+                sprite.Update(gameTime, _sprites);
+
             _currentState.Update(gameTime);
 
             _currentState.PostUpdate(gameTime);
@@ -87,9 +115,6 @@ namespace TopDownRacer
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-            player1.Move();
-
             base.Update(gameTime);
         }
 
@@ -97,8 +122,13 @@ namespace TopDownRacer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //player1.Draw(_spriteBatch);
-            _currentState.Draw(gameTime, _spriteBatch, playerTexture, player1.Position, player1.Rotation);
+            _spriteBatch.Begin();
+
+            foreach (var sprite in _sprites)
+                sprite.Draw(_spriteBatch);
+                //_currentState.Draw(gameTime, _spriteBatch, playerTexture, player1.Position, player1.Rotation);
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
