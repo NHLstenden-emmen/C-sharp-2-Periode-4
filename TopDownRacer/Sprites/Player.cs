@@ -8,6 +8,8 @@ namespace TopDownRacer.Sprites
 {
     public class Player : Sprite
     {
+
+        public int Score;
         private int MaxPositionSpeed { get; set; } = 15;
         private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
@@ -28,6 +30,16 @@ namespace TopDownRacer.Sprites
         public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
             Move();
+
+            foreach (var sprite in sprites)
+            {
+                //if (sprite is Player)
+                  //  continue;
+                if (CurrentPositionSpeed > 10.0)
+                {
+                    Score++;
+                }
+            }
         }
 
         public void Move()
