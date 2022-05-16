@@ -7,9 +7,11 @@
     <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
     <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
     <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/barrier_white.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white.png</File>
     <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/rectangle.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

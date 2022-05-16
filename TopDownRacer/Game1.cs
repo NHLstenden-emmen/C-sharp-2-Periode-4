@@ -15,6 +15,7 @@ namespace TopDownRacer
 
         public static int ScreenWidth;
         public static int ScreenHeight;
+        private static int TrackWidth = 400;
         //Declaring a variable of type Texture2D to add an image to
         Texture2D playerTexture;
         Texture2D bumperTexture;
@@ -40,7 +41,7 @@ namespace TopDownRacer
             IsMouseVisible = true;
 
             // set graphics resolution to the resolution of the display
-            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width / 2;
+            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
             ScreenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
 
             _graphics.PreferredBackBufferWidth = ScreenWidth;
@@ -48,7 +49,7 @@ namespace TopDownRacer
             _graphics.ApplyChanges();
 
             // set the window size to fullscreen
-            //_graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
 
@@ -60,7 +61,7 @@ namespace TopDownRacer
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             playerTexture = Content.Load<Texture2D>("Player/rectangle");
-            bumperTexture = Content.Load<Texture2D>("Levels/barrier_white");
+            bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
 
             _sprites = new List<Sprite>()
               {
@@ -73,7 +74,7 @@ namespace TopDownRacer
                     Up = Keys.W,
                     Down = Keys.S,
                   },
-                  Position = new Vector2(1000, 1000),
+                  Position = new Vector2(1200, 1200),
                   Color = Color.Blue,
                 },
                 /*new Player(playerTexture)
@@ -89,11 +90,41 @@ namespace TopDownRacer
                   Rotation = MathHelper.Pi,
                   Color = Color.Green,
                 },*/
-                new Bumper(bumperTexture, 0)
+                // outer ring
+                new Bumper(bumperTexture, 0, bumperTexture.Height,ScreenWidth)
                 {
-                    Position = new Vector2(ScreenWidth / 2, 0),
-            //Position = new Vector2(0,0),
-        }
+                    Position = new Vector2(0,0)
+                },
+                new Bumper(bumperTexture, 1, ScreenHeight, bumperTexture.Width)
+                {
+                    Position = new Vector2(ScreenWidth - bumperTexture.Width, 0)
+                },
+                new Bumper(bumperTexture, 2, bumperTexture.Height, ScreenWidth)
+                {
+                    Position = new Vector2(0, ScreenHeight - bumperTexture.Height)
+                },
+                new Bumper(bumperTexture, 3,ScreenHeight, bumperTexture.Width)
+                {
+                    Position = new Vector2(0, 0)
+                },
+                // inner ring
+                
+                new Bumper(bumperTexture, 0, bumperTexture.Height,ScreenWidth-TrackWidth*2)
+                {
+                    Position = new Vector2(TrackWidth,TrackWidth)
+                },
+                new Bumper(bumperTexture, 1, ScreenHeight - TrackWidth*2, bumperTexture.Width)
+                {
+                    Position = new Vector2(ScreenWidth - bumperTexture.Width - TrackWidth, TrackWidth)
+                },
+                new Bumper(bumperTexture, 2, bumperTexture.Height, ScreenWidth - TrackWidth * 2)
+                {
+                    Position = new Vector2(TrackWidth, ScreenHeight - bumperTexture.Height - TrackWidth)
+                },
+                new Bumper(bumperTexture, 3,ScreenHeight - TrackWidth * 2, bumperTexture.Width)
+                {
+                    Position = new Vector2(TrackWidth, TrackWidth)
+                }
             };
 
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
@@ -130,7 +161,7 @@ namespace TopDownRacer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
             foreach (var sprite in _sprites)
                 sprite.Draw(_spriteBatch);

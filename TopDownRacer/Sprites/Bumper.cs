@@ -12,18 +12,25 @@ namespace TopDownRacer.Sprites
         private Rectangle sourceRectangle;
         private delegate Vector2 getCornerCoords(Sprite sprite);
         private getCornerCoords getCornerCoordsDel;
+        private int orientation;
+        public int height;
+        public int width;
 
         public Rectangle Rectangle
         {
             get
             {
-                return new Rectangle((int)Position.X, (int)Position.Y, Game1.ScreenWidth, _texture.Height);
+                return new Rectangle((int)Position.X, (int)Position.Y, width, height);
             }
         }
 
-        public Bumper(Texture2D texture, int orientation)
+        public Bumper(Texture2D texture, int orientation, int height, int width)
         : base(texture)
         {
+
+            this.orientation = orientation;
+            this.height = height;
+            this.width = width;
             sourceRectangle = Rectangle;
             switch (orientation)
             {
@@ -34,13 +41,13 @@ namespace TopDownRacer.Sprites
                     getCornerCoordsDel = getCornerCoordsRight;
                     break;
                 case 2:
-                    getCornerCoordsDel = getCornerCoordsRight;
+                    getCornerCoordsDel = getCornerCoordsBottom;
                     break;
                 case 3:
-                    getCornerCoordsDel = getCornerCoordsRight;
+                    getCornerCoordsDel = getCornerCoordsLeft;
                     break;
             }
-            
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -56,15 +63,14 @@ namespace TopDownRacer.Sprites
                 {
                     // the car is moving right
                     var coords = getCornerCoordsDel(sprite);
-                    if (coords.Y < this.Position.Y + _texture.Height)
+                    if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
                     {
-                        Debug.Write("COLLISION!!!!!");
-                        Debug.WriteLine(coords);
-                        sprite.Color = Color.Red;
+                        this.Color = Color.Red;
                     }
                 }
             }
         }
+
         public Vector2 getCornerCoordsTop(Sprite sprite)
         {
             // calculate the orientation and choose which method to call
@@ -73,12 +79,10 @@ namespace TopDownRacer.Sprites
             {
                 if (direction.X < 0)
                 {
-                    Debug.WriteLine("FR");
                     return cornerCoordFR(sprite);
                 }
                 else
                 {
-                    Debug.WriteLine("FL");
                     return cornerCoordFL(sprite);
                 }
 
@@ -87,12 +91,10 @@ namespace TopDownRacer.Sprites
             {
                 if (direction.X < 0)
                 {
-                    Debug.WriteLine("BR");
                     return cornerCoordBR(sprite);
                 }
                 else
                 {
-                    Debug.WriteLine("BL");
                     return cornerCoordBL(sprite);
                 }
             }
@@ -105,12 +107,10 @@ namespace TopDownRacer.Sprites
             {
                 if (direction.Y < 0)
                 {
-                    Debug.WriteLine("FR");
                     return cornerCoordFR(sprite);
                 }
                 else
                 {
-                    Debug.WriteLine("FL");
                     return cornerCoordFL(sprite);
                 }
 
@@ -119,12 +119,67 @@ namespace TopDownRacer.Sprites
             {
                 if (direction.Y < 0)
                 {
-                    Debug.WriteLine("BR");
                     return cornerCoordBR(sprite);
                 }
                 else
                 {
-                    Debug.WriteLine("BL");
+                    return cornerCoordBL(sprite);
+                }
+            }
+        }
+        public Vector2 getCornerCoordsBottom(Sprite sprite)
+        {
+            // calculate the orientation and choose which method to call
+            var direction = new Vector2((float)Math.Cos(sprite.Rotation), (float)Math.Sin(sprite.Rotation));
+            if (direction.Y > 0)
+            {
+                if (direction.X < 0)
+                {
+                    return cornerCoordFR(sprite);
+                }
+                else
+                {
+                    return cornerCoordFL(sprite);
+                }
+
+            }
+            else
+            {
+                if (direction.X < 0)
+                {
+                    return cornerCoordBR(sprite);
+                }
+                else
+                {
+                    return cornerCoordBL(sprite);
+                }
+            }
+        }
+
+        public Vector2 getCornerCoordsLeft(Sprite sprite)
+        {
+            // calculate the orientation and choose which method to call
+            var direction = new Vector2((float)Math.Cos(sprite.Rotation), (float)Math.Sin(sprite.Rotation));
+            if (direction.X < 0)
+            {
+                if (direction.Y > 0)
+                {
+                    return cornerCoordFR(sprite);
+                }
+                else
+                {
+                    return cornerCoordFL(sprite);
+                }
+
+            }
+            else
+            {
+                if (direction.Y > 0)
+                {
+                    return cornerCoordBR(sprite);
+                }
+                else
+                {
                     return cornerCoordBL(sprite);
                 }
             }
