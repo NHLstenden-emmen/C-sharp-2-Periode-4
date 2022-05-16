@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using TopDownRacer.MenuControls;
 
 namespace TopDownRacer.States
@@ -11,26 +10,26 @@ namespace TopDownRacer.States
     //MenuState inherit van de abstracte State klasse
     public class MenuState : State
     {
-        private List<Component> _components;
+        private readonly List<Component> _components;
 
         //constuctor van de MenuState
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             //Laden van de font en button png
-            var buttonTexture = _content.Load<Texture2D>("Controls/Button");
-            var buttonFont = _content.Load<SpriteFont>("Fonts/Font");
+            Texture2D buttonTexture = _content.Load<Texture2D>("Controls/Button");
+            SpriteFont buttonFont = _content.Load<SpriteFont>("Fonts/Font");
 
             //Toevoegen van nieuwe buttons en functionaliteiten van de buttons
-            var newGameButton = new Button(buttonTexture, buttonFont)
+            Button newGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(800,200),
+                Position = new Vector2(800, 200),
                 Text = "New Game",
             };
 
             newGameButton.Click += NewGameButton_Click;
 
-            var quitGameButton = new Button(buttonTexture, buttonFont)
+            Button quitGameButton = new Button(buttonTexture, buttonFont)
             {
                 Position = new Vector2(800, 250),
                 Text = "Quit Game",
@@ -39,7 +38,7 @@ namespace TopDownRacer.States
             quitGameButton.Click += QuitGameButton_Click;
 
             _components = new List<Component>()
-            
+
             {
                 newGameButton,
                 quitGameButton,
@@ -51,8 +50,10 @@ namespace TopDownRacer.States
         {
             spriteBatch.Begin();
 
-            foreach (var component in _components)
+            foreach (Component component in _components)
+            {
                 component.Draw(gameTime, spriteBatch);
+            }
 
             spriteBatch.End();
         }
@@ -70,8 +71,10 @@ namespace TopDownRacer.States
 
         public override void Update(GameTime gameTime)
         {
-            foreach (var component in _components)
+            foreach (Component component in _components)
+            {
                 component.Update(gameTime);
+            }
         }
 
         private void QuitGameButton_Click(object sender, EventArgs e)

@@ -10,13 +10,15 @@ namespace TopDownRacer
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        private readonly GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
         public static int ScreenWidth;
         public static int ScreenHeight;
+
         //Declaring a variable of type Texture2D to add an image to
-        Texture2D playerTexture;
+        private Texture2D playerTexture;
+
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -52,7 +54,6 @@ namespace TopDownRacer
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-
             base.Initialize();
         }
 
@@ -80,7 +81,7 @@ namespace TopDownRacer
                     Up = Keys.Up,
                     Down = Keys.Down,
                   },
-                  Position = new Vector2(ScreenWidth - 100 - playerTexture.Width, 100),
+                  Position = new Vector2(200, 100),
                   Color = Color.Green,
                 },
             };
@@ -88,6 +89,7 @@ namespace TopDownRacer
             _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
+
         protected override void UnloadContent()
         {
             // TODO: Unload any non loaded content here
@@ -102,8 +104,10 @@ namespace TopDownRacer
                 _nextState = null;
             }
 
-            foreach (var sprite in _sprites)
+            foreach (Sprite sprite in _sprites)
+            {
                 sprite.Update(gameTime, _sprites);
+            }
 
             _currentState.Update(gameTime);
 
@@ -111,7 +115,9 @@ namespace TopDownRacer
 
             //Press esc to close the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
 
             base.Update(gameTime);
         }
@@ -122,18 +128,22 @@ namespace TopDownRacer
 
             _spriteBatch.Begin();
 
-            foreach (var sprite in _sprites)
+            foreach (Sprite sprite in _sprites)
+            {
                 sprite.Draw(_spriteBatch);
+            }
 
-            var fontY = 10;
-            var i = 0;
+            int fontY = 10;
+            int i = 0;
 
-            foreach (var sprite in _sprites)
+            foreach (Sprite sprite in _sprites)
             {
                 if (sprite is Player)
+                {
                     _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ++i, ((Player)sprite).Score), new Vector2(10, fontY += 20), Color.Black);
+                }
             }
-            _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth/2) - 150, 10), Color.Black);
+            _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth / 2) - 150, 10), Color.Black);
 
             _spriteBatch.End();
 
