@@ -21,6 +21,8 @@ namespace TopDownRacer
 
         private State _currentState;
 
+        private SpriteFont _font;
+
         private State _nextState;
 
         public void ChangeState(State state)
@@ -88,6 +90,7 @@ namespace TopDownRacer
                 },
             };
 
+            _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
         protected override void UnloadContent()
@@ -126,7 +129,15 @@ namespace TopDownRacer
 
             foreach (var sprite in _sprites)
                 sprite.Draw(_spriteBatch);
-                //_currentState.Draw(gameTime, _spriteBatch, playerTexture, player1.Position, player1.Rotation);
+
+            var fontY = 10;
+            var i = 0;
+
+            foreach (var sprite in _sprites)
+            {
+                if (sprite is Player)
+                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ++i, ((Player)sprite).Score), new Vector2(10, fontY += 20), Color.Black);
+            }
 
             _spriteBatch.End();
 
