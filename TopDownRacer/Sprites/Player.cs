@@ -9,6 +9,9 @@ namespace TopDownRacer.Sprites
 {
     public class Player : Sprite
     {
+        public String Name = "kevin";
+        public int Score;
+        public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
         //private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
@@ -24,26 +27,41 @@ namespace TopDownRacer.Sprites
             Position = new Vector2(Game1.ScreenWidth / 2,
                 Game1.ScreenHeight / 2);
         }
+
         public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
             Move();
+
+            foreach (Sprite sprite in sprites)
+            {
+                if (sprite! is Player)
+                    if (!((Player)sprite).Dead)
+                        if (CurrentPositionSpeed > 10.0)
+                        {
+                            Score++;
+                            if (Score > 100)
+                                Dead = true;
+                        }
+            }
         }
 
         public void Move()
         {
             //Declaring basic player controls
-            var kstate = Keyboard.GetState();
+            KeyboardState kstate = Keyboard.GetState();
             // TODO backwards driving is not mirrored
             // Rotate the car based on which key is pressed
             if (kstate.IsKeyDown(Input.Left))
+            {
                 Rotation -= MathHelper.ToRadians(RotationSpeed);
+            }
+
             if (kstate.IsKeyDown(Input.Right))
+            {
                 Rotation += MathHelper.ToRadians(RotationSpeed);
+            }
 
-
-            var direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
-            //Debug.Write(Rotation);
-            //Debug.WriteLine(direction);
+            Vector2 direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
 
             if (kstate.IsKeyDown(Input.Up))
             {
@@ -79,9 +97,14 @@ namespace TopDownRacer.Sprites
 
             // if the car is driving faster than the maxSpeed set the speed to the maxSpeed
             if (ChangePositionSpeed > MaxPositionSpeed / 20)
+            {
                 ChangePositionSpeed = MaxPositionSpeed / 20;
+            }
+
             if (ChangePositionSpeed < -1 * (MaxPositionSpeed / 20))
+            {
                 ChangePositionSpeed = -1 * MaxPositionSpeed / 20;
+            }
 
             Position += direction * CurrentPositionSpeed;
 

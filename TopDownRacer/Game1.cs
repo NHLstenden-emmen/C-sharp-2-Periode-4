@@ -10,8 +10,8 @@ namespace TopDownRacer
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        private readonly GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
         public static int ScreenWidth;
         public static int ScreenHeight;
@@ -22,6 +22,8 @@ namespace TopDownRacer
         private List<Sprite> _sprites;
 
         private State _currentState;
+
+        private SpriteFont _font;
 
         private State _nextState;
 
@@ -52,7 +54,6 @@ namespace TopDownRacer
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-
             base.Initialize();
         }
 
@@ -67,18 +68,15 @@ namespace TopDownRacer
               {
                 new Player(playerTexture)
                 {
+                  Name = "Simchaja",
                   Input = new Input()
-                  {
-                    Left = Keys.A,
-                    Right = Keys.D,
-                    Up = Keys.W,
-                    Down = Keys.S,
-                  },
-                  Position = new Vector2(1200, 1200),
+                  {},
+                  Position = new Vector2(100, 100),
                   Color = Color.Blue,
                 },
                 /*new Player(playerTexture)
                 {
+                  Name = "Roan",
                   Input = new Input()
                   {
                     Left = Keys.Left,
@@ -127,8 +125,10 @@ namespace TopDownRacer
                 }
             };
 
+            _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
+
         protected override void UnloadContent()
         {
             // TODO: Unload any non loaded content here
@@ -143,8 +143,10 @@ namespace TopDownRacer
                 _nextState = null;
             }
 
-            foreach (var sprite in _sprites)
+            foreach (Sprite sprite in _sprites)
+            {
                 sprite.Update(gameTime, _sprites);
+            }
 
             _currentState.Update(gameTime);
 
@@ -152,7 +154,9 @@ namespace TopDownRacer
 
             //Press esc to close the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
 
             base.Update(gameTime);
         }
@@ -163,9 +167,18 @@ namespace TopDownRacer
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
-            foreach (var sprite in _sprites)
-                sprite.Draw(_spriteBatch);
-                //_currentState.Draw(gameTime, _spriteBatch, playerTexture, player1.Position, player1.Rotation);
+            int fontY = 10;
+
+            foreach (Sprite sprite in _sprites)
+            {
+                if (sprite is Player)
+                {
+                    if (!((Player)sprite).Dead)
+                        sprite.Draw(_spriteBatch);
+                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(10, fontY += 20), ((Player)sprite).Color);
+                }
+            }
+            _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth / 2) - 150, 10), Color.Black);
 
             _spriteBatch.End();
 

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using TopDownRacer.Models;
 
 namespace TopDownRacer.Sprites
@@ -24,7 +22,6 @@ namespace TopDownRacer.Sprites
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
             
             spriteBatch.Draw(_texture, Position, null, Color, Rotation, Origin, 1, SpriteEffects.None, 0f);
@@ -32,7 +29,6 @@ namespace TopDownRacer.Sprites
 
         public virtual void Update(GameTime gameTime, List<Sprite> sprites)
         {
-
         }
     }
 }
