@@ -67,12 +67,7 @@ namespace TopDownRacer
                 new Player(playerTexture)
                 {
                   Input = new Input()
-                  {
-                    Left = Keys.A,
-                    Right = Keys.D,
-                    Up = Keys.W,
-                    Down = Keys.S,
-                  },
+                  {},
                   Position = new Vector2(100, 100),
                   Color = Color.Blue,
                 },
@@ -138,6 +133,7 @@ namespace TopDownRacer
                 if (sprite is Player)
                     _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ++i, ((Player)sprite).Score), new Vector2(10, fontY += 20), Color.Black);
             }
+            _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth/2) - 150, 10), Color.Black);
 
             _spriteBatch.End();
 
