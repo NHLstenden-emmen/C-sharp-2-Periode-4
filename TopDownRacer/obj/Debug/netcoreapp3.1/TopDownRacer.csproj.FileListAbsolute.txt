@@ -70,9 +70,10 @@ D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\r
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.csproj.CopyComplete
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.genruntimeconfig.cache
-D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\rectangle.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\rectangle.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\rectangle.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\barrier_white.xnb

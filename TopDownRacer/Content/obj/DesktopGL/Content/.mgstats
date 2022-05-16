@@ -1,1 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png","D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Controls/Button.xnb","TextureProcessor","Texture2DContent",324,25685,0.1989127
+"D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont","D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Fonts/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2063,21538,0.0749359
+"D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/barrier_white.png","D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Levels/barrier_white.xnb","TextureProcessor","Texture2DContent",261,52165,0.0911518
+"D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/rectangle.png","D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Player/rectangle.xnb","TextureProcessor","Texture2DContent",367,57685,0.0038091

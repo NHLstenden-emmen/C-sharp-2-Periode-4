@@ -17,6 +17,7 @@ namespace TopDownRacer
         public static int ScreenHeight;
         //Declaring a variable of type Texture2D to add an image to
         Texture2D playerTexture;
+        Texture2D bumperTexture;
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -39,7 +40,7 @@ namespace TopDownRacer
             IsMouseVisible = true;
 
             // set graphics resolution to the resolution of the display
-            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width / 2;
             ScreenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
 
             _graphics.PreferredBackBufferWidth = ScreenWidth;
@@ -47,7 +48,7 @@ namespace TopDownRacer
             _graphics.ApplyChanges();
 
             // set the window size to fullscreen
-            _graphics.IsFullScreen = true;
+            //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
 
@@ -59,6 +60,7 @@ namespace TopDownRacer
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             playerTexture = Content.Load<Texture2D>("Player/rectangle");
+            bumperTexture = Content.Load<Texture2D>("Levels/barrier_white");
 
             _sprites = new List<Sprite>()
               {
@@ -71,10 +73,10 @@ namespace TopDownRacer
                     Up = Keys.W,
                     Down = Keys.S,
                   },
-                  Position = new Vector2(100, 100),
+                  Position = new Vector2(1000, 1000),
                   Color = Color.Blue,
                 },
-                new Player(playerTexture)
+                /*new Player(playerTexture)
                 {
                   Input = new Input()
                   {
@@ -84,8 +86,14 @@ namespace TopDownRacer
                     Down = Keys.Down,
                   },
                   Position = new Vector2(ScreenWidth - 100 - playerTexture.Width, 100),
+                  Rotation = MathHelper.Pi,
                   Color = Color.Green,
-                },
+                },*/
+                new Bumper(bumperTexture, 0)
+                {
+                    Position = new Vector2(ScreenWidth / 2, 0),
+            //Position = new Vector2(0,0),
+        }
             };
 
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);

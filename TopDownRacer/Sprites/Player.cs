@@ -3,17 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TopDownRacer.Sprites
 {
     public class Player : Sprite
     {
         private int MaxPositionSpeed { get; set; } = 15;
-        private float CurrentPositionSpeed { get; set; }
+        //private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
         private float RotationSpeed { get; set; } = 2.5f;
-        public int areaWidth { get; set; }
-        public int areaHeight { get; set; }
 
         public Player(Texture2D texture)
         : base(texture)
@@ -43,6 +42,8 @@ namespace TopDownRacer.Sprites
 
 
             var direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
+            //Debug.Write(Rotation);
+            //Debug.WriteLine(direction);
 
             if (kstate.IsKeyDown(Input.Up))
             {
