@@ -52,7 +52,7 @@ namespace TopDownRacer.Sprites
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Position, sourceRectangle, Color, Rotation, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            spriteBatch.Draw(_texture, Position, sourceRectangle, Color, Rotation, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
@@ -65,7 +65,7 @@ namespace TopDownRacer.Sprites
                     var coords = getCornerCoordsDel(sprite);
                     if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
                     {
-                        this.Color = Color.Red;
+                        ((Player)sprite).Dead = true;
                     }
                 }
             }

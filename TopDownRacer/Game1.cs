@@ -71,10 +71,10 @@ namespace TopDownRacer
                   Name = "Simchaja",
                   Input = new Input()
                   {},
-                  Position = new Vector2(100, 100),
+                  Position = new Vector2(250, 250),
                   Color = Color.Blue,
                 },
-                /*new Player(playerTexture)
+                new Player(playerTexture)
                 {
                   Name = "Roan",
                   Input = new Input()
@@ -84,10 +84,10 @@ namespace TopDownRacer
                     Up = Keys.Up,
                     Down = Keys.Down,
                   },
-                  Position = new Vector2(ScreenWidth - 100 - playerTexture.Width, 100),
+                  Position = new Vector2(ScreenWidth - 250, 250),
                   Rotation = MathHelper.Pi,
                   Color = Color.Green,
-                },*/
+                },
                 // outer ring
                 new Bumper(bumperTexture, 0, bumperTexture.Height,ScreenWidth)
                 {
@@ -167,7 +167,7 @@ namespace TopDownRacer
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
-            int fontY = 10;
+            int fontY = 50;
 
             foreach (Sprite sprite in _sprites)
             {
@@ -175,7 +175,10 @@ namespace TopDownRacer
                 {
                     if (!((Player)sprite).Dead)
                         sprite.Draw(_spriteBatch);
-                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(10, fontY += 20), ((Player)sprite).Color);
+                    _spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(70, fontY += 20), ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                } else
+                {
+                    sprite.Draw(_spriteBatch);
                 }
             }
             _spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((ScreenWidth / 2) - 150, 10), Color.Black);

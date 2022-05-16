@@ -32,17 +32,9 @@ namespace TopDownRacer.Sprites
         {
             Move();
 
-            foreach (Sprite sprite in sprites)
-            {
-                if (sprite! is Player)
-                    if (!((Player)sprite).Dead)
-                        if (CurrentPositionSpeed > 10.0)
-                        {
-                            Score++;
-                            if (Score > 100)
-                                Dead = true;
-                        }
-            }
+            if (!Dead)
+                if (CurrentPositionSpeed > 10.0)
+                    Score++;
         }
 
         public void Move()
