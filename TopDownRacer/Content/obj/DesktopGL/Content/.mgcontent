@@ -7,11 +7,13 @@
     <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
     <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
     <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/barrier_white.png</File>
+    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/checkpoint.png</File>
     <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/Finishline.png</File>
     <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white.png</File>
     <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/rectangle.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -19,7 +19,7 @@ namespace TopDownRacer
 
         //Declaring a variable of type Texture2D to add an image to
         private Texture2D playerTexture;
-
+        private Texture2D checkpointTexture;
         private Texture2D bumperTexture;
         private Texture2D finishlineTexture;
         private List<Sprite> _sprites;
@@ -67,6 +67,7 @@ namespace TopDownRacer
             playerTexture = Content.Load<Texture2D>("Player/rectangle");
             bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
             finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
+            checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
 
             _sprites = new List<Sprite>()
               {
@@ -131,14 +132,14 @@ namespace TopDownRacer
                     amountCheckpoint = 2
                 },
                 // checkpoint's
-                new Checkpoint(finishlineTexture, 1, TrackWidth, finishlineTexture.Width)
+                new Checkpoint(checkpointTexture, 1, TrackWidth, checkpointTexture.Width)
                 {
-                    Position = new Vector2((ScreenWidth / 2) - finishlineTexture.Width, 0),
+                    Position = new Vector2((ScreenWidth / 2) - checkpointTexture.Width, 0),
                     checkpointId = 0
                 },
-                new Checkpoint(finishlineTexture, 1, ScreenHeight, finishlineTexture.Width)
+                new Checkpoint(checkpointTexture, 1, ScreenHeight, checkpointTexture.Width)
                 {
-                    Position = new Vector2((ScreenWidth / 2) - finishlineTexture.Width, ScreenHeight - TrackWidth),
+                    Position = new Vector2((ScreenWidth / 2) - checkpointTexture.Width, ScreenHeight - TrackWidth),
                     checkpointId = 1
                 },
             };
