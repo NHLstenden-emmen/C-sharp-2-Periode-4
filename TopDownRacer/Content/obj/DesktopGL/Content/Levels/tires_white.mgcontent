@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white.png</SourceFile>
-  <SourceTime>2022-05-16T21:17:50.4656708+02:00</SourceTime>
+  <SourceTime>2022-05-16T22:19:31+02:00</SourceTime>
   <DestFile>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Levels/tires_white.xnb</DestFile>
-  <DestTime>2022-05-17T17:31:11.6647807+02:00</DestTime>
+  <DestTime>2022-05-17T18:40:33.2076871+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

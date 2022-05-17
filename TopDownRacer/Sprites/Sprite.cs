@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using TopDownRacer.Models;
 
 namespace TopDownRacer.Sprites
@@ -32,6 +32,7 @@ namespace TopDownRacer.Sprites
                 return new Rectangle((int)Position.X, (int)Position.Y, width, height);
             }
         }
+
         public Sprite(Texture2D texture)
         {
             _texture = texture;
@@ -40,14 +41,13 @@ namespace TopDownRacer.Sprites
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
-            
+
             spriteBatch.Draw(_texture, Position, null, Color, Rotation, Origin, 1, SpriteEffects.None, 0f);
         }
 
         public virtual void Update(GameTime gameTime, List<Sprite> sprites)
         {
         }
-
 
         public Vector2 getCornerCoordsTop(Sprite sprite)
         {
@@ -63,7 +63,6 @@ namespace TopDownRacer.Sprites
                 {
                     return cornerCoordFL(sprite);
                 }
-
             }
             else
             {
@@ -77,6 +76,7 @@ namespace TopDownRacer.Sprites
                 }
             }
         }
+
         public Vector2 getCornerCoordsRight(Sprite sprite)
         {
             // calculate the orientation and choose which method to call
@@ -91,7 +91,6 @@ namespace TopDownRacer.Sprites
                 {
                     return cornerCoordFL(sprite);
                 }
-
             }
             else
             {
@@ -105,6 +104,7 @@ namespace TopDownRacer.Sprites
                 }
             }
         }
+
         public Vector2 getCornerCoordsBottom(Sprite sprite)
         {
             // calculate the orientation and choose which method to call
@@ -119,7 +119,6 @@ namespace TopDownRacer.Sprites
                 {
                     return cornerCoordFL(sprite);
                 }
-
             }
             else
             {
@@ -148,7 +147,6 @@ namespace TopDownRacer.Sprites
                 {
                     return cornerCoordFL(sprite);
                 }
-
             }
             else
             {
