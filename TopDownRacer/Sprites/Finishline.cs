@@ -1,19 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace TopDownRacer.Sprites
 {
-    class Finishline : Sprite
+    internal class Finishline : Sprite
     {
+        public int amountCheckpoint = 0;
 
         public Finishline(Texture2D texture, int orientation, int height, int width)
         : base(texture)
         {
-
             this.orientation = orientation;
             this.height = height;
             this.width = width;
@@ -23,17 +20,19 @@ namespace TopDownRacer.Sprites
                 case 0:
                     getCornerCoordsDel = getCornerCoordsTop;
                     break;
+
                 case 1:
                     getCornerCoordsDel = getCornerCoordsRight;
                     break;
+
                 case 2:
                     getCornerCoordsDel = getCornerCoordsBottom;
                     break;
+
                 case 3:
                     getCornerCoordsDel = getCornerCoordsLeft;
                     break;
             }
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -53,12 +52,14 @@ namespace TopDownRacer.Sprites
                         var coords = getCornerCoordsDel(sprite);
                         if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
                         {
-                            ((Player)sprite).Score += 1000;
-                            ((Player)sprite).Dead = true;
+                            if (amountCheckpoint == ((Player)sprite).checkpointId)
+                            {
+                                ((Player)sprite).Score += 1000;
+                                ((Player)sprite).Dead = true;
+                            }
                         }
                     }
             }
         }
-
     }
 }

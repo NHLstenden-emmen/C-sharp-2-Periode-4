@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace TopDownRacer.Sprites
 {
     internal class Checkpoint : Sprite
     {
-        private int checkpointList = 0;
-        public Checkpoint(Texture2D texture, int orientation, int height, int width, int checkpointList)
+        public int checkpointId = 0;
+
+        public Checkpoint(Texture2D texture, int orientation, int height, int width)
         : base(texture)
         {
             this.orientation = orientation;
@@ -51,10 +51,11 @@ namespace TopDownRacer.Sprites
                         var coords = getCornerCoordsDel(sprite);
                         if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
                         {
-                            checkpointList++;
-                            Debug.WriteLine(checkpointList);
-                            Debug.WriteLine(sprite);
-                            ((Player)sprite).Score += 500;
+                            if (((Player)sprite).checkpointId == checkpointId)
+                            {
+                                ((Player)sprite).checkpointId++;
+                                ((Player)sprite).Score += 500;
+                            }
                         }
                     }
             }
