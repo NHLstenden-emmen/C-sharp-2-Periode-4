@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using TopDownRacer.Models;
 using TopDownRacer.Sprites;
-using TopDownRacer.States;
 
 namespace TopDownRacer.States
 {
@@ -17,12 +14,9 @@ namespace TopDownRacer.States
         {
         }
 
-        
-
         //Het starten van het spel
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font)
         {
-
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
 
             int fontY = 50;

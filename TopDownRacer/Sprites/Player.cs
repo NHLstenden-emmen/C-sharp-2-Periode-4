@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace TopDownRacer.Sprites
 {
@@ -11,21 +10,23 @@ namespace TopDownRacer.Sprites
     {
         public String Name = "kevin";
         public int Score;
+        public int checkpointId = 0;
         public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
+
         //private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
+
         private float RotationSpeed { get; set; } = 2.5f;
 
         public Player(Texture2D texture)
         : base(texture)
         {
+            Position = new Vector2(250, 250);
         }
 
         public void Initialize()
         {
-            Position = new Vector2(Game1.ScreenWidth / 2,
-                Game1.ScreenHeight / 2);
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)

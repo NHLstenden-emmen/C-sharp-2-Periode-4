@@ -16,9 +16,12 @@ namespace TopDownRacer
         public static int ScreenWidth;
         public static int ScreenHeight;
         private static int TrackWidth = 400;
+
         //Declaring a variable of type Texture2D to add an image to
-        Texture2D playerTexture;
-        Texture2D bumperTexture;
+        private Texture2D playerTexture;
+        private Texture2D checkpointTexture;
+        private Texture2D bumperTexture;
+        private Texture2D finishlineTexture;
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -63,6 +66,8 @@ namespace TopDownRacer
 
             playerTexture = Content.Load<Texture2D>("Player/rectangle");
             bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
+            finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
+            checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
 
             _sprites = new List<Sprite>()
               {
@@ -71,7 +76,6 @@ namespace TopDownRacer
                   Name = "Simchaja",
                   Input = new Input()
                   {},
-                  Position = new Vector2(250, 250),
                   Color = Color.Blue,
                 },
                 new Player(playerTexture)
@@ -84,45 +88,60 @@ namespace TopDownRacer
                     Up = Keys.Up,
                     Down = Keys.Down,
                   },
-                  Position = new Vector2(ScreenWidth - 250, 250),
-                  Rotation = MathHelper.Pi,
                   Color = Color.Green,
                 },
                 // outer ring
-                new Bumper(bumperTexture, 0, bumperTexture.Height,ScreenWidth)
+                new Bumper(bumperTexture, 0, ScreenWidth,bumperTexture.Height)
                 {
                     Position = new Vector2(0,0)
                 },
-                new Bumper(bumperTexture, 1, ScreenHeight, bumperTexture.Width)
+                new Bumper(bumperTexture, 1, bumperTexture.Width, ScreenHeight - TrackWidth)
                 {
                     Position = new Vector2(ScreenWidth - bumperTexture.Width, 0)
                 },
-                new Bumper(bumperTexture, 2, bumperTexture.Height, ScreenWidth)
+                new Bumper(bumperTexture, 2, ScreenWidth, bumperTexture.Height)
                 {
                     Position = new Vector2(0, ScreenHeight - bumperTexture.Height)
                 },
-                new Bumper(bumperTexture, 3,ScreenHeight, bumperTexture.Width)
+                new Bumper(bumperTexture, 3,bumperTexture.Width, ScreenHeight)
                 {
                     Position = new Vector2(0, 0)
                 },
                 // inner ring
-                
-                new Bumper(bumperTexture, 0, bumperTexture.Height,ScreenWidth-TrackWidth*2)
+
+                new Bumper(bumperTexture, 0, ScreenWidth-TrackWidth*2, bumperTexture.Height)
                 {
                     Position = new Vector2(TrackWidth,TrackWidth)
                 },
-                new Bumper(bumperTexture, 1, ScreenHeight - TrackWidth*2, bumperTexture.Width)
+                new Bumper(bumperTexture, 1, bumperTexture.Width, ScreenHeight - TrackWidth*2)
                 {
                     Position = new Vector2(ScreenWidth - bumperTexture.Width - TrackWidth, TrackWidth)
                 },
-                new Bumper(bumperTexture, 2, bumperTexture.Height, ScreenWidth - TrackWidth * 2)
+                new Bumper(bumperTexture, 2, ScreenWidth - TrackWidth * 2, bumperTexture.Height)
                 {
                     Position = new Vector2(TrackWidth, ScreenHeight - bumperTexture.Height - TrackWidth)
                 },
-                new Bumper(bumperTexture, 3,ScreenHeight - TrackWidth * 2, bumperTexture.Width)
+                new Bumper(bumperTexture, 3,bumperTexture.Width, ScreenHeight - TrackWidth * 2)
                 {
                     Position = new Vector2(TrackWidth, TrackWidth)
-                }
+                },
+                // FinishLine
+                new Finishline(finishlineTexture, 1, finishlineTexture.Width, ScreenHeight)
+                {
+                    Position = new Vector2(ScreenWidth - finishlineTexture.Width, ScreenHeight - TrackWidth),
+                    amountCheckpoint = 2
+                },
+                // checkpoint's
+                new Checkpoint(checkpointTexture, 1, checkpointTexture.Width, TrackWidth)
+                {
+                    Position = new Vector2((ScreenWidth / 2) - checkpointTexture.Width, 0),
+                    checkpointId = 0
+                },
+                new Checkpoint(checkpointTexture, 1, checkpointTexture.Width, ScreenHeight)
+                {
+                    Position = new Vector2((ScreenWidth / 2) - checkpointTexture.Width, ScreenHeight - TrackWidth),
+                    checkpointId = 1
+                },
             };
 
             _font = Content.Load<SpriteFont>("Fonts/Font");

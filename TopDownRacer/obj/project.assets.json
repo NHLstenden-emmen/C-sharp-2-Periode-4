@@ -174,25 +174,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\simch\\.nuget\\packages\\": {},
+    "C:\\Users\\smuld\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\Github\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
+      "projectUniqueName": "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
       "projectName": "TopDownRacer",
-      "projectPath": "D:\\Programming\\Github\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
-      "packagesPath": "C:\\Users\\simch\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\Github\\C-sharp-2-Periode-4\\TopDownRacer\\obj\\",
+      "projectPath": "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
+      "packagesPath": "C:\\Users\\smuld\\.nuget\\packages\\",
+      "outputPath": "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\simch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\smuld\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -244,7 +244,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

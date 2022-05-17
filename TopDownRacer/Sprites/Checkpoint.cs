@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 namespace TopDownRacer.Sprites
 {
-    internal class Bumper : Sprite
+    internal class Checkpoint : Sprite
     {
-        public Bumper(Texture2D texture, int orientation, int width, int height)
+        public int checkpointId = 0;
+
+        public Checkpoint(Texture2D texture, int orientation, int width, int height)
         : base(texture)
         {
             this.orientation = orientation;
@@ -43,14 +45,19 @@ namespace TopDownRacer.Sprites
             foreach (var sprite in sprites)
             {
                 if (sprite is Player)
-                {
-                    // the car is moving right
-                    var coords = getCornerCoordsDel(sprite);
-                    if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
+                    if (!((Player)sprite).Dead)
                     {
-                        ((Player)sprite).Dead = true;
+                        // the car is moving right
+                        var coords = getCornerCoordsDel(sprite);
+                        if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
+                        {
+                            if (((Player)sprite).checkpointId == checkpointId)
+                            {
+                                ((Player)sprite).checkpointId++;
+                                ((Player)sprite).Score += 500;
+                            }
+                        }
                     }
-                }
             }
         }
     }
