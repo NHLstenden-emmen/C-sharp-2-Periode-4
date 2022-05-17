@@ -8,7 +8,7 @@ namespace TopDownRacer.Sprites
     {
         public int amountCheckpoint = 0;
 
-        public Finishline(Texture2D texture, int orientation, int height, int width)
+        public Finishline(Texture2D texture, int orientation, int width, int height)
         : base(texture)
         {
             this.orientation = orientation;

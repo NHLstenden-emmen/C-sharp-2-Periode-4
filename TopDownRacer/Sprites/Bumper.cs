@@ -6,7 +6,7 @@ namespace TopDownRacer.Sprites
 {
     internal class Bumper : Sprite
     {
-        public Bumper(Texture2D texture, int orientation, int height, int width)
+        public Bumper(Texture2D texture, int orientation, int width, int height)
         : base(texture)
         {
             this.orientation = orientation;
