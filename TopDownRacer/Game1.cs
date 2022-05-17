@@ -19,6 +19,7 @@ namespace TopDownRacer
         //Declaring a variable of type Texture2D to add an image to
         Texture2D playerTexture;
         Texture2D bumperTexture;
+        Texture2D finishlineTexture;
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -63,6 +64,7 @@ namespace TopDownRacer
 
             playerTexture = Content.Load<Texture2D>("Player/rectangle");
             bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
+            finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
 
             _sprites = new List<Sprite>()
               {
@@ -90,7 +92,7 @@ namespace TopDownRacer
                 {
                     Position = new Vector2(0,0)
                 },
-                new Bumper(bumperTexture, 1, ScreenHeight, bumperTexture.Width)
+                new Bumper(bumperTexture, 1, ScreenHeight - TrackWidth, bumperTexture.Width)
                 {
                     Position = new Vector2(ScreenWidth - bumperTexture.Width, 0)
                 },
@@ -119,7 +121,17 @@ namespace TopDownRacer
                 new Bumper(bumperTexture, 3,ScreenHeight - TrackWidth * 2, bumperTexture.Width)
                 {
                     Position = new Vector2(TrackWidth, TrackWidth)
-                }
+                },
+                // FinishLine
+                new Finishline(finishlineTexture, 1, ScreenHeight, finishlineTexture.Width)
+                {
+                    Position = new Vector2(ScreenWidth - finishlineTexture.Width, ScreenHeight - TrackWidth)
+                },
+                // checkpoint's
+                new Checkpoint(finishlineTexture, 1, ScreenHeight, finishlineTexture.Width, 1)
+                {
+                    Position = new Vector2((ScreenWidth / 2) - finishlineTexture.Width, 0)
+                },
             };
 
             _font = Content.Load<SpriteFont>("Fonts/Font");
