@@ -16,10 +16,12 @@ namespace TopDownRacer
         public static int ScreenWidth;
         public static int ScreenHeight;
         private static int TrackWidth = 400;
+
         //Declaring a variable of type Texture2D to add an image to
-        Texture2D playerTexture;
-        Texture2D bumperTexture;
-        Texture2D finishlineTexture;
+        private Texture2D playerTexture;
+
+        private Texture2D bumperTexture;
+        private Texture2D finishlineTexture;
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -105,7 +107,7 @@ namespace TopDownRacer
                     Position = new Vector2(0, 0)
                 },
                 // inner ring
-                
+
                 new Bumper(bumperTexture, 0, bumperTexture.Height,ScreenWidth-TrackWidth*2)
                 {
                     Position = new Vector2(TrackWidth,TrackWidth)
@@ -125,12 +127,19 @@ namespace TopDownRacer
                 // FinishLine
                 new Finishline(finishlineTexture, 1, ScreenHeight, finishlineTexture.Width)
                 {
-                    Position = new Vector2(ScreenWidth - finishlineTexture.Width, ScreenHeight - TrackWidth)
+                    Position = new Vector2(ScreenWidth - finishlineTexture.Width, ScreenHeight - TrackWidth),
+                    amountCheckpoint = 2
                 },
                 // checkpoint's
-                new Checkpoint(finishlineTexture, 1, ScreenHeight, finishlineTexture.Width, 1)
+                new Checkpoint(finishlineTexture, 1, TrackWidth, finishlineTexture.Width)
                 {
-                    Position = new Vector2((ScreenWidth / 2) - finishlineTexture.Width, 0)
+                    Position = new Vector2((ScreenWidth / 2) - finishlineTexture.Width, 0),
+                    checkpointId = 0
+                },
+                new Checkpoint(finishlineTexture, 1, ScreenHeight, finishlineTexture.Width)
+                {
+                    Position = new Vector2((ScreenWidth / 2) - finishlineTexture.Width, ScreenHeight - TrackWidth),
+                    checkpointId = 1
                 },
             };
 
