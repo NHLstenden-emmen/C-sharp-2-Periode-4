@@ -78,3 +78,5 @@ D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\rectangle.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\barrier_white.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\tires_white.xnb
+D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\barrier_white.xnb
+D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\tires_white.xnb

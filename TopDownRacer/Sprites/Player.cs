@@ -20,12 +20,11 @@ namespace TopDownRacer.Sprites
         public Player(Texture2D texture)
         : base(texture)
         {
+            Position = new Vector2(250, 250);
         }
 
         public void Initialize()
         {
-            Position = new Vector2(Game1.ScreenWidth / 2,
-                Game1.ScreenHeight / 2);
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)

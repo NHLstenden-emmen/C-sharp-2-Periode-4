@@ -71,7 +71,6 @@ namespace TopDownRacer
                   Name = "Simchaja",
                   Input = new Input()
                   {},
-                  Position = new Vector2(250, 250),
                   Color = Color.Blue,
                 },
                 new Player(playerTexture)
@@ -84,8 +83,6 @@ namespace TopDownRacer
                     Up = Keys.Up,
                     Down = Keys.Down,
                   },
-                  Position = new Vector2(ScreenWidth - 250, 250),
-                  Rotation = MathHelper.Pi,
                   Color = Color.Green,
                 },
                 // outer ring
