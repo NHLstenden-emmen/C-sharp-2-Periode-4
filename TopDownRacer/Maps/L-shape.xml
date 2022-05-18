@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE Map [
+	<!ENTITY barrierwidth "28">
+]>
+<!-- format:
+c => (String) classe
+x => (int) x position
+y => (int) y position
+w => (int) width
+h => (int) height
+o => (int) orientation
+n => (String) name
+i => (int) checkpointID
+a => (int) amount of checkpoints
+
+
+-->
+<!-- L shape -->
+
+<Map>
+	<sprite c="Player" x ="190" y="150" w="50" h="50" n="player1"/>
+
+	<!-- Outer Ring -->
+	<sprite c="Bumper" x ="0" y="0" w="3440" h="28" o="0"/>
+	<sprite c="Bumper" x ="3412" y="0" w="28" h="720" o="1"/>
+	<sprite c="Bumper" x ="1720" y="720" w="1720" h="28" o="2"/>
+	<sprite c="Bumper" x ="1720" y="720" w="28" h="720" o="1"/>
+	<sprite c="Bumper" x ="0" y="1412" w="1720" h="28" o="2"/>
+	<sprite c="Bumper" x ="0" y="0" w="28" h="1440" o="3"/>
+
+	<!-- Inner Ring -->
+	<sprite c="Bumper" x ="250" y="250" w="2940" h="28" o="0"/>
+	<sprite c="Bumper" x ="3162" y="250" w="28" h="220" o="1"/>
+	<sprite c="Bumper" x ="1470" y="470" w="1720" h="28" o="2"/>
+	<sprite c="Bumper" x ="1470" y="470" w="28" h="720" o="1"/>
+	<sprite c="Bumper" x ="250" y="1162" w="1220" h="28" o="2"/>
+	<sprite c="Bumper" x ="250" y="250" w="28" h="940" o="3"/>
+	
+	<!-- Progress meters-->
+	<sprite c="Checkpoint" x ="1720" y="0" w="28" h="278" o="1" n="checkpoint" i="0"/>
+	<sprite c="Checkpoint" x ="720" y="1162" w="28" h="278" o="3" n="checkpoint" i="1"/>
+	<sprite c="Finishline" x ="0" y="250" w="278" h="28" o="0" n="checkpoint" a="2"/>
+</Map>

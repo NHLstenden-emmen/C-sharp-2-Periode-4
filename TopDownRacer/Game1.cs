@@ -16,7 +16,6 @@ namespace TopDownRacer
 
         public static int ScreenWidth;
         public static int ScreenHeight;
-        private static int TrackWidth = 400;
 
         //Declaring a variable of type Texture2D to add an image to
         public static Texture2D playerTexture;
@@ -65,8 +64,8 @@ namespace TopDownRacer
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playerTexture = Content.Load<Texture2D>("Player/rectangle");
-            bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
+            playerTexture = Content.Load<Texture2D>("Player/car_blue_small");
+            bumperTexture = Content.Load<Texture2D>("Levels/tires_white_small");
             finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
             checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
 

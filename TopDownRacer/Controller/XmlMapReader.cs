@@ -17,7 +17,7 @@ namespace TopDownRacer.Controller
     {
         public static XmlMapReader LoadMap(String file)
         {
-            using (var stream = File.OpenRead("../../../Maps/XMLFile1.xml"))
+            using (var stream = File.OpenRead("../../../Maps/L-shape.xml"))
             {
                 return FromStream(stream);
             }
@@ -64,8 +64,14 @@ namespace TopDownRacer.Controller
         [XmlAttribute("o")]
         public Int32 Orientation;
 
-        [XmlAttribute("t")]
-        public String Texture;
+        [XmlAttribute("n")]
+        public String Name;
+
+        [XmlAttribute("i")]
+        public int CheckpointID;
+
+        [XmlAttribute("a")]
+        public int AmountOfCheckpoints;
 
         public Sprite Sprites
         {
@@ -74,19 +80,35 @@ namespace TopDownRacer.Controller
                 {
                     case "Player":
                         Debug.WriteLine("Player");
-                        return new Player(Game1.playerTexture)
+                        return new Player(Game1.playerTexture, X, Y)
                         {
-                            Name = "Simchaja",
+                            Name = Name,
                             Input = new Input()
                             { },
                             Color = Color.Blue,
                         };
-                    default:
+                    case "Bumper":
                         Debug.WriteLine("Bumper");
                         return new Bumper(Game1.bumperTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y)
                         };
+                    case "Checkpoint":
+                        Debug.WriteLine("Checkpoint");
+                        return new Checkpoint(Game1.checkpointTexture, Orientation, Width, Height)
+                        {
+                            Position = new Vector2(X, Y),
+                            checkpointId = CheckpointID
+                        };
+                    case "Finishline":
+                        Debug.WriteLine("Finishline");
+                        return new Finishline(Game1.finishlineTexture, Orientation, Width, Height)
+                        {
+                            Position = new Vector2(X, Y),
+                            amountCheckpoint = AmountOfCheckpoints
+                        };
+                    default:
+                        throw new Exception();
                 }
             }
         }

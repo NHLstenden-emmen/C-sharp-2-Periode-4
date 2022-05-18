@@ -85,3 +85,5 @@ D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\checkpoint.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\checkpoint.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\Finishline.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\tires_white_small.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_blue_small.xnb
