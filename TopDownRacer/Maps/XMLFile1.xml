@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<!-- format:
+c => (String) classe
+x => (int) x position
+y => (int) y position
+w => (int) width
+h => (int) height
+o => (int) orientation
+t => (String) texture
+
+
+-->
+<Map>
+	<sprite c="Player" x ="100" y="100" w="100" h="50" o="0" t="bumperTexture"/>
+
+	<sprite c="Bumper" x ="0" y="0" w="3440" h="50" o="0" t="bumperTexture"/>
+	<sprite c="Bumper" x ="3390" y="0" w="50" h="1440" o="1" t="bumperTexture"/>
+	<sprite c="Bumper" x ="0" y="1390" w="3440" h="50" o="2" t="bumperTexture"/>
+	<sprite c="Bumper" x ="0" y="0" w="50" h="1440" o="3" t="bumperTexture"/>	
+</Map>

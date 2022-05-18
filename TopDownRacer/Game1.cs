@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using TopDownRacer.Controller;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 using TopDownRacer.States;
@@ -18,10 +19,10 @@ namespace TopDownRacer
         private static int TrackWidth = 400;
 
         //Declaring a variable of type Texture2D to add an image to
-        private Texture2D playerTexture;
-        private Texture2D checkpointTexture;
-        private Texture2D bumperTexture;
-        private Texture2D finishlineTexture;
+        public static Texture2D playerTexture;
+        public static Texture2D checkpointTexture;
+        public static Texture2D bumperTexture;
+        public static Texture2D finishlineTexture;
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -69,8 +70,11 @@ namespace TopDownRacer
             finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
             checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
 
-            _sprites = new List<Sprite>()
-              {
+            
+            var xmlMap = XmlMapReader.LoadMap("XMLFil1");
+            _sprites = xmlMap.getSprites();
+            /*_sprites = new List<Sprite>()
+            {
                 new Player(playerTexture)
                 {
                   Name = "Simchaja",
@@ -142,7 +146,7 @@ namespace TopDownRacer
                     Position = new Vector2((ScreenWidth / 2) - checkpointTexture.Width, ScreenHeight - TrackWidth),
                     checkpointId = 1
                 },
-            };
+            };*/
 
             _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
