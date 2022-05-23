@@ -1,6 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_1.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Player/car_small_1.xnb","TextureProcessor","Texture2DContent",3028,11285,0,1322977
-"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_2.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Player/car_small_2.xnb","TextureProcessor","Texture2DContent",2664,10005,0,0028447
-"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_3.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Player/car_small_3.xnb","TextureProcessor","Texture2DContent",2698,11005,0,0037216
-"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_4.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Player/car_small_4.xnb","TextureProcessor","Texture2DContent",2264,11005,0,0028248
-"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_5.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Player/car_small_5.xnb","TextureProcessor","Texture2DContent",2827,10225,0,0027874
+"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/background.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Levels/background.xnb","TextureProcessor","Texture2DContent",545706,1000085,0,1655255
