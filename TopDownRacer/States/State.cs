@@ -16,6 +16,8 @@ namespace TopDownRacer.States
 
         protected Game1 _game;
 
+        protected Texture2D backgroundTexture, checkpointTexture, bumperTexture, finishlineTexture;
+
         //Methods
 
         //Basis methode voor de draw van de game/sprite

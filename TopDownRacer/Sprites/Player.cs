@@ -13,8 +13,6 @@ namespace TopDownRacer.Sprites
         public int checkpointId = 0;
         public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
-
-        //private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
 
         private float RotationSpeed { get; set; } = 2.5f;
