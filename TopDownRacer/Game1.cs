@@ -13,15 +13,12 @@ namespace TopDownRacer
         private readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public static int ScreenWidth;
-        public static int ScreenHeight;
+        public static int ScreenWidth = 1920;
+        public static int ScreenHeight = 1080;
         private static int TrackWidth = 400;
 
         //Declaring a variable of type Texture2D to add an image to
-        private Texture2D playerTexture;
-        private Texture2D checkpointTexture;
-        private Texture2D bumperTexture;
-        private Texture2D finishlineTexture;
+        protected Texture2D playerTexture, checkpointTexture, bumperTexture, finishlineTexture;
         private List<Sprite> _sprites;
 
         private State _currentState;
@@ -45,16 +42,8 @@ namespace TopDownRacer
         {
             IsMouseVisible = true;
 
-            // set graphics resolution to the resolution of the display
-            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
-            ScreenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
-
             _graphics.PreferredBackBufferWidth = ScreenWidth;
             _graphics.PreferredBackBufferHeight = ScreenHeight;
-            _graphics.ApplyChanges();
-
-            // set the window size to fullscreen
-            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
             base.Initialize();
@@ -68,6 +57,7 @@ namespace TopDownRacer
             bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
             finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
             checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
+
 
             _sprites = new List<Sprite>()
               {
