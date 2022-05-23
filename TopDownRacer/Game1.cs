@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
@@ -18,8 +19,10 @@ namespace TopDownRacer
         private static int TrackWidth = 400;
 
         //Declaring a variable of type Texture2D to add an image to
-        protected Texture2D playerTexture, checkpointTexture, bumperTexture, finishlineTexture;
+        protected Texture2D checkpointTexture, bumperTexture, finishlineTexture;
         private List<Sprite> _sprites;
+
+        Random rnd = new Random();
 
         private State _currentState;
 
@@ -45,7 +48,6 @@ namespace TopDownRacer
             _graphics.PreferredBackBufferWidth = ScreenWidth;
             _graphics.PreferredBackBufferHeight = ScreenHeight;
             _graphics.ApplyChanges();
-
             base.Initialize();
         }
 
@@ -53,7 +55,14 @@ namespace TopDownRacer
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playerTexture = Content.Load<Texture2D>("Player/rectangle");
+            var playerTexture = new List<Texture2D> { };
+
+            playerTexture.Insert(0, Content.Load<Texture2D>("Player/car_small_1"));
+            playerTexture.Insert(1, Content.Load<Texture2D>("Player/car_small_2"));
+            playerTexture.Insert(2, Content.Load<Texture2D>("Player/car_small_3"));
+            playerTexture.Insert(3, Content.Load<Texture2D>("Player/car_small_4"));
+            playerTexture.Insert(4, Content.Load<Texture2D>("Player/car_small_5"));
+
             bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
             finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
             checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
@@ -61,14 +70,13 @@ namespace TopDownRacer
 
             _sprites = new List<Sprite>()
               {
-                new Player(playerTexture)
+                new Player(playerTexture[rnd.Next(playerTexture.Count)])
                 {
                   Name = "Simchaja",
-                  Input = new Input()
-                  {},
+                  Input = new Input(),
                   Color = Color.Blue,
                 },
-                new Player(playerTexture)
+                new Player(playerTexture[rnd.Next(playerTexture.Count)])
                 {
                   Name = "Roan",
                   Input = new Input()
@@ -172,7 +180,7 @@ namespace TopDownRacer
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Red);
             _currentState.Draw(gameTime, _spriteBatch, _sprites, _font);
 
             base.Draw(gameTime);
