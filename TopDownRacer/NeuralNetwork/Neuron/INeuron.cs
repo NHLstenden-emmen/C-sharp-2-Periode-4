@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NeuralNetworkCSharp.Neuron
+namespace TopDownRace.NeuralNetwork.Neuron
 {
     //Interface van een Neuron
     public interface INeuron

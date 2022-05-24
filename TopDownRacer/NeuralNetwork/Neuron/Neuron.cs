@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace NeuralNetworkCSharp.Neuron
+namespace TopDownRace.NeuralNetwork.Neuron
 {
     //Implementatie van een Neuron
     public class Neuron : INeuron

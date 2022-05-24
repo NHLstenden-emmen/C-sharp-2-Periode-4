@@ -13,6 +13,8 @@
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="NeuralNetwork\Neuron\NewFile1.txt" />
+    <None Remove="NeuralNetwork\Synapses\ISynapse" />
+    <None Remove="NeuralNetwork\Synapses\NewFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
