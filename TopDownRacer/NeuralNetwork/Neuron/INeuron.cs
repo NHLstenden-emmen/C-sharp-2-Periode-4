@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TopDownRacer.NeuralNetwork.Synapses;
 
 namespace TopDownRace.NeuralNetwork.Neuron
 {

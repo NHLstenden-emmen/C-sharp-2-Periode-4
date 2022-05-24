@@ -1,4 +1,4 @@
-﻿namespace NeuralNetworkCSharp.ActivationFunctions
+﻿namespace TopDownRacer.NeuralNetwork.ActivationFunctions
 {
     //Interface voor activation functions
     public interface IActivationFunction

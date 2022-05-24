@@ -1,4 +1,6 @@
 ﻿using System;
+using TopDownRace.NeuralNetwork.Neuron;
+using TopDownRacer.NeuralNetwork.Synapses;
 
 namespace TopDownRace.NeuralNetwork.Synapses
 {

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using TopDownRace.NeuralNetwork.Synapses;
+using TopDownRacer.NeuralNetwork.Synapses;
+using TopDownRacer.NeuralNetwork.ActivationFunctions;
+using TopDownRacer.NeuralNetwork.InputFunctions;
 
 namespace TopDownRace.NeuralNetwork.Neuron
 {
