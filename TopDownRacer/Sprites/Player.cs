@@ -15,7 +15,6 @@ namespace TopDownRacer.Sprites
         public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
         private float ChangePositionSpeed { get; set; }
-
         private float RotationSpeed { get; set; } = 2.5f;
 
         public Player(Texture2D texture)
@@ -39,7 +38,6 @@ namespace TopDownRacer.Sprites
 
         public void Move()
         {
-            Debug.WriteLine(Position.X + " - " + Position.Y);
             //Declaring basic player controls
             KeyboardState kstate = Keyboard.GetState();
             // TODO backwards driving is not mirrored

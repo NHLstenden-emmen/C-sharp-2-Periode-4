@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
+using System.Timers;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 
@@ -12,6 +14,7 @@ namespace TopDownRacer.States
 {
     public class GameState : State
     {
+        List<Sprite> gameSprites = new List<Sprite>(); 
         //constuctor van de game state
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
@@ -102,6 +105,15 @@ namespace TopDownRacer.States
                     checkpointId = 1
                 },
             };
+
+            System.Timers.Timer timer = new System.Timers.Timer(1000); // 1 seconds
+            timer.Elapsed += new ElapsedEventHandler(OnTimerElapsed);
+
+            timer.Interval = 1000;
+            timer.Enabled = true;
+        
+
+        gameSprites = game._sprites;
         }
 
         //Het starten van het spel
@@ -139,11 +151,21 @@ namespace TopDownRacer.States
 
         public override void Update(GameTime gameTime)
         {
-          
+
             foreach (Sprite sprite in _game._sprites)
             {
                 sprite.Update(gameTime, _game._sprites);
-                 
+            }
+        }
+
+        private void OnTimerElapsed(object source, ElapsedEventArgs e)
+        {
+            for (int i = 0; i < gameSprites.Count; i++)
+            {
+                if (gameSprites[i].width == 0)
+                {
+                    Debug.WriteLine("Car: " + i + " - " + gameSprites[i].Position.X + " - " + gameSprites[i].Position.Y + " - " + gameSprites[i].Rotation);
+                }
             }
         }
     }
