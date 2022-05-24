@@ -15,6 +15,7 @@
     <None Remove="NeuralNetwork\ActivationFunctions\NewFile1.txt" />
     <None Remove="NeuralNetwork\InputFunctions\NewFile1.txt" />
     <None Remove="NeuralNetwork\Neuron\NewFile1.txt" />
+    <None Remove="NeuralNetwork\NewFile1.txt" />
     <None Remove="NeuralNetwork\Synapses\ISynapse" />
     <None Remove="NeuralNetwork\Synapses\NewFile1.txt" />
   </ItemGroup>

@@ -2,7 +2,9 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 
@@ -132,13 +134,16 @@ namespace TopDownRacer.States
         public override void PostUpdate(GameTime gameTime)
         {
             //kan later worden gebruikt
+            Console.WriteLine("test");
         }
 
         public override void Update(GameTime gameTime)
         {
+          
             foreach (Sprite sprite in _game._sprites)
             {
                 sprite.Update(gameTime, _game._sprites);
+                 
             }
         }
     }

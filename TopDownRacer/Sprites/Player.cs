@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TopDownRacer.Sprites
 {
@@ -28,7 +29,7 @@ namespace TopDownRacer.Sprites
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
-        {
+        { 
             Move();
 
             if (!Dead)
@@ -38,6 +39,7 @@ namespace TopDownRacer.Sprites
 
         public void Move()
         {
+            Debug.WriteLine(Position.X + " - " + Position.Y);
             //Declaring basic player controls
             KeyboardState kstate = Keyboard.GetState();
             // TODO backwards driving is not mirrored
