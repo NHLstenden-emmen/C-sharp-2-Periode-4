@@ -86,7 +86,7 @@ namespace TopDownRacer
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(Color.Blue);
             _currentState.Draw(gameTime, _spriteBatch, _sprites, _font);
 
             base.Draw(gameTime);

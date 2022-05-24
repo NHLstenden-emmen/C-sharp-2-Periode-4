@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj": {}
+    "C:\\Users\\roanm\\Desktop\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj": {}
   },
   "projects": {
-    "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj": {
+    "C:\\Users\\roanm\\Desktop\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
+        "projectUniqueName": "C:\\Users\\roanm\\Desktop\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
         "projectName": "TopDownRacer",
-        "projectPath": "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
-        "packagesPath": "C:\\Users\\smuld\\.nuget\\packages\\",
-        "outputPath": "D:\\xampp\\htdocs\\C-sharp-2-Periode-4\\TopDownRacer\\obj\\",
+        "projectPath": "C:\\Users\\roanm\\Desktop\\C-sharp-2-Periode-4\\TopDownRacer\\TopDownRacer.csproj",
+        "packagesPath": "C:\\Users\\roanm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\roanm\\Desktop\\C-sharp-2-Periode-4\\TopDownRacer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\smuld\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\roanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
