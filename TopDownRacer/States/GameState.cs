@@ -163,12 +163,11 @@ namespace TopDownRacer.States
         //timer that fires once per second
         private void OnTimerElapsed(object source, ElapsedEventArgs e)
         {
-            for (int i = 0; i < gameSprites.Count; i++)
+            foreach (Sprite sprite in _game._sprites)
             {
-                //Filtering out the cars from the other sprites
-                if (gameSprites[i].width == 0)
+                if(sprite is Player)
                 {
-                    Debug.WriteLine("Car: " + i + " - " + gameSprites[i].Position.X + " - " + gameSprites[i].Position.Y + " - " + gameSprites[i].Rotation);
+                    Debug.WriteLine(((Player)sprite).Name + " - " + sprite.Position.X + " - " + sprite.Position.Y + " - " + MathHelper.ToDegrees(sprite.Rotation) % 360);
                 }
             }
         }
