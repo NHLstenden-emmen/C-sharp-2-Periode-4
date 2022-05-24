@@ -14,6 +14,7 @@ namespace TopDownRacer.States
 {
     public class GameState : State
     {
+        //Added extra list so we can extract sprite location seperate from the constructor
         List<Sprite> gameSprites = new List<Sprite>(); 
         //constuctor van de game state
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
@@ -106,6 +107,7 @@ namespace TopDownRacer.States
                 },
             };
 
+            //Added timer so we only get location every X seconds
             System.Timers.Timer timer = new System.Timers.Timer(1000); // 1 seconds
             timer.Elapsed += new ElapsedEventHandler(OnTimerElapsed);
 
@@ -158,10 +160,12 @@ namespace TopDownRacer.States
             }
         }
 
+        //timer that fires once per second
         private void OnTimerElapsed(object source, ElapsedEventArgs e)
         {
             for (int i = 0; i < gameSprites.Count; i++)
             {
+                //Filtering out the cars from the other sprites
                 if (gameSprites[i].width == 0)
                 {
                     Debug.WriteLine("Car: " + i + " - " + gameSprites[i].Position.X + " - " + gameSprites[i].Position.Y + " - " + gameSprites[i].Rotation);
