@@ -108,6 +108,7 @@ namespace TopDownRacer.States
             spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearWrap, null, null);
 
             int fontY = 50;
+            // draw background
             spriteBatch.Draw(backgroundTexture, new Vector2(0, 0),null, Color.White, 0, new Vector2(0, 0), 4, SpriteEffects.None, 0.1f);
 
             foreach (Sprite sprite in _sprites)
@@ -115,17 +116,21 @@ namespace TopDownRacer.States
                 if (sprite is Player)
                 {
                     var ScoreBoardPosition = new Vector2(70, fontY += 20);
+                    // draw scoarboard background
                     spriteBatch.Draw(bumperTexture, ScoreBoardPosition, null, Color.White, 0, new Vector2(0, 0), 0.5f, SpriteEffects.None, 0.2f);
+                    // draw text on scoarboard
                     spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), ScoreBoardPosition, ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
                     if (!((Player)sprite).Dead)
-                        // de goede diepte aan geven voor elke auto
-                        sprite.Draw(spriteBatch, 0.8f);
+                        // draw player
+                        sprite.Draw(spriteBatch, 0.6f);
                 }
                 else
                 {
+                    // draw walls checkpoints and finish line
                     sprite.Draw(spriteBatch, 0.3f);
                 }
             }
+            // draw time
             spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((Game1.ScreenWidth / 2) - 150, 10), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
 
             spriteBatch.End();
