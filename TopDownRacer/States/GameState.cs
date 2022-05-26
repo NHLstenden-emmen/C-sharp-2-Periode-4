@@ -105,26 +105,28 @@ namespace TopDownRacer.States
         //Het starten van het spel
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font)
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearWrap, null, null);
 
             int fontY = 50;
-
-            spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(backgroundTexture, new Vector2(0, 0),null, Color.White, 0, new Vector2(0, 0), 4, SpriteEffects.None, 0.1f);
 
             foreach (Sprite sprite in _sprites)
             {
                 if (sprite is Player)
                 {
+                    var ScoreBoardPosition = new Vector2(70, fontY += 20);
+                    spriteBatch.Draw(bumperTexture, ScoreBoardPosition, null, Color.White, 0, new Vector2(0, 0), 0.5f, SpriteEffects.None, 0.2f);
+                    spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), ScoreBoardPosition, ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
                     if (!((Player)sprite).Dead)
-                        sprite.Draw(spriteBatch);
-                    spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(70, fontY += 20), ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                        // de goede diepte aan geven voor elke auto
+                        sprite.Draw(spriteBatch, 0.8f);
                 }
                 else
                 {
-                    sprite.Draw(spriteBatch);
+                    sprite.Draw(spriteBatch, 0.3f);
                 }
             }
-            spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((Game1.ScreenWidth / 2) - 150, 10), Color.Black);
+            spriteBatch.DrawString(_font, string.Format("Time {0}: ", gameTime.TotalGameTime), new Vector2((Game1.ScreenWidth / 2) - 150, 10), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
 
             spriteBatch.End();
         }
