@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
+using TopDownRacer.States;
 
 namespace TopDownRacer.Controller
 {
@@ -80,7 +81,7 @@ namespace TopDownRacer.Controller
                 {
                     case "Player":
                         Debug.WriteLine("Player");
-                        return new Player(Game1.playerTexture, X, Y)
+                        return new Player(Game1.playerTexture[1], X, Y)
                         {
                             Name = Name,
                             Input = new Input()
@@ -112,7 +113,5 @@ namespace TopDownRacer.Controller
                 }
             }
         }
-
-        //public  Rectangle { get { return new Rectangle(this.X, this.Y, this.Width, this.Height); } }
     }
 }
