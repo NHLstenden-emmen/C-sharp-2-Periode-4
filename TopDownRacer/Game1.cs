@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using TopDownRacer.Controller;
-using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 using TopDownRacer.States;
 
@@ -32,6 +31,7 @@ namespace TopDownRacer
 
         // TODO: naar gamestate
         public static List<Texture2D> playerTexture = new List<Texture2D>();
+
         public static Texture2D backgroundTexture, checkpointTexture, bumperTexture, finishlineTexture;
 
         public void ChangeState(State state)
