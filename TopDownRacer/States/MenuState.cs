@@ -22,17 +22,33 @@ namespace TopDownRacer.States
             SpriteFont buttonFont = _content.Load<SpriteFont>("Fonts/Font");
 
             //Toevoegen van nieuwe buttons en functionaliteiten van de buttons
-            Button newGameButton = new Button(buttonTexture, buttonFont)
+            Button singlePlayerButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(800, 200),
-                Text = "New Game",
+                Position = new Vector2((Game1.ScreenWidth / 2) - 100, (Game1.ScreenHeight / 2) - 150),
+                Text = "Single Player",
             };
 
-            newGameButton.Click += NewGameButton_Click;
+            singlePlayerButton.Click += NewGameButton_Click;
+
+            Button multiplayerButton = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2((Game1.ScreenWidth / 2) - 100, (Game1.ScreenHeight / 2) - 100),
+                Text = "Multiplayer",
+            };
+
+            multiplayerButton.Click += MultiplayerButton_Click;
+
+            Button AiTrainingButton = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2((Game1.ScreenWidth / 2) - 100, (Game1.ScreenHeight / 2) - 50),
+                Text = "Neral network",
+            };
+
+            AiTrainingButton.Click += AiTrainingButton_Click;
 
             Button quitGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(800, 250),
+                Position = new Vector2((Game1.ScreenWidth / 2) - 100, (Game1.ScreenHeight / 2) - 0),
                 Text = "Quit Game",
             };
 
@@ -41,7 +57,9 @@ namespace TopDownRacer.States
             _components = new List<Component>()
 
             {
-                newGameButton,
+                singlePlayerButton,
+                multiplayerButton,
+                AiTrainingButton,
                 quitGameButton,
             };
         }
@@ -62,7 +80,17 @@ namespace TopDownRacer.States
         //De click om een nieuw spel te starten door state te veranderen
         private void NewGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new GameState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new PlayerCustomizationState(_game, _graphicsDevice, _content, "Single Player"));
+        }
+
+        private void MultiplayerButton_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(new PlayerCustomizationState(_game, _graphicsDevice, _content, "Multiplayer"));
+        }
+
+        private void AiTrainingButton_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(new NeralNetworkState(_game, _graphicsDevice, _content));
         }
 
         public override void PostUpdate(GameTime gameTime)

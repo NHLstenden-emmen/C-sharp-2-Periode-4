@@ -2,19 +2,15 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using TopDownRacer.Sprites;
 using TopDownRacer.Controller;
+using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
-    public class GameState : State
+    internal class MultiplayerState : State
     {
-
-        public static List<Texture2D> playerTexture = new List<Texture2D>();
-
-        public static Texture2D backgroundTexture, checkpointTexture, bumperTexture, finishlineTexture;
         //constuctor van de game state
-        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public MultiplayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
@@ -28,7 +24,7 @@ namespace TopDownRacer.States
             checkpointTexture = content.Load<Texture2D>("Levels/checkpoint");
             backgroundTexture = content.Load<Texture2D>("Levels/background");
 
-            var xmlMap = XmlMapReader.LoadMap("XMLFil1");
+            var xmlMap = XmlMapReader.LoadMap("L-shape");
             game._sprites = xmlMap.getSprites();
         }
 
