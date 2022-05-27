@@ -1,15 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
-using TopDownRacer.States;
 
 namespace TopDownRacer.Controller
 {
@@ -42,7 +39,6 @@ namespace TopDownRacer.Controller
             }
             return spritelist;
         }
-            
     }
 
     public class SpriteXml
@@ -76,7 +72,8 @@ namespace TopDownRacer.Controller
 
         public Sprite Sprites
         {
-            get {
+            get
+            {
                 switch (classe)
                 {
                     case "Player":
@@ -86,14 +83,16 @@ namespace TopDownRacer.Controller
                             Name = Name,
                             Input = new Input()
                             { },
-                            Color = new Color(Game1.rnd.Next(0,255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
+                            Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
                         };
+
                     case "Bumper":
                         Debug.WriteLine("Bumper");
                         return new Bumper(Game1.bumperTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y)
                         };
+
                     case "Checkpoint":
                         Debug.WriteLine("Checkpoint");
                         return new Checkpoint(Game1.checkpointTexture, Orientation, Width, Height)
@@ -101,6 +100,7 @@ namespace TopDownRacer.Controller
                             Position = new Vector2(X, Y),
                             checkpointId = CheckpointID
                         };
+
                     case "Finishline":
                         Debug.WriteLine("Finishline");
                         return new Finishline(Game1.finishlineTexture, Orientation, Width, Height)
@@ -108,6 +108,7 @@ namespace TopDownRacer.Controller
                             Position = new Vector2(X, Y),
                             amountCheckpoint = AmountOfCheckpoints
                         };
+
                     default:
                         throw new Exception();
                 }

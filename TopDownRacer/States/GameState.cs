@@ -1,17 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using TopDownRacer.Controller;
-using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
     public class GameState : State
     {
-
         //constuctor van de game state
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
@@ -25,7 +21,7 @@ namespace TopDownRacer.States
 
             int fontY = 50;
             // draw background
-            spriteBatch.Draw(Game1.backgroundTexture, new Vector2(0, 0),null, Color.White, 0, new Vector2(0, 0), 4, SpriteEffects.None, 0.1f);
+            spriteBatch.Draw(Game1.backgroundTexture, new Vector2(0, 0), null, Color.White, 0, new Vector2(0, 0), 4, SpriteEffects.None, 0.1f);
 
             foreach (Sprite sprite in _sprites)
             {

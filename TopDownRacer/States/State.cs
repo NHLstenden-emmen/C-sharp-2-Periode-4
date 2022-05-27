@@ -16,7 +16,6 @@ namespace TopDownRacer.States
 
         protected Game1 _game;
 
-
         //Methods
 
         //Basis methode voor de draw van de game/sprite
