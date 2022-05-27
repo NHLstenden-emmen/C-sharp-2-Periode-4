@@ -44,7 +44,6 @@ namespace TopDownRacer.Sprites
             {
                 if (sprite is Player)
                 {
-                    // the car is moving right
                     var coords = getCornerCoordsDel(sprite);
                     if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
                     {

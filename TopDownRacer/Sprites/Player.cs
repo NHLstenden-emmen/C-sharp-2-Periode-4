@@ -17,10 +17,10 @@ namespace TopDownRacer.Sprites
 
         private float RotationSpeed { get; set; } = 2.5f;
 
-        public Player(Texture2D texture)
+        public Player(Texture2D texture, int x, int y)
         : base(texture)
         {
-            Position = new Vector2(250, 250);
+            Position = new Vector2(x, y);
         }
 
         public void Initialize()
