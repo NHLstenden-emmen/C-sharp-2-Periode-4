@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using TopDownRacer.Controller;
 using TopDownRacer.Sprites;
 using TopDownRacer.States;
 
@@ -29,11 +28,6 @@ namespace TopDownRacer
 
         private State _nextState;
 
-        // TODO: naar gamestate
-        public static List<Texture2D> playerTexture = new List<Texture2D>();
-
-        public static Texture2D backgroundTexture, checkpointTexture, bumperTexture, finishlineTexture;
-
         public void ChangeState(State state)
         {
             _nextState = state;
@@ -58,23 +52,6 @@ namespace TopDownRacer
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: moet naar gamestate:
-
-            playerTexture.Insert(0, Content.Load<Texture2D>("Player/car_small_1"));
-            playerTexture.Insert(1, Content.Load<Texture2D>("Player/car_small_2"));
-            playerTexture.Insert(2, Content.Load<Texture2D>("Player/car_small_3"));
-            playerTexture.Insert(3, Content.Load<Texture2D>("Player/car_small_4"));
-            playerTexture.Insert(4, Content.Load<Texture2D>("Player/car_small_5"));
-
-            bumperTexture = Content.Load<Texture2D>("Levels/tires_white_small");
-            finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
-            checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
-            backgroundTexture = Content.Load<Texture2D>("Levels/background");
-
-            var xmlMap = XmlMapReader.LoadMap("XMLFil1");
-            _sprites = xmlMap.getSprites();
-            // tot hier
 
             _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);

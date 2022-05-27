@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
+using TopDownRacer.States;
 
 namespace TopDownRacer.Controller
 {
@@ -78,7 +79,7 @@ namespace TopDownRacer.Controller
                 {
                     case "Player":
                         Debug.WriteLine("Player");
-                        return new Player(Game1.playerTexture[Game1.rnd.Next(Game1.playerTexture.Count)], X, Y)
+                        return new Player(GameState.playerTexture[Game1.rnd.Next(GameState.playerTexture.Count)], X, Y)
                         {
                             Name = Name,
                             Input = new Input()
@@ -88,14 +89,14 @@ namespace TopDownRacer.Controller
 
                     case "Bumper":
                         Debug.WriteLine("Bumper");
-                        return new Bumper(Game1.bumperTexture, Orientation, Width, Height)
+                        return new Bumper(GameState.bumperTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y)
                         };
 
                     case "Checkpoint":
                         Debug.WriteLine("Checkpoint");
-                        return new Checkpoint(Game1.checkpointTexture, Orientation, Width, Height)
+                        return new Checkpoint(GameState.checkpointTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y),
                             checkpointId = CheckpointID
@@ -103,7 +104,7 @@ namespace TopDownRacer.Controller
 
                     case "Finishline":
                         Debug.WriteLine("Finishline");
-                        return new Finishline(Game1.finishlineTexture, Orientation, Width, Height)
+                        return new Finishline(GameState.finishlineTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y),
                             amountCheckpoint = AmountOfCheckpoints
