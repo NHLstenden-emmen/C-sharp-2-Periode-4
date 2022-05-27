@@ -15,7 +15,8 @@ namespace TopDownRacer.Sprites
         private int MaxPositionSpeed { get; set; } = 15;
         private float ChangePositionSpeed { get; set; }
 
-        private float RotationSpeed { get; set; } = 2.5f;
+        private float RotationSpeed { get; set; } = 0f;
+        private float MaxRotationSpeed { get; set; } = 2.5f;
 
         public Player(Texture2D texture, int x, int y)
         : base(texture)
@@ -44,11 +45,15 @@ namespace TopDownRacer.Sprites
             // Rotate the car based on which key is pressed
             if (kstate.IsKeyDown(Input.Left))
             {
+                if (RotationSpeed < MaxRotationSpeed)
+                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
                 Rotation -= MathHelper.ToRadians(RotationSpeed);
             }
 
             if (kstate.IsKeyDown(Input.Right))
             {
+                if (RotationSpeed < MaxRotationSpeed)
+                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
                 Rotation += MathHelper.ToRadians(RotationSpeed);
             }
 
