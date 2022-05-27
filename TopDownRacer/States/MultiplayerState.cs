@@ -2,13 +2,12 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using TopDownRacer.Sprites;
 using TopDownRacer.Controller;
-
+using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
-    class MultiplayerState : State
+    internal class MultiplayerState : State
     {
         //constuctor van de game state
         public MultiplayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
