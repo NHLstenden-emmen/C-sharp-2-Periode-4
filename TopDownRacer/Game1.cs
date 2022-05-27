@@ -22,7 +22,7 @@ namespace TopDownRacer
         //Declaring a variable of type Texture2D to add an image to
         public List<Sprite> _sprites;
 
-        public Random rnd { get; } = new Random();
+        public static Random rnd = new Random();
 
         private State _currentState;
 
@@ -67,7 +67,7 @@ namespace TopDownRacer
             playerTexture.Insert(3, Content.Load<Texture2D>("Player/car_small_4"));
             playerTexture.Insert(4, Content.Load<Texture2D>("Player/car_small_5"));
 
-            bumperTexture = Content.Load<Texture2D>("Levels/tires_white");
+            bumperTexture = Content.Load<Texture2D>("Levels/tires_white_small");
             finishlineTexture = Content.Load<Texture2D>("Levels/finishline");
             checkpointTexture = Content.Load<Texture2D>("Levels/checkpoint");
             backgroundTexture = Content.Load<Texture2D>("Levels/background");

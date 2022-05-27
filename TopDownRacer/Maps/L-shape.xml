@@ -19,6 +19,7 @@ a => (int) amount of checkpoints
 
 <Map>
 	<sprite c="Player" x ="190" y="150" w="50" h="50" n="player1"/>
+	<sprite c="Player" x ="100" y="500" w="50" h="50" n="player2"/>
 
 	<!-- Outer Ring -->
 	<sprite c="Bumper" x ="0" y="0" w="3440" h="28" o="0"/>

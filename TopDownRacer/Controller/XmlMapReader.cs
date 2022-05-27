@@ -81,12 +81,12 @@ namespace TopDownRacer.Controller
                 {
                     case "Player":
                         Debug.WriteLine("Player");
-                        return new Player(Game1.playerTexture[1], X, Y)
+                        return new Player(Game1.playerTexture[Game1.rnd.Next(Game1.playerTexture.Count)], X, Y)
                         {
                             Name = Name,
                             Input = new Input()
                             { },
-                            Color = Color.Blue,
+                            Color = new Color(Game1.rnd.Next(0,255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
                         };
                     case "Bumper":
                         Debug.WriteLine("Bumper");
