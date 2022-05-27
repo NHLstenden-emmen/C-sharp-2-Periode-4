@@ -38,11 +38,11 @@ namespace TopDownRacer.Sprites
             _texture = texture;
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch, float layerdepth)
         {
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
 
-            spriteBatch.Draw(_texture, Position, null, Color, Rotation, Origin, 1, SpriteEffects.None, 0f);
+            spriteBatch.Draw(_texture, Position, null, Color, Rotation, Origin, 1, SpriteEffects.None, layerdepth);
         }
 
         public virtual void Update(GameTime gameTime, List<Sprite> sprites)

@@ -1,2 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/checkpoint.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Levels/checkpoint.xnb","TextureProcessor","Texture2DContent",2923,12629,0,176151
+"D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/background.png","D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Levels/background.xnb","TextureProcessor","Texture2DContent",545706,1000085,0,1655255

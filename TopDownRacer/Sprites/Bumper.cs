@@ -33,9 +33,9 @@ namespace TopDownRacer.Sprites
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, float layerdepth)
         {
-            spriteBatch.Draw(_texture, Position, sourceRectangle, Color, Rotation, Vector2.Zero, 1, SpriteEffects.None, 0.9f);
+            spriteBatch.Draw(_texture, Position, sourceRectangle, Color, Rotation, Vector2.Zero, 1, SpriteEffects.None, 0.7f);
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
