@@ -16,7 +16,7 @@ namespace TopDownRacer.Controller
     {
         public static XmlMapReader LoadMap(String file)
         {
-            using (var stream = File.OpenRead("../../../Maps/L-shape.xml"))
+            using (var stream = File.OpenRead("../../../Maps/"+ file+".xml"))
             {
                 return FromStream(stream);
             }
@@ -79,7 +79,7 @@ namespace TopDownRacer.Controller
                 {
                     case "Player":
                         Debug.WriteLine("Player");
-                        return new Player(GameState.playerTexture[Game1.rnd.Next(GameState.playerTexture.Count)], X, Y)
+                        return new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], X, Y)
                         {
                             Name = Name,
                             Input = new Input()
@@ -89,14 +89,14 @@ namespace TopDownRacer.Controller
 
                     case "Bumper":
                         Debug.WriteLine("Bumper");
-                        return new Bumper(GameState.bumperTexture, Orientation, Width, Height)
+                        return new Bumper(State.bumperTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y)
                         };
 
                     case "Checkpoint":
                         Debug.WriteLine("Checkpoint");
-                        return new Checkpoint(GameState.checkpointTexture, Orientation, Width, Height)
+                        return new Checkpoint(State.checkpointTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y),
                             checkpointId = CheckpointID
@@ -104,7 +104,7 @@ namespace TopDownRacer.Controller
 
                     case "Finishline":
                         Debug.WriteLine("Finishline");
-                        return new Finishline(GameState.finishlineTexture, Orientation, Width, Height)
+                        return new Finishline(State.finishlineTexture, Orientation, Width, Height)
                         {
                             Position = new Vector2(X, Y),
                             amountCheckpoint = AmountOfCheckpoints
