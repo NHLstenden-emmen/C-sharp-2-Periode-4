@@ -41,7 +41,7 @@ namespace TopDownRacer.States
                   Input = new Input(),
                   Color = Color.Blue,
                 },  
-                new Player(playerTexture[game.rnd.Next(playerTexture.Count)])
+                /*new Player(playerTexture[game.rnd.Next(playerTexture.Count)])
                 {
                   Name = "Roan",
                   Input = new Input()
@@ -52,7 +52,7 @@ namespace TopDownRacer.States
                     Down = Keys.Down,
                   },
                   Color = Color.Green,
-                },
+                },*/
                 // outer ring
                 new Bumper(bumperTexture, 0, Game1.ScreenWidth,bumperTexture.Height)
                 {
@@ -133,6 +133,7 @@ namespace TopDownRacer.States
                 {
                     if (!((Player)sprite).Dead)
                         sprite.Draw(spriteBatch);
+                    spriteBatch.DrawString(_font, string.Format("YeetYeetYeetYeet"), findClosestBarrierFront(sprite), Color.Red);
                     spriteBatch.DrawString(_font, string.Format("Player {0}: {1}", ((Player)sprite).Name, ((Player)sprite).Score), new Vector2(70, fontY += 20), ((Player)sprite).Color, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
                 }
                 else
@@ -171,8 +172,8 @@ namespace TopDownRacer.States
                     //Debug.WriteLine(((Player)sprite).Name + " - " + sprite.Position.X + " - " + sprite.Position.Y + " - " + MathHelper.ToDegrees(sprite.Rotation) % 360);
                     //Debug.WriteLine(bumperTexture.Height + " - " + (Game1.ScreenWidth - Game1.TrackWidth * 2) + " - " + bumperTexture.Width);
 
-                    saveData = findClosestBarrierFront(sprite);
-                    Debug.WriteLine(((Player)sprite).Name + " - " + saveData.X + " - " + saveData.Y);
+                    //saveData = findClosestBarrierFront(sprite);
+                    //Debug.WriteLine(((Player)sprite).Name + " - " + saveData.X + " - " + saveData.Y);
                 }
             }
         }
@@ -181,15 +182,17 @@ namespace TopDownRacer.States
         {
             int count = 0;
 
-            while (true)
+            while (count < 1920 / 28)
             {
                 count++;
 
-                double yDif = Math.Tan(sprite.Rotation) * (count * (bumperTexture.Width / 2) - sprite.Position.X);
-                double y = sprite.Position.Y - yDif;
-                double x = count * bumperTexture.Width / 2;
+                //double yDif = Math.Tan(sprite.Rotation) * (sprite.Position.X  + count * (bumperTexture.Width / 2) - sprite.Position.X);
+                //double y = sprite.Position.Y - yDif;
+                double y = sprite.Position.Y + ((count * bumperTexture.Width / 2) * Math.Sin((sprite.Rotation)));
 
-                //Debug.WriteLine(x + ", " + y);
+                double x = sprite.Position.X + ((count * bumperTexture.Width / 2) * Math.Cos((sprite.Rotation)));
+
+                //Debug.WriteLine(x + ", " + y + " - " + MathHelper.ToDegrees(sprite.Rotation));
 
                 foreach (var sprite2 in _game._sprites)
                 {
@@ -204,6 +207,8 @@ namespace TopDownRacer.States
                     }
                 }
             }
+
+            return new Vector2(0,0);
         }
 
 
