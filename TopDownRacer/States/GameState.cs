@@ -40,7 +40,7 @@ namespace TopDownRacer.States
                   Name = "Simchaja",
                   Input = new Input(),
                   Color = Color.Blue,
-                },
+                },  
                 new Player(playerTexture[game.rnd.Next(playerTexture.Count)])
                 {
                   Name = "Roan",
@@ -163,13 +163,89 @@ namespace TopDownRacer.States
         //timer that fires once per second
         private void OnTimerElapsed(object source, ElapsedEventArgs e)
         {
+            Vector2 saveData = new Vector2(0, 0);
             foreach (Sprite sprite in _game._sprites)
             {
-                if(sprite is Player)
+                if (sprite is Player)
                 {
-                    Debug.WriteLine(((Player)sprite).Name + " - " + sprite.Position.X + " - " + sprite.Position.Y + " - " + MathHelper.ToDegrees(sprite.Rotation) % 360);
+                    //Debug.WriteLine(((Player)sprite).Name + " - " + sprite.Position.X + " - " + sprite.Position.Y + " - " + MathHelper.ToDegrees(sprite.Rotation) % 360);
+                    //Debug.WriteLine(bumperTexture.Height + " - " + (Game1.ScreenWidth - Game1.TrackWidth * 2) + " - " + bumperTexture.Width);
+
+                    saveData = findClosestBarrierFront(sprite);
+                    Debug.WriteLine(((Player)sprite).Name + " - " + saveData.X + " - " + saveData.Y);
                 }
             }
         }
+
+        private Vector2 findClosestBarrierFront(Sprite sprite)
+        {
+            int count = 0;
+
+            while (true)
+            {
+                count++;
+
+                double yDif = Math.Tan(sprite.Rotation) * (count * (bumperTexture.Width / 2) - sprite.Position.X);
+                double y = sprite.Position.Y - yDif;
+                double x = count * bumperTexture.Width / 2;
+
+                //Debug.WriteLine(x + ", " + y);
+
+                foreach (var sprite2 in _game._sprites)
+                {
+                    if (sprite2 is Bumper)
+                    {
+                        //Debug.WriteLine("car postion: " + x + ", " + y + " - Bumber: " + sprite.);
+
+                        if (y < sprite2.Position.Y + sprite2.height && y > sprite2.Position.Y && x < sprite2.Position.X + sprite2.width && x > sprite2.Position.X)
+                        {
+                            return new Vector2((float)x, (float)y);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        /*  public override void Update(GameTime gameTime, List<Sprite> sprites)
+        {
+            foreach (var sprite in sprites)
+            {
+                if (sprite is Player)
+                {
+                    // the car is moving right
+                    var coords = getCornerCoordsDel(sprite);
+                    if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
+                    {
+                        ((Player)sprite).Dead = true;
+                    }
+                }
+            }
+        } */
+
+        /*
+         public override void Update(GameTime gameTime, List<Sprite> sprites)
+        {
+            foreach (var sprite in sprites)
+            {
+                if (sprite is Player)
+
+                    if (!((Player)sprite).Dead)
+                    {
+                        // the car is moving right
+                        var coords = getCornerCoordsDel(sprite);
+                        if (coords.Y < this.Position.Y + height && coords.Y > this.Position.Y && coords.X < this.Position.X + width && coords.X > this.Position.X)
+                        {
+                            if (amountCheckpoint == ((Player)sprite).checkpointId)
+                            {
+                                ((Player)sprite).Score += 1000;
+                                ((Player)sprite).Dead = true;
+                            }
+                        }
+                    }
+            }
+        } 
+         
+         */
     }
 }
