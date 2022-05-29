@@ -15,12 +15,13 @@ namespace TopDownRacer.Sprites
         public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
         private float ChangePositionSpeed { get; set; }
-        private float RotationSpeed { get; set; } = 2.5f;
+        private float RotationSpeed { get; set; } = 0f;
+        private float MaxRotationSpeed { get; set; } = 2.5f;
 
-        public Player(Texture2D texture)
+        public Player(Texture2D texture, int x, int y)
         : base(texture)
         {
-            Position = new Vector2(250, 250);
+            Position = new Vector2(x, y);
         }
 
         public void Initialize()
@@ -40,16 +41,25 @@ namespace TopDownRacer.Sprites
         {
             //Declaring basic player controls
             KeyboardState kstate = Keyboard.GetState();
-            // TODO backwards driving is not mirrored
             // Rotate the car based on which key is pressed
             if (kstate.IsKeyDown(Input.Left))
             {
-                Rotation -= MathHelper.ToRadians(RotationSpeed);
+                if (RotationSpeed < MaxRotationSpeed)
+                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+                if (CurrentPositionSpeed > 0.0f)
+                    Rotation -= MathHelper.ToRadians(RotationSpeed);
+                if (CurrentPositionSpeed < 0.0f)
+                    Rotation += MathHelper.ToRadians(RotationSpeed);
             }
 
             if (kstate.IsKeyDown(Input.Right))
             {
-                Rotation += MathHelper.ToRadians(RotationSpeed);
+                if (RotationSpeed < MaxRotationSpeed)
+                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+                if (CurrentPositionSpeed > 0.0f)
+                    Rotation += MathHelper.ToRadians(RotationSpeed);
+                if (CurrentPositionSpeed < 0.0f)
+                    Rotation -= MathHelper.ToRadians(RotationSpeed);
             }
 
             Vector2 direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
@@ -88,14 +98,12 @@ namespace TopDownRacer.Sprites
 
             // if the car is driving faster than the maxSpeed set the speed to the maxSpeed
             if (ChangePositionSpeed > MaxPositionSpeed / 20)
-            {
                 ChangePositionSpeed = MaxPositionSpeed / 20;
-            }
-
             if (ChangePositionSpeed < -1 * (MaxPositionSpeed / 20))
-            {
                 ChangePositionSpeed = -1 * MaxPositionSpeed / 20;
-            }
+            // if rotation speed is to high set it to the max rotation speed
+            if (RotationSpeed > MaxRotationSpeed)
+                RotationSpeed = MaxRotationSpeed;
 
             Position += direction * CurrentPositionSpeed;
 

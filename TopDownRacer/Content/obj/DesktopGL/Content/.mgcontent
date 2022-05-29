@@ -11,6 +11,7 @@
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/checkpoint.png</File>
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/Finishline.png</File>
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white.png</File>
+    <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white_small.png</File>
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_1.png</File>
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_2.png</File>
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_3.png</File>
@@ -18,6 +19,7 @@
     <File>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_5.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

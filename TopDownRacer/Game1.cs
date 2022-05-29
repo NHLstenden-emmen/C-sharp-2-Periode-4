@@ -20,7 +20,7 @@ namespace TopDownRacer
         //Declaring a variable of type Texture2D to add an image to
         public List<Sprite> _sprites;
 
-        public Random rnd = new Random();
+        public static Random rnd = new Random();
 
         private State _currentState;
 
@@ -86,7 +86,6 @@ namespace TopDownRacer
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Blue);
             _currentState.Draw(gameTime, _spriteBatch, _sprites, _font);
 
             base.Draw(gameTime);

@@ -16,7 +16,9 @@ namespace TopDownRacer.States
 
         protected Game1 _game;
 
-        protected Texture2D backgroundTexture, checkpointTexture, bumperTexture, finishlineTexture;
+        public static List<Texture2D> playerTexture = new List<Texture2D>();
+
+        public static Texture2D backgroundTexture, checkpointTexture, bumperTexture, finishlineTexture;
 
         //Methods
 
