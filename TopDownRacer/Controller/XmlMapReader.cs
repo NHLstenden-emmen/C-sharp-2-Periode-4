@@ -16,7 +16,7 @@ namespace TopDownRacer.Controller
     {
         public static XmlMapReader LoadMap(String file)
         {
-            using (var stream = File.OpenRead("../../../Maps/"+ file+".xml"))
+            using (var stream = File.OpenRead("Maps/" + file + ".xml"))
             {
                 return FromStream(stream);
             }
