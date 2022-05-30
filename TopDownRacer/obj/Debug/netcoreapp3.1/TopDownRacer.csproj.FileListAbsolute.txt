@@ -74,7 +74,6 @@ D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\C
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
-D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\rectangle.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\barrier_white.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\tires_white.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\barrier_white.xnb
@@ -115,3 +114,13 @@ D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_yellow_small_3.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_yellow_small_4.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_yellow_small_5.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\background.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\checkpoint.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\Finishline.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_blue_small.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_small_1.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_small_2.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_small_3.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_small_4.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\car_small_5.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\tires_white_small.xnb
