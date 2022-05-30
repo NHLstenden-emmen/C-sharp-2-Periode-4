@@ -60,7 +60,7 @@ namespace TopDownRacer.Controller
         public Int32 Height;
 
         [XmlAttribute("o")]
-        public Int32 Orientation;
+        public Int32 Orientation = 0;
 
         [XmlAttribute("n")]
         public String Name;
@@ -85,6 +85,7 @@ namespace TopDownRacer.Controller
                             Input = new Input()
                             { },
                             Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
+                            Rotation = MathHelper.ToRadians(Orientation)
                         };
 
                     case "Bumper":

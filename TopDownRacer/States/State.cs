@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
@@ -31,6 +32,7 @@ namespace TopDownRacer.States
         //De basis constructor voor de game state
         public State(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
         {
+            Debug.WriteLine(this.GetType());
             _game = game;
 
             _graphicsDevice = graphicsDevice;

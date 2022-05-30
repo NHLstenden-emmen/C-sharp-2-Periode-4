@@ -13,7 +13,7 @@ namespace TopDownRacer.States
     {
         private readonly List<Component> _components;
         private String gameMode;
-        private String MapFileName = "Nascar";
+        private String MapFileName;
 
         //constuctor van de MenuState
         public PlayerCustomizationState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, String GameMode)
@@ -32,28 +32,25 @@ namespace TopDownRacer.States
 
             StartGameButton.Click += StartGameButton_Click;
 
-            Button NascarMapButton = new Button(buttonTexture, buttonFont)
-            {
-                Position = new Vector2((Game1.ScreenWidth / 4) - 100, (Game1.ScreenHeight / 4)),
-                Text = "Nascar",
-            };
-
-            NascarMapButton.Click += MapButton_Click;
-
-            Button LMapButton = new Button(buttonTexture, buttonFont)
-            {
-                Position = new Vector2((Game1.ScreenWidth / 4) - 100, (Game1.ScreenHeight / 2)),
-                Text = "L-shape",
-            };
-
-            LMapButton.Click += MapButton_Click;
-
             _components = new List<Component>()
             {
                 StartGameButton,
-                NascarMapButton,
-                LMapButton
             };
+
+            List<String> maps = new List<string>
+            {
+                "Nascar","L-shape","ZigZag"
+            };
+            for (int i = 0; i < maps.Count; i++)
+            {
+                Button MapButton = new Button(buttonTexture, buttonFont)
+                {
+                    Position = new Vector2((Game1.ScreenWidth / 4) - 100, (Game1.ScreenHeight / 2) - (150 - (50 * i))),
+                    Text = maps[i],
+                };
+                MapButton.Click += MapButton_Click;
+                _components.Add(MapButton);
+            }
         }
 
         //Het maken van de buttons op basis van de buttons die aan de component list is toegevoegd
@@ -76,7 +73,7 @@ namespace TopDownRacer.States
             if (MapFileName == null)
                 return;
             if (gameMode == "Multiplayer") 
-                _game.ChangeState(new MultiplayerState(_game, _graphicsDevice, _content));
+                _game.ChangeState(new MultiplayerState(_game, _graphicsDevice, _content, MapFileName));
             if (gameMode == "Single Player")
                 _game.ChangeState(new SinglePlayerState(_game, _graphicsDevice, _content, MapFileName));
         }
