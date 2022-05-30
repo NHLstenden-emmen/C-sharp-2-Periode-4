@@ -61,6 +61,27 @@ namespace TopDownRacer.NeuralNetwork
             _layers.First().Neurons.ForEach(x => x.PushValueOnInput(inputs[_layers.First().Neurons.IndexOf(x)]));
         }
 
+        //Een methode om de verwachte waardes te zetten
+        public void PushExpectedValues(double[][] expectedOutputs)
+        {
+            _expectedResult = expectedOutputs;
+        }
+
+        //Een methode om de output van het netwerk te berekenen
+        public List<double> GetOutput()
+        {
+            var returnValue = new List<double>();
+
+            _layers.Last().Neurons.ForEach(neuron =>
+            {
+                returnValue.Add(neuron.CalculateOutput());
+            });
+
+            return returnValue;
+        }
+
+        //hier moet nog een train functie komen
+
         //Functie die een input layer van het neural network maakt
         private void CreateInputLayer(int numberOfInputNeurons)
         {
