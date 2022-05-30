@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TopDownRacer.NeuralNetwork.ActivationFunctions;
 using TopDownRacer.NeuralNetwork.InputFunctions;
@@ -35,6 +36,29 @@ namespace TopDownRacer.NeuralNetwork
 
             //ook moet een input layer worden aangemaakt om inputs te verzamelen
             CreateInputLayer(numberOfInputNeurons);
+
+            _learningRate = 2.95;
+        }
+
+        //een methode om een neural layer toe te voegen aan het neural network
+        //deze worden automatisch toegevoegd als de output layer als laatste layer in het netwerk
+        public void AddLayer(NeuralLayer newLayer)
+        {
+            //any() kijkt of een element in een sequence voldoet aan een condition 
+            if(_layers.Any())
+            {
+                var lastLayer = _layers.Last();
+                newLayer.ConnectLayers(lastLayer);
+            }
+
+            _layers.Add(newLayer);
+            _neuronErrors.Add(_layers.Count - 1, new double[newLayer.Neurons.Count]);
+        }
+
+        //Een methode om input waarde in het neural network te zetten
+        public void PushInput(double[] inputs)
+        {
+            _layers.First().Neurons.ForEach(x => x.PushValueOnInput(inputs[_layers.First().Neurons.IndexOf(x)]));
         }
 
         //Functie die een input layer van het neural network maakt
@@ -42,7 +66,9 @@ namespace TopDownRacer.NeuralNetwork
         {
             var inputLayer = _layerFactory.CreateNeuralLayer(numberOfInputNeurons, new RectifiedActivationFuncion(), new WeightedSumFunction());
             inputLayer.Neurons.ForEach(x => x.AddInputSynapse(0));
-            //Hier moet nog een methode komen om de layer toe te voegen 
+            this.AddLayer(inputLayer);
         }
+
+
     }
 }
