@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TopDownRacer.Controller;
 using TopDownRacer.Sprites;
 
@@ -26,9 +27,13 @@ namespace TopDownRacer.States
             backgroundTexture = content.Load<Texture2D>("Levels/background");
 
             var xmlMap = XmlMapReader.LoadMap(MapFileName);
+            Vector2 spawnpoint = xmlMap.getSpawnpoint();
+            float orientation = xmlMap.getOrientation();
             game._sprites = xmlMap.getSprites();
             foreach(Sprite player in players)
             {
+                player.Position = spawnpoint;
+                player.Rotation = orientation;
                 game._sprites.Add(player);
             }
         }

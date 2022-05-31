@@ -16,8 +16,7 @@ a => (int) amount of checkpoints
 -->
 <!-- ZigZag -->
 
-<Map>
-	<sprite c="Player" x ="100" y="100" w="50" h="50" n="player1" o="90" />
+<Map x="100" y="100" o="90">
 
 	<!-- Outer Ring -->
 	<sprite c="Bumper" x ="0" y="0" w="1920" h="28" o="0" />
