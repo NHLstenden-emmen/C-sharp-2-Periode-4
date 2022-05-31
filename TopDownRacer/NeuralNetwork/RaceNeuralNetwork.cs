@@ -99,10 +99,26 @@ namespace TopDownRacer.NeuralNetwork
 
                     //Berekenen van errors door alle errors van de aparte neurons op te tellen
                     //hier moet een calculate total error methode komen
+                    totalError = CalculateTotalError(outputs, j);
 
                     //hier moet een handler komen voor de output en hidden layer
+                    HandleOutputLayer(j);
                 }
             }
+        }
+
+        //Functie die de errors berekend
+        private double CalculateTotalError(List<double> outputs, int row)
+        {
+            double totalError = 0;
+
+            outputs.ForEach(output =>
+            {
+                var error = Math.Pow(output = _expectedResult[row][outputs.IndexOf(output)], 2);
+                totalError += error;
+            });
+
+            return totalError;
         }
 
         //Functie die een input layer van het neural network maakt
@@ -113,6 +129,27 @@ namespace TopDownRacer.NeuralNetwork
             this.AddLayer(inputLayer);
         }
 
+        //Een functie die wordt gebruikt voor de afgeleiden van de output layer, de row input is de verwachtte output row
+        private void HandleOutputLayer(int row)
+        {
+            _layers.Last().Neurons.ForEach(neuron =>
+            {
+                neuron.Inputs.ForEach(connection =>
+                {
+                    var output = neuron.CalculateOutput();
+                    var netInput = connection.GetOutput();
+
+                    var expectedOutput = _expectedResult[row][_layers.Last().Neurons.IndexOf(neuron)];
+
+                    var nodeDelta = (expectedOutput - output) * output * (1 - output);
+                    var delta = -1 * netInput * nodeDelta;
+
+                    connection.UpdateWeight(_learningRate, delta);
+
+                    neuron.PreviousPartialDerivate = nodeDelta;
+                });
+            });
+        }
 
     }
 }
