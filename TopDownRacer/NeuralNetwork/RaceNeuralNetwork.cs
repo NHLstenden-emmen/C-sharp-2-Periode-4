@@ -56,7 +56,7 @@ namespace TopDownRacer.NeuralNetwork
         }
 
         //Een methode om input waarde in het neural network te zetten
-        public void PushInput(double[] inputs)
+        public void PushInputValues(double[] inputs)
         {
             _layers.First().Neurons.ForEach(x => x.PushValueOnInput(inputs[_layers.First().Neurons.IndexOf(x)]));
         }
@@ -81,6 +81,29 @@ namespace TopDownRacer.NeuralNetwork
         }
 
         //hier moet nog een train functie komen
+        //De train functie voor het neural network, epochs is de parameter die representeert hoe vaak hij gaat trainen
+        public void Train(double[][] inputs, int numberOfEpochs)
+        {
+            double totalError = 0;
+
+            for(int i = 0; i < numberOfEpochs; i++)
+            {
+                for (int j = 0; j < inputs.GetLength(0); j++)
+                {
+                    PushInputValues(inputs[j]);
+
+                    var outputs = new List<double>();
+
+                    //Halen van de outputs
+                    _layers.Last().Neurons.ForEach(x => { outputs.Add(x.CalculateOutput());});
+
+                    //Berekenen van errors door alle errors van de aparte neurons op te tellen
+                    //hier moet een calculate total error methode komen
+
+                    //hier moet een handler komen voor de output en hidden layer
+                }
+            }
+        }
 
         //Functie die een input layer van het neural network maakt
         private void CreateInputLayer(int numberOfInputNeurons)
