@@ -82,6 +82,14 @@ namespace TopDownRacer.States
         private void MapButton_Click(object sender, EventArgs e)
         {
             MapFileName = ((Button)sender).Text;
+            foreach (Component component in _components)
+            {
+                if (component is Button)
+                {
+                    ((Button)component).Active = false;
+                }
+            }
+            ((Button)sender).Active = true;
         }
 
         public override void PostUpdate(GameTime gameTime)

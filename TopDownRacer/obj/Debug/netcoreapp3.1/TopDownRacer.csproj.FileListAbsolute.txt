@@ -126,3 +126,4 @@ D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\T
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.dll
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.pdb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.genruntimeconfig.cache
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.csproj.AssemblyReference.cache
