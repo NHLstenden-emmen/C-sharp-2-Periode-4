@@ -10,7 +10,7 @@ namespace TopDownRacer.States
     internal class MultiplayerState : State
     {
         //constuctor van de game state
-        public MultiplayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, string MapFileName)
+        public MultiplayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, string MapFileName, List<Player> players)
           : base(game, graphicsDevice, content)
         {
             //Debug.WriteLine("Multiplayer");
@@ -27,6 +27,10 @@ namespace TopDownRacer.States
 
             var xmlMap = XmlMapReader.LoadMap(MapFileName);
             game._sprites = xmlMap.getSprites();
+            foreach(Sprite player in players)
+            {
+                game._sprites.Add(player);
+            }
         }
 
         //Het starten van het spel

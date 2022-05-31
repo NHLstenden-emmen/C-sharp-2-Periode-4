@@ -41,7 +41,7 @@ namespace TopDownRacer.States
             Button AiTrainingButton = new Button(buttonTexture, buttonFont)
             {
                 Position = new Vector2((Game1.ScreenWidth / 2) - 100, (Game1.ScreenHeight / 2) - 50),
-                Text = "Neral network",
+                Text = "Neural network",
             };
 
             AiTrainingButton.Click += AiTrainingButton_Click;
@@ -90,7 +90,7 @@ namespace TopDownRacer.States
 
         private void AiTrainingButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new NeralNetworkState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new NeuralNetworkState(_game, _graphicsDevice, _content));
         }
 
         public override void PostUpdate(GameTime gameTime)
