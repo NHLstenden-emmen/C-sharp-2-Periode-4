@@ -33,6 +33,8 @@ namespace TopDownRacer.MenuControls
 
         //Methode om de text in de buttons te zetten
         public string Text { get; set; }
+        public bool Active { get; internal set; }
+        public bool Disabled { get; internal set; }
 
         //Constuctor van de button
         public Button(Texture2D texture, SpriteFont font)
@@ -51,6 +53,16 @@ namespace TopDownRacer.MenuControls
             if (_isHovering)
             {
                 colour = Color.Gray;
+            }
+
+            if (Active)
+            {
+                colour = Color.DarkGray;
+            }
+
+            if (Disabled)
+            {
+                colour = Color.LightGray;
             }
 
             spriteBatch.Draw(_texture, Rectangle, colour);

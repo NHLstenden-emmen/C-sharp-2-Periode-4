@@ -7,10 +7,10 @@ using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
-    internal class NeralNetworkState : State
+    internal class NeuralNetworkState : State
     {
         //constuctor van de game state
-        public NeralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public NeuralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
