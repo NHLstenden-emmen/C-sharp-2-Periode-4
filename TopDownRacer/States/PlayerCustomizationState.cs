@@ -41,22 +41,25 @@ namespace TopDownRacer.States
                 Disabled = true
             };
 
-            StartGameButton.Click += StartGameButton_Click;
-
-            Button AddPlayerButton = new Button(buttonTexture, buttonFont)
-            {
-                Position = new Vector2((Game1.ScreenWidth / 4 * 3) - 100, (Game1.ScreenHeight / 4)),
-                Text = "add player",
-            };
-
-            AddPlayerButton.Click += AddPlayerButton_Click;
-
             _components = new List<Component>()
             {
                 StartGameButton,
-                AddPlayerButton
             };
 
+            StartGameButton.Click += StartGameButton_Click;
+            if(gameMode == "Multiplayer")
+            {
+                Button AddPlayerButton = new Button(buttonTexture, buttonFont)
+                {
+                    Position = new Vector2((Game1.ScreenWidth / 4 * 3) - 100, (Game1.ScreenHeight / 4)),
+                    Text = "add player",
+                };
+
+                AddPlayerButton.Click += AddPlayerButton_Click;
+
+                _components.Add(AddPlayerButton);
+            }
+            
             players = new List<Player>(){new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - 130)
                 {
                     Name = "test",
@@ -110,7 +113,7 @@ namespace TopDownRacer.States
             if (gameMode == "Multiplayer") 
                 _game.ChangeState(new MultiplayerState(_game, _graphicsDevice, _content, MapFileName, players));
             if (gameMode == "Single Player")
-                _game.ChangeState(new SinglePlayerState(_game, _graphicsDevice, _content, MapFileName));
+                _game.ChangeState(new SinglePlayerState(_game, _graphicsDevice, _content, MapFileName, players[0]));
         }
 
         //De click om een Speler toe te voegen
