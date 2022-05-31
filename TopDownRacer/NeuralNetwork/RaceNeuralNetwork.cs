@@ -98,11 +98,11 @@ namespace TopDownRacer.NeuralNetwork
                     _layers.Last().Neurons.ForEach(x => { outputs.Add(x.CalculateOutput());});
 
                     //Berekenen van errors door alle errors van de aparte neurons op te tellen
-                    //hier moet een calculate total error methode komen
                     totalError = CalculateTotalError(outputs, j);
 
-                    //hier moet een handler komen voor de output en hidden layer
+                    //Een handle  voor de output en hidden layer
                     HandleOutputLayer(j);
+                    HandleHiddenLayers();
                 }
             }
         }
@@ -151,5 +151,35 @@ namespace TopDownRacer.NeuralNetwork
             });
         }
 
+        //Een functie die wordt gebruikt voor de afgeleiden van de hidden layer
+        private void HandleHiddenLayers()
+        {
+            for (int k = _layers.Count - 2; k > 0; k--)
+            {
+                _layers[k].Neurons.ForEach(neuron =>
+                {
+                    neuron.Inputs.ForEach(connection =>
+                    {
+                        var output = neuron.CalculateOutput();
+                        var netInput = connection.GetOutput();
+                        double sumPartial = 0;
+
+                        _layers[k + 1].Neurons
+                        .ForEach(outputNeuron =>
+                        {
+                            outputNeuron.Inputs.Where(i => i.IsFromNeuron(neuron.Id))
+                            .ToList()
+                            .ForEach(outConnection =>
+                            {
+                                sumPartial += outConnection.PreviousWeight * outputNeuron.PreviousPartialDerivate;
+                            });
+                        });
+
+                        var delta = -1 * netInput * sumPartial * output * (1 - output);
+                        connection.UpdateWeight(_learningRate, delta);
+                    });
+                });
+            }
+        }
     }
 }
