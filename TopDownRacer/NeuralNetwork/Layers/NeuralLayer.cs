@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TopDownRace.NeuralNetwork.Neuron;
 
-namespace TopDownRace.NeuralNetwork
+namespace TopDownRacer.NeuralNetwork.Layers
 {
-    //Implementatie van een layer
-    public class NeuralLayer
+    
+    //Implementatie van een laag in een Neural Network
+    class NeuralLayer
     {
         public List<INeuron> Neurons;
 
