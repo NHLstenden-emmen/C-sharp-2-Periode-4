@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using TopDownRacer.Manager;
 using TopDownRacer.Managers;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
@@ -30,8 +31,9 @@ namespace TopDownRacer
 
         private State _nextState;
 
-        public SoundManager SoundManager;
-        public AnimationManager AnimationManager;
+        public ContentManager _contentManager;
+        public SoundManager _soundManager;
+        public AnimationManager _animationManager;
 
         public void ChangeState(State state)
         {
@@ -42,7 +44,7 @@ namespace TopDownRacer
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            SoundManager = new SoundManager(new List<Sound> {
+            _soundManager = new SoundManager(new List<Sound> {
                 new Sound {
                     Key = "Coin", Filename = "Content/Sound/Death.wav", DefaultPitch = 1, DefaultVolume = 0.10f //wav file is het beste format denk ik
                 }
@@ -62,6 +64,7 @@ namespace TopDownRacer
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
 
             _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
