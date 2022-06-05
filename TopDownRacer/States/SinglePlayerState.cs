@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using TopDownRacer.Controller;
+using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
@@ -13,6 +14,11 @@ namespace TopDownRacer.States
         public SinglePlayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, string MapFileName, Player player)
           : base(game, graphicsDevice, content)
         {
+            /*var animations =  new Dictionary<string, Animation>()
+                {
+                  { "Break", new Animation(content.Load<Texture2D>("Player/WalkingUp"), 2) },
+                  { "TurningLight", new Animation(content.Load<Texture2D>("Player/WalkingDown"), 4) },
+                };*/
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
             playerTexture.Insert(1, content.Load<Texture2D>("Player/car_small_2"));
             playerTexture.Insert(2, content.Load<Texture2D>("Player/car_small_3"));

@@ -3,7 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TopDownRacer.Managers;
+using TopDownRacer.Models;
 
 namespace TopDownRacer.Sprites
 {
@@ -13,6 +17,21 @@ namespace TopDownRacer.Sprites
         public int Score;
         public int checkpointId = 0;
         public Boolean Dead = false;
+
+        protected AnimationManager _animationManager;
+        protected Dictionary<string, Animation> _animations;
+
+        public Vector2 _position
+        {
+            get { return Position; }
+            set
+            {
+                Position = value;
+
+                if (_animationManager != null)
+                    _animationManager.Position = Position;
+            }
+        }
         private int MaxPositionSpeed { get; set; } = 15;
         private float ChangePositionSpeed { get; set; }
 
@@ -20,10 +39,13 @@ namespace TopDownRacer.Sprites
         private float MaxRotationSpeed { get; set; } = 2.5f;
         private int playerNumber;
 
+        //public Player(Texture2D texture, int x, int y, int playerNumber = 0, Dictionary<string, Animation> animations)
         public Player(Texture2D texture, int x, int y, int playerNumber = 0)
         : base(texture)
         {
-            Debug.WriteLine(playerNumber);
+            //_animations = animations;
+            //_animationManager = new AnimationManager(_animations.First().Value);
+
             Position = new Vector2(x, y);
             if (playerNumber < 0 || playerNumber > 3)
             {
@@ -54,18 +76,30 @@ namespace TopDownRacer.Sprites
             // Rotate the car based on which key is pressed
             if (kstate.IsKeyDown(Input.Left[playerNumber]))
             {
-                if (RotationSpeed < MaxRotationSpeed)
+                if (CurrentPositionSpeed > -MaxRotationSpeed && CurrentPositionSpeed < MaxRotationSpeed)
+                    RotationSpeed = 0;
+                else if ((CurrentPositionSpeed <= -MaxRotationSpeed && CurrentPositionSpeed > (-MaxRotationSpeed * 3)) || (CurrentPositionSpeed >= MaxRotationSpeed && CurrentPositionSpeed < (MaxRotationSpeed * 3)))
+                    RotationSpeed = MaxRotationSpeed;
+                else
                     RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+
                 if (CurrentPositionSpeed > 0.0f)
                     Rotation -= MathHelper.ToRadians(RotationSpeed);
                 if (CurrentPositionSpeed < 0.0f)
                     Rotation += MathHelper.ToRadians(RotationSpeed);
+
+                //_animationManager.Play(_animations["BlinkerRight"]);
             }
 
             if (kstate.IsKeyDown(Input.Right[playerNumber]))
             {
-                if (RotationSpeed < MaxRotationSpeed)
+                if (CurrentPositionSpeed > -MaxRotationSpeed && CurrentPositionSpeed < MaxRotationSpeed)
+                    RotationSpeed = 0;
+                else if ((CurrentPositionSpeed <= -MaxRotationSpeed && CurrentPositionSpeed > (-MaxRotationSpeed * 3)) || (CurrentPositionSpeed >= MaxRotationSpeed && CurrentPositionSpeed < (MaxRotationSpeed * 3)))
+                    RotationSpeed = MaxRotationSpeed;
+                else
                     RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+
                 if (CurrentPositionSpeed > 0.0f)
                     Rotation += MathHelper.ToRadians(RotationSpeed);
                 if (CurrentPositionSpeed < 0.0f)
@@ -111,10 +145,6 @@ namespace TopDownRacer.Sprites
                 ChangePositionSpeed = MaxPositionSpeed / 20;
             if (ChangePositionSpeed < -1 * (MaxPositionSpeed / 20))
                 ChangePositionSpeed = -1 * MaxPositionSpeed / 20;
-            // if rotation speed is to high set it to the max rotation speed
-            if (RotationSpeed > MaxRotationSpeed)
-                RotationSpeed = MaxRotationSpeed;
-
             Position += direction * CurrentPositionSpeed;
 
             // limit the positions in which the car can travel
