@@ -60,9 +60,9 @@ namespace TopDownRacer.States
                 _components.Add(AddPlayerButton);
             }
             
-            players = new List<Player>(){new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - 130)
+            players = new List<Player>(){new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - 130, 0)
                 {
-                    Name = "test",
+                    Name = "test", 
                     Input = new Input(){ },
                     Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
                 }
@@ -70,7 +70,7 @@ namespace TopDownRacer.States
 
             List<String> maps = new List<string>
             {
-                "Nascar","L-shape","ZigZag"
+                "Nascar","L-shape","ZigZag","EmptyLot"
             };
             for (int i = 0; i < maps.Count; i++)
             {

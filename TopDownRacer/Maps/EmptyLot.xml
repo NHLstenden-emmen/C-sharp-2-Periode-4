@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE Map [
+	<!ENTITY barrierwidth "28">
+]>
+<!-- format:
+c => (String) classe
+x => (int) x position
+y => (int) y position
+w => (int) width
+h => (int) height
+o => (int) orientation
+n => (String) name
+i => (int) checkpointID
+a => (int) amount of checkpoints
+
+-->
+<!-- nascar -->
+
+<Map x="100" y="100">
+	<!-- Progress meters-->
+	<sprite c="Checkpoint" x ="960" y="0" w="28" h="278" o="1" n="checkpoint" i="0" />
+	<sprite c="Checkpoint" x ="960" y="802" w="28" h="278" o="3" n="checkpoint" i="1" />
+	<sprite c="Finishline" x ="0" y="250" w="278" h="28" o="0" n="checkpoint" a="2" />
+</Map>
