@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using TopDownRacer.Sprites;
@@ -11,7 +12,8 @@ namespace TopDownRacer
     public class Game1 : Game
     {
         private readonly GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private SpriteBatch _spriteBatch { get; set; }
+        public static List<SoundEffect> _soundEffects;
 
         public static int ScreenWidth = 1920;
         public static int ScreenHeight = 1080;
@@ -37,6 +39,7 @@ namespace TopDownRacer
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            _soundEffects = new List<SoundEffect>();
         }
 
         protected override void Initialize()
@@ -52,6 +55,10 @@ namespace TopDownRacer
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //Laad de muziek in
+            _soundEffects.Add(Content.Load<SoundEffect>("Sounds/dreams"));
+            _soundEffects.Add(Content.Load<SoundEffect>("Sounds/Engine-Sounds"));
 
             _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);

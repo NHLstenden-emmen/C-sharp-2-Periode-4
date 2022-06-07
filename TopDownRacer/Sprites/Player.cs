@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -19,6 +20,8 @@ namespace TopDownRacer.Sprites
         private float RotationSpeed { get; set; } = 0f;
         private float MaxRotationSpeed { get; set; } = 2.5f;
         private int playerNumber;
+        private SoundEffectInstance engineSound;
+        private SoundEffectInstance brakingSound;
 
         public Player(Texture2D texture, int x, int y, int playerNumber = 0)
         : base(texture)
@@ -32,6 +35,12 @@ namespace TopDownRacer.Sprites
             {
                 this.playerNumber = playerNumber;
             }
+
+            //Laad de soundEffects in
+            engineSound = Game1._soundEffects[1].CreateInstance();
+            engineSound.Volume = 0.0f;
+            engineSound.IsLooped = true;
+            engineSound.Play();
         }
 
         public void Initialize()
@@ -43,8 +52,18 @@ namespace TopDownRacer.Sprites
             Move();
 
             if (!Dead)
+            {
+                //Debug.Write(Math.Abs(CurrentPositionSpeed) / 15f);
+                //Debug.Write("CurrentPositionSpeed");
+                //Debug.WriteLine(CurrentPositionSpeed);
+                
                 if (CurrentPositionSpeed > 10.0)
-                    Score++;
+                                    Score++;
+            } else
+            {
+                engineSound.Volume = 0f;
+            }
+                
         }
 
         public void Move()
@@ -77,8 +96,9 @@ namespace TopDownRacer.Sprites
             if (kstate.IsKeyDown(Input.Up[playerNumber]))
             {
                 // if the current speed is not above the max speed accelerate the car forwards
-                if (CurrentPositionSpeed < MaxPositionSpeed)
+                if (CurrentPositionSpeed < MaxPositionSpeed - 0.15f)
                 {
+                    engineSound.Volume = Math.Abs(CurrentPositionSpeed) / 15f;
                     ChangePositionSpeed += 0.15f;
                     CurrentPositionSpeed += ChangePositionSpeed;
                 }
@@ -86,7 +106,7 @@ namespace TopDownRacer.Sprites
             else if (kstate.IsKeyDown(Input.Down[playerNumber]))
             {
                 // if the current speed is not above the max speed accelerate the car backwards
-                if (CurrentPositionSpeed > (0 - MaxPositionSpeed))
+                if (CurrentPositionSpeed > (0.15f - MaxPositionSpeed))
                 {
                     ChangePositionSpeed += -0.15f;
                     CurrentPositionSpeed += ChangePositionSpeed;
@@ -94,6 +114,11 @@ namespace TopDownRacer.Sprites
             }
             else
             {
+                // verlaag het volume van de motor als er geen gas wordt gegeven
+                if (engineSound.Volume > 0.01f)
+                {
+                    engineSound.Volume -= 0.01f;
+                }
                 // automatic braking if no key is pressed
                 if (CurrentPositionSpeed > 0.25f || CurrentPositionSpeed < -0.25f)
                 {
