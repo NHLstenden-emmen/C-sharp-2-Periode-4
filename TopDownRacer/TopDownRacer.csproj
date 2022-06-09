@@ -36,4 +36,15 @@
   <ItemGroup>
     <Folder Include="Content\Player\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Maps\L-shape.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\Nascar.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\ZigZag.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

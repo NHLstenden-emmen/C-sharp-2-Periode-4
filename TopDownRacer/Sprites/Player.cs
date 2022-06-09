@@ -17,11 +17,20 @@ namespace TopDownRacer.Sprites
         private float ChangePositionSpeed { get; set; }
         private float RotationSpeed { get; set; } = 0f;
         private float MaxRotationSpeed { get; set; } = 2.5f;
+        private int playerNumber;
 
-        public Player(Texture2D texture, int x, int y)
+        public Player(Texture2D texture, int x, int y, int playerNumber = 0)
         : base(texture)
         {
+            Debug.WriteLine(playerNumber);
             Position = new Vector2(x, y);
+            if (playerNumber < 0 || playerNumber > 3)
+            {
+                this.playerNumber = 0;
+            } else
+            {
+                this.playerNumber = playerNumber;
+            }
         }
 
         public void Initialize()
@@ -42,7 +51,7 @@ namespace TopDownRacer.Sprites
             //Declaring basic player controls
             KeyboardState kstate = Keyboard.GetState();
             // Rotate the car based on which key is pressed
-            if (kstate.IsKeyDown(Input.Left))
+            if (kstate.IsKeyDown(Input.Left[playerNumber]))
             {
                 if (RotationSpeed < MaxRotationSpeed)
                     RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
@@ -52,7 +61,7 @@ namespace TopDownRacer.Sprites
                     Rotation += MathHelper.ToRadians(RotationSpeed);
             }
 
-            if (kstate.IsKeyDown(Input.Right))
+            if (kstate.IsKeyDown(Input.Right[playerNumber]))
             {
                 if (RotationSpeed < MaxRotationSpeed)
                     RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
@@ -64,7 +73,7 @@ namespace TopDownRacer.Sprites
 
             Vector2 direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
 
-            if (kstate.IsKeyDown(Input.Up))
+            if (kstate.IsKeyDown(Input.Up[playerNumber]))
             {
                 // if the current speed is not above the max speed accelerate the car forwards
                 if (CurrentPositionSpeed < MaxPositionSpeed)
@@ -73,7 +82,7 @@ namespace TopDownRacer.Sprites
                     CurrentPositionSpeed += ChangePositionSpeed;
                 }
             }
-            else if (kstate.IsKeyDown(Input.Down))
+            else if (kstate.IsKeyDown(Input.Down[playerNumber]))
             {
                 // if the current speed is not above the max speed accelerate the car backwards
                 if (CurrentPositionSpeed > (0 - MaxPositionSpeed))

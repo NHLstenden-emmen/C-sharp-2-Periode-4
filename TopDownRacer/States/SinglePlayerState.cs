@@ -10,7 +10,7 @@ namespace TopDownRacer.States
     public class SinglePlayerState : State
     {
         //constuctor van de game state
-        public SinglePlayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public SinglePlayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, string MapFileName, Player player)
           : base(game, graphicsDevice, content)
         {
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
@@ -24,8 +24,13 @@ namespace TopDownRacer.States
             checkpointTexture = content.Load<Texture2D>("Levels/checkpoint");
             backgroundTexture = content.Load<Texture2D>("Levels/background");
 
-            var xmlMap = XmlMapReader.LoadMap("Nascar");
+            var xmlMap = XmlMapReader.LoadMap(MapFileName);
+            Vector2 spawnpoint = xmlMap.getSpawnpoint();
+            float orientation = xmlMap.getOrientation();
             game._sprites = xmlMap.getSprites();
+            player.Position = spawnpoint;
+            player.Rotation = orientation;
+            game._sprites.Add(player);
         }
 
         //Het starten van het spel

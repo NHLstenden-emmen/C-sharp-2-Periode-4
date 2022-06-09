@@ -16,7 +16,7 @@ namespace TopDownRacer.Controller
     {
         public static XmlMapReader LoadMap(String file)
         {
-            using (var stream = File.OpenRead("../../../Maps/"+ file+".xml"))
+            using (var stream = File.OpenRead("Maps/" + file + ".xml"))
             {
                 return FromStream(stream);
             }
@@ -26,6 +26,20 @@ namespace TopDownRacer.Controller
         {
             var serializer = new XmlSerializer(typeof(XmlMapReader));
             return (XmlMapReader)serializer.Deserialize(stream);
+        }
+        [XmlAttribute("x")]
+        public int x;
+        [XmlAttribute("y")]
+        public int y;
+        [XmlAttribute("o")]
+        public int Orientation;
+        internal Vector2 getSpawnpoint()
+        {
+            return new Vector2(x, y);
+        }
+        internal float getOrientation()
+        {
+            return MathHelper.ToRadians(Orientation);
         }
 
         [XmlElement("sprite")]
@@ -60,7 +74,7 @@ namespace TopDownRacer.Controller
         public Int32 Height;
 
         [XmlAttribute("o")]
-        public Int32 Orientation;
+        public Int32 Orientation = 0;
 
         [XmlAttribute("n")]
         public String Name;
@@ -85,6 +99,7 @@ namespace TopDownRacer.Controller
                             Input = new Input()
                             { },
                             Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
+                            Rotation = MathHelper.ToRadians(Orientation)
                         };
 
                     case "Bumper":

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TopDownRacer.Controller;
 using TopDownRacer.Sprites;
 
@@ -10,9 +11,10 @@ namespace TopDownRacer.States
     internal class MultiplayerState : State
     {
         //constuctor van de game state
-        public MultiplayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public MultiplayerState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, string MapFileName, List<Player> players)
           : base(game, graphicsDevice, content)
         {
+            //Debug.WriteLine("Multiplayer");
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
             playerTexture.Insert(1, content.Load<Texture2D>("Player/car_small_2"));
             playerTexture.Insert(2, content.Load<Texture2D>("Player/car_small_3"));
@@ -24,8 +26,16 @@ namespace TopDownRacer.States
             checkpointTexture = content.Load<Texture2D>("Levels/checkpoint");
             backgroundTexture = content.Load<Texture2D>("Levels/background");
 
-            var xmlMap = XmlMapReader.LoadMap("L-shape");
+            var xmlMap = XmlMapReader.LoadMap(MapFileName);
+            Vector2 spawnpoint = xmlMap.getSpawnpoint();
+            float orientation = xmlMap.getOrientation();
             game._sprites = xmlMap.getSprites();
+            foreach(Sprite player in players)
+            {
+                player.Position = spawnpoint;
+                player.Rotation = orientation;
+                game._sprites.Add(player);
+            }
         }
 
         //Het starten van het spel

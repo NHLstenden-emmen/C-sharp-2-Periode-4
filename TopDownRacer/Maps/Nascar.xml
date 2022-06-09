@@ -16,23 +16,22 @@ a => (int) amount of checkpoints
 -->
 <!-- nascar -->
 
-<Map>
-	<sprite c="Player" x ="200" y="200" w="50" h="50" n="player1" />
+<Map x="100" y="100">
 
 	<!-- Outer Ring -->
-	<sprite c="Bumper" x ="0" y="0" w="3440" h="28" o="0" />
-	<sprite c="Bumper" x ="3418" y="0" w="28" h="1440" o="1" />
-	<sprite c="Bumper" x ="0" y="1418" w="3440" h="28" o="2" />
-	<sprite c="Bumper" x ="0" y="0" w="28" h="1440" o="3" />
+	<sprite c="Bumper" x ="0" y="0" w="1920" h="28" o="0" />
+	<sprite c="Bumper" x ="1892" y="0" w="28" h="1080" o="1" />
+	<sprite c="Bumper" x ="0" y="1052" w="1920" h="28" o="2" />
+	<sprite c="Bumper" x ="0" y="0" w="28" h="1080" o="3" />
 
 	<!-- Inner Ring -->
-	<sprite c="Bumper" x ="400" y="400" w="2640" h="28" o="2" />
-	<sprite c="Bumper" x ="3018" y="400" w="28" h="640" o="3" />
-	<sprite c="Bumper" x ="400" y="1018" w="2640" h="28" o="0" />
-	<sprite c="Bumper" x ="400" y="400" w="28" h="640" o="1" />
+	<sprite c="Bumper" x ="250" y="250" w="1420" h="28" o="2" />
+	<sprite c="Bumper" x ="1642" y="250" w="28" h="580" o="3" />
+	<sprite c="Bumper" x ="250" y="802" w="1420" h="28" o="0" />
+	<sprite c="Bumper" x ="250" y="250" w="28" h="580" o="1" />
 
 	<!-- Progress meters-->
-	<sprite c="Checkpoint" x ="1720" y="0" w="28" h="428" o="1" n="checkpoint" i="0" />
-	<sprite c="Checkpoint" x ="1720" y="1024" w="28" h="428" o="3" n="checkpoint" i="1" />
-	<sprite c="Finishline" x ="0" y="400" w="428" h="28" o="0" n="checkpoint" a="2" />
+	<sprite c="Checkpoint" x ="960" y="0" w="28" h="278" o="1" n="checkpoint" i="0" />
+	<sprite c="Checkpoint" x ="960" y="802" w="28" h="278" o="3" n="checkpoint" i="1" />
+	<sprite c="Finishline" x ="0" y="250" w="278" h="28" o="0" n="checkpoint" a="2" />
 </Map>
