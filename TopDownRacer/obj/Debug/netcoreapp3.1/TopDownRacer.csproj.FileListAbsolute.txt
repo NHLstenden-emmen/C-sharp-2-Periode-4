@@ -155,3 +155,4 @@ C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Per
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.dll
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.pdb
 C:\Users\djdal\Documents\Informatica\Jaar 2\Periode 4\C# 2\Project\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.genruntimeconfig.cache
+C:\Users\roanm\Desktop\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Levels\tires_white_small.xnb
