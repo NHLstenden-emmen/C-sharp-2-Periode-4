@@ -8,10 +8,10 @@ using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
 {
-    internal class NeralNetworkState : State
+    internal class NeuralNetworkState : State
     {
         //constuctor van de game state
-        public NeralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public NeuralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
@@ -52,7 +52,10 @@ namespace TopDownRacer.States
                         // draw player
                         sprite.Draw(spriteBatch, 0.6f);
                         //draw closet barrier front indication
-                        spriteBatch.DrawString(_font, "00000", findClosestBarrierFront(sprite), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
+                        spriteBatch.DrawString(_font, "front\nfront\nfront", findClosestBarrierDirectional(sprite), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
+                        spriteBatch.DrawString(_font, "right\nright\nright", findClosestBarrierDirectional(sprite, 90), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
+                        spriteBatch.DrawString(_font, "back\nback\nback", findClosestBarrierDirectional(sprite, 180), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
+                        spriteBatch.DrawString(_font, "left\nleft\nleft", findClosestBarrierDirectional(sprite, 270), Color.Red, 0, Vector2.Zero, 1, SpriteEffects.None, 0.4f);
                     }
                 }
                 else
@@ -80,7 +83,7 @@ namespace TopDownRacer.States
             }
         }
 
-        private Vector2 findClosestBarrierFront(Sprite sprite)
+        private Vector2 findClosestBarrierDirectional(Sprite sprite, int rotation = 0)
         {
             int count = 0;
 
@@ -88,20 +91,14 @@ namespace TopDownRacer.States
             {
                 count++;
 
-                //double yDif = Math.Tan(sprite.Rotation) * (sprite.Position.X  + count * (bumperTexture.Width / 2) - sprite.Position.X);
-                //double y = sprite.Position.Y - yDif;
-                double y = sprite.Position.Y + ((count * bumperTexture.Width / 2) * Math.Sin((sprite.Rotation)));
+                double y = sprite.Position.Y + ((count * bumperTexture.Width / 2) * Math.Sin((sprite.Rotation + MathHelper.ToRadians(rotation))));
 
-                double x = sprite.Position.X + ((count * bumperTexture.Width / 2) * Math.Cos((sprite.Rotation)));
-
-                //Debug.WriteLine(x + ", " + y + " - " + MathHelper.ToDegrees(sprite.Rotation));
+                double x = sprite.Position.X + ((count * bumperTexture.Width / 2) * Math.Cos((sprite.Rotation + MathHelper.ToRadians(rotation))));
 
                 foreach (var sprite2 in _game._sprites)
                 {
                     if (sprite2 is Bumper)
                     {
-                        //Debug.WriteLine("car postion: " + x + ", " + y + " - Bumber: " + sprite.);
-
                         if (y < sprite2.Position.Y + sprite2.height && y > sprite2.Position.Y && x < sprite2.Position.X + sprite2.width && x > sprite2.Position.X)
                         {
                             return new Vector2((float)x, (float)y);
