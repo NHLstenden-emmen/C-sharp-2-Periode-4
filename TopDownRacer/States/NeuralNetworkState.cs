@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using TopDownRacer.Controller;
+using TopDownRacer.Models;
 using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
@@ -27,6 +28,14 @@ namespace TopDownRacer.States
 
             var xmlMap = XmlMapReader.LoadMap("L-shape");
             game._sprites = xmlMap.getSprites();
+
+            var player = new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - 130)
+            {
+                Name = "test",
+                Input = new Input() { },
+                Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
+            };
+            game._sprites.Add(player);
         }
 
         //Het starten van het spel

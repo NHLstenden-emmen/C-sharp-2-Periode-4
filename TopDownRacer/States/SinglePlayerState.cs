@@ -30,7 +30,7 @@ namespace TopDownRacer.States
             game._sprites = xmlMap.getSprites();
             player.Position = spawnpoint;
             player.Rotation = orientation;
-            game._sprites.Add(player);
+            game._sprites.Add(player);  
         }
 
         //Het starten van het spel
