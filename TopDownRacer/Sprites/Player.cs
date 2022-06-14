@@ -1,69 +1,112 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TopDownRacer.Sprites
 {
     public class Player : Sprite
-    {//Declaring a variable of type Texture2D to add an image to
-        Texture2D playerTexture;
-
-
-        public Vector2 Position { get; set; }
-        public float Rotation { get; set; }
+    {
+        public String Name = "kevin";
+        public int Score;
+        public int checkpointId = 0;
+        public Boolean Dead = false;
         private int MaxPositionSpeed { get; set; } = 15;
-        private float CurrentPositionSpeed { get; set; }
         private float ChangePositionSpeed { get; set; }
-        private float RotationSpeed { get; set; } = 2.5f;
-        private Vector2 Origin { get; set; }
-        public int areaWidth { get; set; }
-        public int areaHeight { get; set; }
 
-        public Player()
+        private float RotationSpeed { get; set; } = 0f;
+        private float MaxRotationSpeed { get; set; } = 2.5f;
+        private int playerNumber;
+        private SoundEffectInstance engineSound;
+        private SoundEffectInstance brakingSound;
+
+        public Player(Texture2D texture, int x, int y, int playerNumber = 0)
+        : base(texture)
         {
+            Debug.WriteLine(playerNumber);
+            Position = new Vector2(x, y);
+            if (playerNumber < 0 || playerNumber > 3)
+            {
+                this.playerNumber = 0;
+            } else
+            {
+                this.playerNumber = playerNumber;
+            }
+
+            //Laad de soundEffects in
+            engineSound = Game1._soundEffects[1].CreateInstance();
+            engineSound.Volume = 0.0f;
+            engineSound.IsLooped = true;
+            engineSound.Play();
         }
 
         public void Initialize()
         {
-            Position = new Vector2(Game1.ScreenWidth / 2,
-                Game1.ScreenHeight / 2);
         }
-        public void LoadContent(Texture2D texture)
+
+        public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
-            playerTexture = texture;
-            Origin = new Vector2(playerTexture.Width / 2, playerTexture.Height / 2);
+            Move();
+
+            if (!Dead)
+            {
+                //Debug.Write(Math.Abs(CurrentPositionSpeed) / 15f);
+                //Debug.Write("CurrentPositionSpeed");
+                //Debug.WriteLine(CurrentPositionSpeed);
+                
+                if (CurrentPositionSpeed > 10.0)
+                                    Score++;
+            } else
+            {
+                engineSound.Volume = 0f;
+            }
+                
         }
 
         public void Move()
         {
-            // TODO: Add your update logic here
-
             //Declaring basic player controls
-            var kstate = Keyboard.GetState();
-            // TODO backwards driving is not mirrored
+            KeyboardState kstate = Keyboard.GetState();
             // Rotate the car based on which key is pressed
-            if (kstate.IsKeyDown(Keys.A))
-                Rotation -= MathHelper.ToRadians(RotationSpeed);
-            if (kstate.IsKeyDown(Keys.D))
-                Rotation += MathHelper.ToRadians(RotationSpeed);
+            if (kstate.IsKeyDown(Input.Left[playerNumber]))
+            {
+                if (RotationSpeed < MaxRotationSpeed)
+                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+                if (CurrentPositionSpeed > 0.0f)
+                    Rotation -= MathHelper.ToRadians(RotationSpeed);
+                if (CurrentPositionSpeed < 0.0f)
+                    Rotation += MathHelper.ToRadians(RotationSpeed);
+            }
 
+            if (kstate.IsKeyDown(Input.Right[playerNumber]))
+            {
+                if (RotationSpeed < MaxRotationSpeed)
+                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+                if (CurrentPositionSpeed > 0.0f)
+                    Rotation += MathHelper.ToRadians(RotationSpeed);
+                if (CurrentPositionSpeed < 0.0f)
+                    Rotation -= MathHelper.ToRadians(RotationSpeed);
+            }
 
-            var direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
+            Vector2 direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
 
-            if (kstate.IsKeyDown(Keys.W))
+            if (kstate.IsKeyDown(Input.Up[playerNumber]))
             {
                 // if the current speed is not above the max speed accelerate the car forwards
-                if (CurrentPositionSpeed < MaxPositionSpeed)
+                if (CurrentPositionSpeed < MaxPositionSpeed - 0.15f)
                 {
+                    engineSound.Volume = Math.Abs(CurrentPositionSpeed) / 15f;
                     ChangePositionSpeed += 0.15f;
                     CurrentPositionSpeed += ChangePositionSpeed;
                 }
             }
-            else if (kstate.IsKeyDown(Keys.S))
+            else if (kstate.IsKeyDown(Input.Down[playerNumber]))
             {
                 // if the current speed is not above the max speed accelerate the car backwards
-                if (CurrentPositionSpeed > (0 - MaxPositionSpeed))
+                if (CurrentPositionSpeed > (0.15f - MaxPositionSpeed))
                 {
                     ChangePositionSpeed += -0.15f;
                     CurrentPositionSpeed += ChangePositionSpeed;
@@ -71,6 +114,11 @@ namespace TopDownRacer.Sprites
             }
             else
             {
+                // verlaag het volume van de motor als er geen gas wordt gegeven
+                if (engineSound.Volume > 0.01f)
+                {
+                    engineSound.Volume -= 0.01f;
+                }
                 // automatic braking if no key is pressed
                 if (CurrentPositionSpeed > 0.25f || CurrentPositionSpeed < -0.25f)
                 {
@@ -88,16 +136,14 @@ namespace TopDownRacer.Sprites
                 ChangePositionSpeed = MaxPositionSpeed / 20;
             if (ChangePositionSpeed < -1 * (MaxPositionSpeed / 20))
                 ChangePositionSpeed = -1 * MaxPositionSpeed / 20;
+            // if rotation speed is to high set it to the max rotation speed
+            if (RotationSpeed > MaxRotationSpeed)
+                RotationSpeed = MaxRotationSpeed;
 
             Position += direction * CurrentPositionSpeed;
 
             // limit the positions in which the car can travel
-            Position = Vector2.Clamp(Position, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2), new Vector2(Game1.ScreenWidth - playerTexture.Width / 2, Game1.ScreenHeight - playerTexture.Height / 2));
-        }
-
-        public void Draw(SpriteBatch _spriteBatch)
-        {
-            _spriteBatch.Draw(playerTexture, Position, null, Color.White, Rotation, Origin, 1, SpriteEffects.None, 0f);
+            Position = Vector2.Clamp(Position, new Vector2(_texture.Width / 2, _texture.Height / 2), new Vector2(Game1.ScreenWidth - _texture.Width / 2, Game1.ScreenHeight - _texture.Height / 2));
         }
     }
 }

@@ -88,23 +88,20 @@ Dit is het testplan voor de verschilende schermen die in beeld komen.
 
 #### Testcase #1, Bij het opstarten van de aplicatie zie je een startmenu
 
-Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
+Bij dit start menu kan je 2 verschillende game modes selecteren.
 
-#### Testcase #2, Bij het winnen van een ronde zie je een scherm met de score van de ronde
+#### Testcase #2, Je hebt een keuze menu voor de baan waarop je wil racen
 
-Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
+Als je een game mode hebt gekozen kan je een bepaalde baan selecteren om daar op te racen.
 
-#### Testcase #3, Bij het verliezen van een ronde zie je een scherm met de score van de ronde
-
-Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
+#### Testcase #3, Extra spelers toevoegen 
+Als je een multiplayer game start krijg je een optie om het aantal spelers toe te voegen tot maximaal 4 spelers
 
 #### Testcase #4, Een menu voor de aanpassing van de AI
+Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien. Voor de ai starten alle spelers op de zelfde positie.
 
-Hieronder staat een afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien.
-
-#### Testcase #5, Een menu voor het opstarten van een nieuwe ronde
-
-Hieronder staat een schematische afbeelding met een voorbeeld van hoe dit scherm er uit moet komen te zien. en wat voor opties in het scherm komen te staan.
+#### Testcase #5, De game 
+Als een game wordt gestart wordt de baan ingeladen en worden het aantal spelers weer gegeven. Er kan dan meteen worden geraced.
 
 ### Testplan Game
 
@@ -113,8 +110,8 @@ Dit is het testplan om de game te testen
 #### Testcases #1, Auto raakt muur en gaat dood
 Op het moment dat de auto een muur raakt gaat die speler dood en krijgt hij een game overscherm.
 
-#### Testcases #2, De camera angle
-De game is tenalle tijden voledig in beeld. er word niet ingezomed op een specefieke speler.
+#### Testcases #2, De finishline kan alleen behaald worden als hij alle voorgaande checkpoints heeft behaald.
+Als een baan 3 checkpoints heeft kan de speler gewoon door de finishline rijden zonder dat hij daadwerkelijk finished.
 
 #### Testcases #3, De timer
 Op het moment dat de race start start er een timer die blijft lopen tot dat alle autos dood zijn.
@@ -124,11 +121,12 @@ De socre is zichtbaar in beeld en gaat omhoog en omloog op basis van de auto waa
 
 #### Testcases #5, Auto kan worden bewogen door de speler
 De auto kan 4 richtingen op bewogen worden.
+Bijvoorbeeld:
 A = draaien naar links
 S = achteruit
 D = draaien naar rechts
 W = Vooruit
-
+De input verschilt per speler
 
 ### Testplan Ai
 

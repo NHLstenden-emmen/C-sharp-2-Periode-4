@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using System;
+using System.Collections.Generic;
 using TopDownRacer.Sprites;
 using TopDownRacer.States;
 
@@ -8,16 +11,22 @@ namespace TopDownRacer
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        private readonly GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch { get; set; }
+        public static List<SoundEffect> _soundEffects;
 
-        public static int ScreenWidth;
-        public static int ScreenHeight;
+        public static int ScreenWidth = 1920;
+        public static int ScreenHeight = 1080;
+        public static int TrackWidth = 400;
+
         //Declaring a variable of type Texture2D to add an image to
-        Texture2D playerTexture;
-        private Player player1 = new Player();
+        public List<Sprite> _sprites;
+
+        public static Random rnd = new Random();
 
         private State _currentState;
+
+        private SpriteFont _font;
 
         private State _nextState;
 
@@ -30,26 +39,16 @@ namespace TopDownRacer
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            _soundEffects = new List<SoundEffect>();
         }
 
         protected override void Initialize()
         {
             IsMouseVisible = true;
 
-            // set graphics resolution to the resolution of the display
-            ScreenWidth = GraphicsDevice.Adapter.CurrentDisplayMode.Width;
-            ScreenHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
-
             _graphics.PreferredBackBufferWidth = ScreenWidth;
             _graphics.PreferredBackBufferHeight = ScreenHeight;
             _graphics.ApplyChanges();
-
-            // set the window size to fullscreen
-            _graphics.IsFullScreen = true;
-            _graphics.ApplyChanges();
-
-            player1.Initialize();
-
             base.Initialize();
         }
 
@@ -57,14 +56,14 @@ namespace TopDownRacer
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playerTexture = Content.Load<Texture2D>("Player/rectangle");
-            player1.LoadContent(playerTexture);
-            // TODO: use this.Content to load your game content here
-            player1.areaHeight = _graphics.PreferredBackBufferHeight;
-            player1.areaWidth = _graphics.PreferredBackBufferWidth;
+            //Laad de muziek in
+            _soundEffects.Add(Content.Load<SoundEffect>("Sounds/dreams"));
+            _soundEffects.Add(Content.Load<SoundEffect>("Sounds/Engine-Sounds"));
 
+            _font = Content.Load<SpriteFont>("Fonts/Font");
             _currentState = new MenuState(this, _graphics.GraphicsDevice, Content);
         }
+
         protected override void UnloadContent()
         {
             // TODO: Unload any non loaded content here
@@ -85,20 +84,16 @@ namespace TopDownRacer
 
             //Press esc to close the game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
-
-            // TODO: Add your update logic here
-            player1.Move();
+            }
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            //player1.Draw(_spriteBatch);
-            _currentState.Draw(gameTime, _spriteBatch, playerTexture, player1.Position, player1.Rotation);
+            _currentState.Draw(gameTime, _spriteBatch, _sprites, _font);
 
             base.Draw(gameTime);
         }

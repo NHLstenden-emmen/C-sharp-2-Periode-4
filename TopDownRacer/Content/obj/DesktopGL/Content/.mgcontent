@@ -4,11 +4,37 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
-    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
-    <File>D:/xampp/htdocs/C-sharp-2-Periode-4/TopDownRacer/Content/Player/rectangle.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Fonts/Font.spritefont</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/background.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/barrier_white.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/checkpoint.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/Finishline.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/tires_white_small.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_1.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_2.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_3.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_4.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Player/car_small_5.png</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Sounds/braking.mp3</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Sounds/dreams.mp3</File>
+    <File>D:/Programming/Github/C-sharp-2-Periode-4/TopDownRacer/Content/Sounds/Engine-Sounds.mp3</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
