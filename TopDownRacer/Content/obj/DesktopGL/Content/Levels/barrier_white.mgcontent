@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/barrier_white.png</SourceFile>
-  <SourceTime>2022-06-01T13:28:10.6061499+02:00</SourceTime>
-  <DestFile>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Levels/barrier_white.xnb</DestFile>
-  <DestTime>2022-06-14T10:04:24.5175668+02:00</DestTime>
+  <SourceFile>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Levels/barrier_white.png</SourceFile>
+  <SourceTime>2022-05-24T11:02:44.5894338+02:00</SourceTime>
+  <DestFile>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Levels/barrier_white.xnb</DestFile>
+  <DestTime>2022-06-14T14:37:36.8830465+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
