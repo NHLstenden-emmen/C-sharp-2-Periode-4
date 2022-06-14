@@ -5,6 +5,10 @@ using System;
 using System.Collections.Generic;
 using TopDownRacer.Controller;
 using TopDownRacer.Models;
+using TopDownRacer.NeuralNetwork;
+using TopDownRacer.NeuralNetwork.ActivationFunctions;
+using TopDownRacer.NeuralNetwork.InputFunctions;
+using TopDownRacer.NeuralNetwork.Layers;
 using TopDownRacer.Sprites;
 
 namespace TopDownRacer.States
@@ -15,6 +19,27 @@ namespace TopDownRacer.States
         public NeuralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
+            //implementatie van Neural network moet hier komen
+            var network = new RaceNeuralNetwork(3);
+
+            //Factory voor het maken van de layers
+            var layerFactory = new NeuralLayerFactory();
+
+            //Toevoegen van twee nieuwe layers aan het neural network
+            network.AddLayer(layerFactory.CreateNeuralLayer(3, new RectifiedActivationFuncion(), new WeightedSumFunction()));
+            network.AddLayer(layerFactory.CreateNeuralLayer(1, new SigmoidActivationFunction(0.7), new WeightedSumFunction()));
+
+            //hier moeten de expected values komen te staan
+            network.PushExpectedValues(
+                new double[][] { });
+
+            //hier moet de train methode komen
+            network.Train(
+                new double[][] { }, 10000);
+            network.PushInputValues(new double[] { 1054, 54, 1 });
+            var outputs = network.GetOutput();
+
+
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
             playerTexture.Insert(1, content.Load<Texture2D>("Player/car_small_2"));
             playerTexture.Insert(2, content.Load<Texture2D>("Player/car_small_3"));

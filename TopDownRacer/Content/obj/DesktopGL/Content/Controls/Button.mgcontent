@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</SourceFile>
-  <SourceTime>2022-05-15T15:43:11.6608343+02:00</SourceTime>
-  <DestFile>C:/Users/roanm/Desktop/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Controls/Button.xnb</DestFile>
-  <DestTime>2022-06-09T11:37:39.1585415+02:00</DestTime>
+  <SourceFile>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/Controls/Button.png</SourceFile>
+  <SourceTime>2022-05-14T13:23:22.0885441+02:00</SourceTime>
+  <DestFile>C:/Users/djdal/Documents/Informatica/Jaar 2/Periode 4/C# 2/Project/C-sharp-2-Periode-4/TopDownRacer/Content/bin/DesktopGL/Content/Controls/Button.xnb</DestFile>
+  <DestTime>2022-06-14T10:04:24.3765537+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
