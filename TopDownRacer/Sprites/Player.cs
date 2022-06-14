@@ -57,7 +57,7 @@ namespace TopDownRacer.Sprites
                 //Debug.Write("CurrentPositionSpeed");
                 //Debug.WriteLine(CurrentPositionSpeed);
                 
-                if (CurrentPositionSpeed > 10.0)
+                if (CurrentPositionSpeed > (MaxPositionSpeed / 2))
                                     Score++;
             } else
             {

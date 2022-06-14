@@ -49,6 +49,10 @@ namespace TopDownRacer
             _graphics.PreferredBackBufferWidth = ScreenWidth;
             _graphics.PreferredBackBufferHeight = ScreenHeight;
             _graphics.ApplyChanges();
+
+            _graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
+
             base.Initialize();
         }
 
