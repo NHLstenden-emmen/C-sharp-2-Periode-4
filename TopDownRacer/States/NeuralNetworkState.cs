@@ -10,34 +10,21 @@ using TopDownRacer.NeuralNetwork.Layers;
 using TopDownRacer.Controller;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
+using System.Diagnostics;
 
 namespace TopDownRacer.States
 {
     internal class NeuralNetworkState : State
     {
+        private bool initizalized = false;
+        private RaceNeuralNetwork network;
+
         //constuctor van de game state
         public NeuralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
-            //implementatie van Neural network moet hier komen
-            var network = new RaceNeuralNetwork(3);
-
-            //Factory voor het maken van de layers
-            var layerFactory = new NeuralLayerFactory();
-
-            //Toevoegen van twee nieuwe layers aan het neural network
-            network.AddLayer(layerFactory.CreateNeuralLayer(3, new RectifiedActivationFuncion(), new WeightedSumFunction()));
-            network.AddLayer(layerFactory.CreateNeuralLayer(1, new SigmoidActivationFunction(0.7), new WeightedSumFunction()));
-
-            //hier moeten de expected values komen te staan
-            network.PushExpectedValues(
-                new double[][] { });
-
-            //hier moet de train methode komen
-            network.Train(
-                new double[][] { }, 10000);
-            network.PushInputValues(new double[] { 1054, 54, 1 });
-            var outputs = network.GetOutput();
+            
+      
 
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
             playerTexture.Insert(1, content.Load<Texture2D>("Player/car_small_2"));
@@ -65,6 +52,60 @@ namespace TopDownRacer.States
         //Het starten van het spel
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font)
         {
+            if (!initizalized)
+            {
+                //implementatie van Neural network moet hier komen
+                //inputs in the order of: speed, left, front-left, front, front-right, right, back
+                var network = new RaceNeuralNetwork(7);
+
+                //Factory voor het maken van de layers
+                var layerFactory = new NeuralLayerFactory();
+
+                //Toevoegen van twee nieuwe layers aan het neural network
+                network.AddLayer(layerFactory.CreateNeuralLayer(7, new RectifiedActivationFuncion(), new WeightedSumFunction()));
+                network.AddLayer(layerFactory.CreateNeuralLayer(4, new SigmoidActivationFunction(-1), new WeightedSumFunction()));
+
+                //hier moeten de expected values komen te staan
+                network.PushExpectedValues(
+                    new double[][] {
+                    //in the form of front, back, left, right
+                    new double[] { 1, 0, 1, 0} , //front left
+                    new double[] { 0, 1, 0, 1 }, //back right
+                    new double[] { 1, 0, 0, 1 }, //front right
+                    new double[] { 0, 1, 1, 0 }, //back left
+                    new double[] { 0, 1, 0, 0 }, //back
+                    new double[] { 1, 0, 0, 0 }, //front
+                    });
+
+                //hier moet de train methode komen
+                network.Train(
+                    new double[][] {
+                    //inputs in the order of: speed, left, front-left, front, front-right, right, back
+                    new double[] { 5, 700, 300, 100, 150, 50, 1000 },
+                    new double[] { 5, 100, 200, 25, 10, 50,  200},
+                    new double[] { 5, 50, 60, 100, 150, 300,  1000},
+                    new double[] { 5, 100, 50, 10, 25, 200,  200  },
+                    new double[] { 0, 100, 200, 25, 10, 50,  200},
+                    new double[] { 5, 50, 75, 1000, 75, 50, 500 },
+                    }, 10000);
+
+                this.network = network;
+                initizalized = true;
+            }
+           
+            //push expected values
+            network.PushInputValues(new double[] { 5, 50, 75, 1000, 75, 50, 500 });
+            var outputs = network.GetOutput();
+
+            //check outputs ---- checkpoint 14-6-2022
+            string testValues = "";
+            foreach(double index in network.GetOutput())
+            {
+                testValues += "- " + index;
+            }
+            Debug.WriteLine(testValues);
+            Debug.WriteLine(network.GetOutput().Count);
+
             spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearWrap, null, null);
 
             int fontY = 50;

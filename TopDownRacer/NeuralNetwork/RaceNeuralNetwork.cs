@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using TopDownRacer.NeuralNetwork.ActivationFunctions;
@@ -74,6 +75,7 @@ namespace TopDownRacer.NeuralNetwork
 
             _layers.Last().Neurons.ForEach(neuron =>
             {
+                Debug.WriteLine(neuron.CalculateOutput());
                 returnValue.Add(neuron.CalculateOutput());
             });
 
