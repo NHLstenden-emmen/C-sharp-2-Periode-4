@@ -21,7 +21,7 @@ namespace TopDownRacer.NeuralNetwork
         internal List<NeuralLayer> _layers;
 
         //een collectie van de errros van de neuronen aan de hand van een key/value paar
-        internal Dictionary<int, double[]> _neuronErrors;
+        //internal Dictionary<int, double[]> _neuronErrors;
 
         //De learningrate en verwachte uitkomst 
         internal double _learningRate;
@@ -32,7 +32,7 @@ namespace TopDownRacer.NeuralNetwork
         {
             //initialiseren van de list, dictionary en factory
             _layers = new List<NeuralLayer>();
-            _neuronErrors = new Dictionary<int, double[]>();
+            //_neuronErrors = new Dictionary<int, double[]>();
             _layerFactory = new NeuralLayerFactory();
 
             //ook moet een input layer worden aangemaakt om inputs te verzamelen
@@ -53,7 +53,7 @@ namespace TopDownRacer.NeuralNetwork
             }
 
             _layers.Add(newLayer);
-            _neuronErrors.Add(_layers.Count - 1, new double[newLayer.Neurons.Count]);
+            //_neuronErrors.Add(_layers.Count - 1, new double[newLayer.Neurons.Count]);
         }
 
         //Een methode om input waarde in het neural network te zetten
@@ -75,7 +75,7 @@ namespace TopDownRacer.NeuralNetwork
 
             _layers.Last().Neurons.ForEach(neuron =>
             {
-                Debug.WriteLine(neuron.CalculateOutput());
+                Debug.WriteLine(neuron);
                 returnValue.Add(neuron.CalculateOutput());
             });
 
@@ -101,7 +101,16 @@ namespace TopDownRacer.NeuralNetwork
 
                     //Berekenen van errors door alle errors van de aparte neurons op te tellen
                     totalError = CalculateTotalError(outputs, j);
-
+                    string testValues = "";
+                    foreach (double index in outputs)
+                    {
+                        testValues += "/ " + index;
+                    }
+                    Debug.Write(testValues);
+                    Debug.Write("/");
+                    Debug.Write(j);
+                    Debug.Write("/");
+                    Debug.WriteLine(totalError);
                     //Een handle  voor de output en hidden layer
                     HandleOutputLayer(j);
                     HandleHiddenLayers();
