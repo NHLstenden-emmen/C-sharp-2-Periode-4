@@ -164,3 +164,21 @@
 /processorParam:TextureFormat=Color
 /build:Player/car_small_5.png
 
+#begin Sounds/braking.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/braking.mp3
+
+#begin Sounds/dreams.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/dreams.mp3
+
+#begin Sounds/Engine-Sounds.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Engine-Sounds.mp3
+
