@@ -37,7 +37,6 @@ D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\runtime
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\soft_oal.dll
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SDL2.dll
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
-D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.csproj.AssemblyReference.cache
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.GeneratedMSBuildEditorConfig.editorconfig
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.AssemblyInfoInputs.cache
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\obj\Debug\netcoreapp3.1\TopDownRacer.AssemblyInfo.cs
@@ -105,7 +104,6 @@ D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\C
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Sounds\dreams.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Sounds\braking.ogg
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Sounds\braking.xnb
-D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Player\light_white.xnb
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Maps\L-shape.xml
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Maps\Nascar.xml
 D:\xampp\htdocs\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Maps\ZigZag.xml

@@ -31,7 +31,8 @@ namespace TopDownRacer.Sprites
             if (playerNumber < 0 || playerNumber > 3)
             {
                 this.playerNumber = 0;
-            } else
+            }
+            else
             {
                 this.playerNumber = playerNumber;
             }
@@ -56,14 +57,14 @@ namespace TopDownRacer.Sprites
                 //Debug.Write(Math.Abs(CurrentPositionSpeed) / 15f);
                 //Debug.Write("CurrentPositionSpeed");
                 //Debug.WriteLine(CurrentPositionSpeed);
-                
+
                 if (CurrentPositionSpeed > (MaxPositionSpeed / 2))
-                                    Score++;
-            } else
+                    Score++;
+            }
+            else
             {
                 engineSound.Volume = 0f;
             }
-                
         }
 
         public void Move()
