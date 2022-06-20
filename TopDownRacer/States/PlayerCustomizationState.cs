@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -16,16 +17,24 @@ namespace TopDownRacer.States
         private String gameMode;
         private String MapFileName;
         private List<Player> players;
+        private SoundEffectInstance backgroundMusic;
 
         //constuctor van de MenuState
         public PlayerCustomizationState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, String GameMode)
           : base(game, graphicsDevice, content)
         {
+            //Laden van de player textures
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
             playerTexture.Insert(1, content.Load<Texture2D>("Player/car_small_2"));
             playerTexture.Insert(2, content.Load<Texture2D>("Player/car_small_3"));
             playerTexture.Insert(3, content.Load<Texture2D>("Player/car_small_4"));
             playerTexture.Insert(4, content.Load<Texture2D>("Player/car_small_5"));
+
+            //Laad de muziek in
+            backgroundMusic = Game1._soundEffects[0].CreateInstance();
+            backgroundMusic.Volume = 0.4f;
+            backgroundMusic.IsLooped = true;
+            backgroundMusic.Play();
 
             //Laden van de font en button png
             Texture2D buttonTexture = _content.Load<Texture2D>("Controls/Button");
@@ -70,7 +79,7 @@ namespace TopDownRacer.States
 
             List<String> maps = new List<string>
             {
-                "Nascar","L-shape","ZigZag"
+                "Nascar","L-shape","ZigZag","SandBox"
             };
             for (int i = 0; i < maps.Count; i++)
             {
@@ -119,7 +128,7 @@ namespace TopDownRacer.States
         //De click om een Speler toe te voegen
         private void AddPlayerButton_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine(players.Count);
+            Game1._soundEffects[1].Play();
             if (players.Count >= 4)
                 return;
                 

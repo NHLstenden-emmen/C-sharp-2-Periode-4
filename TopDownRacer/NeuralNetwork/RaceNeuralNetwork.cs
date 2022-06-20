@@ -38,7 +38,7 @@ namespace TopDownRacer.NeuralNetwork
             //ook moet een input layer worden aangemaakt om inputs te verzamelen
             CreateInputLayer(numberOfInputNeurons);
 
-            _learningRate = 0.95;
+            _learningRate = 2.95;
         }
 
         //een methode om een neural layer toe te voegen aan het neural network

@@ -212,3 +212,4 @@ D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\C
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Sounds\dreams.xnb
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Sounds\Engine-Sounds.ogg
 D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Content\Sounds\Engine-Sounds.xnb
+D:\Programming\Github\C-sharp-2-Periode-4\TopDownRacer\bin\Debug\netcoreapp3.1\Maps\SandBox.xml

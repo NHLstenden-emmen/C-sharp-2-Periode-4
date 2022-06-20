@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -13,11 +14,12 @@ namespace TopDownRacer.Sprites
         public int Score;
         public int checkpointId = 0;
         public Boolean Dead = false;
-        private int MaxPositionSpeed { get; set; } = 15;
+        private int MaxPositionSpeed { get; set; } = 5;
         private float ChangePositionSpeed { get; set; }
         private float RotationSpeed { get; set; } = 0f;
         private float MaxRotationSpeed { get; set; } = 2.5f;
         private int playerNumber;
+        private SoundEffectInstance engineSound;
 
         public Player(Texture2D texture, int x, int y, int playerNumber = 0)
         : base(texture)
@@ -31,6 +33,12 @@ namespace TopDownRacer.Sprites
             {
                 this.playerNumber = playerNumber;
             }
+
+            //Laad de soundEffects in
+            engineSound = Game1._soundEffects[1].CreateInstance();
+            engineSound.Volume = 0.0f;
+            engineSound.IsLooped = true;
+            engineSound.Play();
         }
 
         public void Initialize()
@@ -42,8 +50,14 @@ namespace TopDownRacer.Sprites
             Move();
 
             if (!Dead)
-                if (CurrentPositionSpeed > 10.0)
+            {
+                if (CurrentPositionSpeed > (MaxPositionSpeed / 2))
                     Score++;
+            } else
+            {
+                engineSound.Volume = 0f;
+            }
+                
         }
 
         public void Move()
@@ -73,6 +87,11 @@ namespace TopDownRacer.Sprites
             }
             else
             {
+                // verlaag het volume van de motor als er geen gas wordt gegeven
+                if (engineSound.Volume > 0.01f)
+                {
+                    engineSound.Volume -= 0.01f;
+                }
                 // automatic braking if no key is pressed
                 if (CurrentPositionSpeed > 0.25f || CurrentPositionSpeed < -0.25f)
                 {
@@ -103,7 +122,7 @@ namespace TopDownRacer.Sprites
         public void DriveBackwards()
         {
             // if the current speed is not above the max speed accelerate the car backwards
-            if (CurrentPositionSpeed > (0 - MaxPositionSpeed))
+            if (CurrentPositionSpeed > (0.15f - MaxPositionSpeed))
             {
                 ChangePositionSpeed += -0.15f;
                 CurrentPositionSpeed += ChangePositionSpeed;
@@ -113,8 +132,9 @@ namespace TopDownRacer.Sprites
         public void DriveForward()
         {
             // if the current speed is not above the max speed accelerate the car forwards
-            if (CurrentPositionSpeed < MaxPositionSpeed)
+            if (CurrentPositionSpeed < MaxPositionSpeed - 0.15f)
             {
+                engineSound.Volume = Math.Abs(CurrentPositionSpeed) / 15f;
                 ChangePositionSpeed += 0.15f;
                 CurrentPositionSpeed += ChangePositionSpeed;
             }
@@ -122,8 +142,13 @@ namespace TopDownRacer.Sprites
 
         public void TurnRight()
         {
-            if (RotationSpeed < MaxRotationSpeed)
+            if (CurrentPositionSpeed > -MaxRotationSpeed && CurrentPositionSpeed < MaxRotationSpeed)
+                RotationSpeed = 0;
+            else if ((CurrentPositionSpeed <= -MaxRotationSpeed && CurrentPositionSpeed > (-MaxRotationSpeed * 3)) || (CurrentPositionSpeed >= MaxRotationSpeed && CurrentPositionSpeed < (MaxRotationSpeed * 3)))
+                RotationSpeed = MaxRotationSpeed;
+            else
                 RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+
             if (CurrentPositionSpeed > 0.0f)
                 Rotation += MathHelper.ToRadians(RotationSpeed);
             if (CurrentPositionSpeed < 0.0f)
@@ -132,8 +157,13 @@ namespace TopDownRacer.Sprites
 
         public void TurnLeft()
         {
-            if (RotationSpeed < MaxRotationSpeed)
+            if (CurrentPositionSpeed > -MaxRotationSpeed && CurrentPositionSpeed < MaxRotationSpeed)
+                RotationSpeed = 0;
+            else if ((CurrentPositionSpeed <= -MaxRotationSpeed && CurrentPositionSpeed > (-MaxRotationSpeed * 3)) || (CurrentPositionSpeed >= MaxRotationSpeed && CurrentPositionSpeed < (MaxRotationSpeed * 3)))
+                RotationSpeed = MaxRotationSpeed;
+            else
                 RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+
             if (CurrentPositionSpeed > 0.0f)
                 Rotation -= MathHelper.ToRadians(RotationSpeed);
             if (CurrentPositionSpeed < 0.0f)

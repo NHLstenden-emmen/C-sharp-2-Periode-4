@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,6 +13,7 @@ namespace TopDownRacer.States
     public class MenuState : State
     {
         private readonly List<Component> _components;
+        private SoundEffectInstance backgroundMusic;
 
         //constuctor van de MenuState
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
@@ -20,6 +22,11 @@ namespace TopDownRacer.States
             //Laden van de font en button png
             Texture2D buttonTexture = _content.Load<Texture2D>("Controls/Button");
             SpriteFont buttonFont = _content.Load<SpriteFont>("Fonts/Font");
+
+            backgroundMusic = Game1._soundEffects[0].CreateInstance();
+            backgroundMusic.Volume = 0.0f;
+            backgroundMusic.IsLooped = true;
+            backgroundMusic.Play();
 
             //Toevoegen van nieuwe buttons en functionaliteiten van de buttons
             Button singlePlayerButton = new Button(buttonTexture, buttonFont)
@@ -80,16 +87,19 @@ namespace TopDownRacer.States
         //De click om een nieuw spel te starten door state te veranderen
         private void NewGameButton_Click(object sender, EventArgs e)
         {
+            Close_Menu();
             _game.ChangeState(new PlayerCustomizationState(_game, _graphicsDevice, _content, "Single Player"));
         }
 
         private void MultiplayerButton_Click(object sender, EventArgs e)
         {
+            Close_Menu();
             _game.ChangeState(new PlayerCustomizationState(_game, _graphicsDevice, _content, "Multiplayer"));
         }
 
         private void AiTrainingButton_Click(object sender, EventArgs e)
         {
+            Close_Menu();
             _game.ChangeState(new NeuralNetworkState(_game, _graphicsDevice, _content));
         }
 
@@ -108,7 +118,14 @@ namespace TopDownRacer.States
 
         private void QuitGameButton_Click(object sender, EventArgs e)
         {
+            Close_Menu();
             _game.Exit();
+        }
+
+        private void Close_Menu()
+        {
+            // Stop de muziek wanneer het menu wordt gesloten
+            backgroundMusic.Stop();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace TopDownRacer.States
         protected ContentManager _content;
 
         protected GraphicsDevice _graphicsDevice;
+
+        protected List<SoundEffect> _soundEffects;
 
         protected Game1 _game;
 

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE Map [
+	<!ENTITY barrierwidth "28">
+]>
+<!-- format:
+c => (String) classe
+x => (int) x position
+y => (int) y position
+w => (int) width
+h => (int) height
+o => (int) orientation
+n => (String) name
+i => (int) checkpointID
+a => (int) amount of checkpoints
+
+-->
+<!-- L shape -->
+
+<Map x="190" y="150">
+	<sprite c="Finishline" x ="0" y="0" w="278" h="28" o="0" n="checkpoint" a="0" />
+</Map>

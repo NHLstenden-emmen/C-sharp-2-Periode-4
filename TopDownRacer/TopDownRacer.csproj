@@ -37,6 +37,9 @@
     <Folder Include="Content\Player\" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Maps\SandBox.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Maps\L-shape.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

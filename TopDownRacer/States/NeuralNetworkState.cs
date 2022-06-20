@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -132,24 +133,14 @@ namespace TopDownRacer.States
                     new double[] { 0, 1, 0, 0 }, //back
                     new double[] { 1, 0, 0, 0 }, //front
                     new double[] { 1, 0, 0, 0 }, //front
+                    new double[] { 0, 1, 0, 0 }, //back
+                    new double[] { 0, 0, 0, 0 }, //back
                     });
 
                 //hier moet de train methode komen
                 network.Train(
                     new double[][] {
                     //inputs in the order of: left, front-left, front, front-right, right, back
-                    //new double[] { 5, 700, 300, 100, 150, 50, 1000 },
-                    //new double[] { 5, 100, 200, 25, 10, 50,  200},
-                    //new double[] { 5, 50, 60, 100, 150, 300,  1000},
-                    //new double[] { 5, 100, 50, 10, 25, 200,  200  },
-                    //new double[] { 0, 100, 200, 25, 10, 50,  200},
-                    //new double[] { 5, 50, 75, 1000, 75, 50, 500 },
-                    //new double[] { 5, 750, 350, 150, 200, 100, 1050 },
-                    //new double[] { 5, 150, 250, 75, 10, 50,  250},
-                    //new double[] { 5, 50, 60, 150, 150, 350,  1500},
-                    //new double[] { 5, 150, 50, 10, 75, 250,  250  },
-                    //new double[] { 0, 150, 250, 75, 10, 50,  250},
-                    //new double[] { 5, 50, 125, 1500, 125, 50, 550 },
                     new double[] {0, 0, 0, 1, 1, 1 },
                     new double[] {1, 1, 1, 0, 0, 0 },
                     new double[] {1, 1, 0, 0, 0, 1 },
@@ -163,7 +154,9 @@ namespace TopDownRacer.States
                     new double[] {1, 1, 1, 1, 1, 0 },
                     new double[] {1, 1, 0, 1, 1, 1 },
                     new double[] {0, 0, 0, 0, 0, 0 },
-                    }, 5000);
+                    new double[] {0, 1, 1, 1, 0, 0 },
+                    new double[] {0, 0, 1, 0, 0, 0 },
+                    }, 1000);
 
                 this.network = network;
                 initizalized = true;
@@ -175,31 +168,41 @@ namespace TopDownRacer.States
             {
                 if (sprite is Player)
                 {
-                    this.network.PushInputValues(new double[] { findClosestBarrierDirectionalBoolean(sprite, 270), findClosestBarrierDirectionalBoolean(sprite, 315), findClosestBarrierDirectionalBoolean(sprite, 0), findClosestBarrierDirectionalBoolean(sprite, 45), findClosestBarrierDirectionalBoolean(sprite, 90), findClosestBarrierDirectionalBoolean(sprite, 180) });
-                    var outputs = this.network.GetOutput();
-                    if (outputs[0] >= 0.5)
+                    if (!((Player)sprite).Dead)
                     {
-                        ((Player)sprite).DriveForward();
+                        double[] input = new double[] { findClosestBarrierDirectionalBoolean(sprite, 270), findClosestBarrierDirectionalBoolean(sprite, 315), findClosestBarrierDirectionalBoolean(sprite, 0), findClosestBarrierDirectionalBoolean(sprite, 45), findClosestBarrierDirectionalBoolean(sprite, 90), findClosestBarrierDirectionalBoolean(sprite, 180) };
+                        Debug.WriteLine(input);
+                        this.network.PushInputValues(input);
+                        var outputs = this.network.GetOutput();
+                        if (outputs[0] >= 0.5)
+                        {
+                            ((Player)sprite).DriveForward();
+                        }
+                        else if (outputs[1] == 1)
+                        {
+                            ((Player)sprite).DriveBackwards();
+                        }
+                        if (outputs[2] == 1)
+                        {
+                            ((Player)sprite).TurnLeft();
+                        }
+                        if (outputs[3] == 1)
+                        {
+                            ((Player)sprite).TurnRight();
+                        }
+                        //check outputs ---- checkpoint 14-6-2022
+                        string testValues = "";
+                        foreach (double index in input)
+                        {
+                            testValues += "/ " + index;
+                        }
+                        testValues += ", ";
+                        foreach (double index in outputs)
+                        {
+                            testValues += "/ " + index;
+                        }
+                        Debug.WriteLine(testValues);
                     }
-                    else if (outputs[1] == 1)
-                    {
-                        ((Player)sprite).DriveBackwards();
-                    }
-                    if (outputs[2] == 1)
-                    {
-                        ((Player)sprite).TurnLeft();
-                    }
-                    if (outputs[3] == 1)
-                    {
-                        ((Player)sprite).TurnRight();
-                    }
-                    //check outputs ---- checkpoint 14-6-2022
-                    string testValues = "";
-                    foreach (double index in outputs)
-                    {
-                        testValues += "/ " + index;
-                    }
-                    Debug.WriteLine(testValues);
                 }
                 sprite.Update(gameTime, _game._sprites);
             }
@@ -208,7 +211,7 @@ namespace TopDownRacer.States
         {
             int count = 0;
 
-            while (count < 56 / 28)
+            while (count <= 5)
             {
                 count++;
 
