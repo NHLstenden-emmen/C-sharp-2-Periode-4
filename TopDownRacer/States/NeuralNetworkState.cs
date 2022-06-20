@@ -92,74 +92,62 @@ namespace TopDownRacer.States
             spriteBatch.End();
         }
 
-        public override void PostUpdate(GameTime gameTime)
-        {
-            //kan later worden gebruikt
-        }
 
         public override void Update(GameTime gameTime)
         {
             if (!initizalized)
             {
-                //implementatie van Neural network moet hier komen
                 //inputs in the order of: speed, left, front-left, front, front-right, right, back
                 var network = new RaceNeuralNetwork(6);
 
-                //Factory voor het maken van de layers
                 var layerFactory = new NeuralLayerFactory();
 
-                //Toevoegen van twee nieuwe layers aan het neural network
+                // Adding the new layers to the neural network
                 network.AddLayer(layerFactory.CreateNeuralLayer(6, new RectifiedActivationFuncion(), new WeightedSumFunction()));
-                network.AddLayer(layerFactory.CreateNeuralLayer(6, new StepActivationFunction(0.7), new WeightedSumFunction()));
+                network.AddLayer(layerFactory.CreateNeuralLayer(6, new StepActivationFunction(0.5), new WeightedSumFunction()));
                 network.AddLayer(layerFactory.CreateNeuralLayer(4, new SigmoidActivationFunction(0.7), new WeightedSumFunction()));
 
-                //hier moeten de expected values komen te staan
                 network.PushExpectedValues(
                     new double[][] {
                     //in the form of front, back, left, right
+                    new double[] { 1, 0, 0, 1} , //front right
+                    new double[] { 1, 0, 0, 1} , //front right
+                    new double[] { 1, 0, 0, 1} , //front right
                     new double[] { 1, 0, 1, 0} , //front left
-                    new double[] { 0, 1, 0, 1 }, //back right
-                    new double[] { 1, 0, 0, 1 }, //front right
-                    new double[] { 1, 0, 0, 1 }, //front right
-                    new double[] { 0, 1, 1, 0 }, //back left
-                    new double[] { 0, 1, 0, 0 }, //back
-                    new double[] { 1, 0, 0, 0 }, //front
                     new double[] { 1, 0, 1, 0} , //front left
-                    new double[] { 0, 1, 0, 1 }, //back right
-                    new double[] { 1, 0, 0, 1 }, //front right
-                    new double[] { 0, 1, 1, 0 }, //back left
-                    new double[] { 0, 1, 0, 0 }, //back
-                    new double[] { 1, 0, 0, 0 }, //front
-                    new double[] { 1, 0, 0, 0 }, //front
-                    new double[] { 0, 1, 0, 0 }, //back
-                    new double[] { 0, 1, 0, 0 }, //back
-                    new double[] { 1, 0, 0, 0 }, //front
-                    new double[] { 1, 0, 0, 1 }, //front right
+                    new double[] { 1, 0, 1, 0} , //front left
+                    new double[] { 1, 0, 1, 0} , //front left
+                    new double[] { 1, 0, 0, 0 } , //front
+                    new double[] { 1, 0, 0, 0 } , //front
+                    new double[] { 1, 0, 0, 0 } , //front
+                    new double[] { 0, 0, 0, 1} , //right
+                    new double[] { 0, 0, 1, 0} , //left
+                    new double[] { 0, 1, 0, 0 } , //back
+                    new double[] { 1, 0, 1, 1 } , //front
+                    new double[] { 1, 0, 1, 0 } , //front
+                    new double[] { 1, 0, 0, 1 } , //front
                     });
 
-                //hier moet de train methode komen
                 network.Train(
                     new double[][] {
                     //inputs in the order of: left, front-left, front, front-right, right, back
-                    new double[] {0, 0, 0, 1, 1, 1 },
-                    new double[] {1, 1, 1, 0, 0, 0 },
-                    new double[] {1, 1, 0, 0, 0, 1 },
-                    new double[] {1, 1, 0, 0, 0, 0 },
-                    new double[] {0, 0, 1, 1, 1, 0 },
-                    new double[] {1, 1, 1, 1, 1, 0 },
-                    new double[] {1, 1, 0, 1, 1, 1 },
-                    new double[] {0, 0, 0, 1, 1, 1 },
-                    new double[] {1, 1, 1, 0, 0, 0 },
-                    new double[] {1, 1, 0, 0, 0, 1 },
-                    new double[] {0, 0, 1, 1, 1, 0 },
-                    new double[] {1, 1, 1, 1, 1, 0 },
-                    new double[] {1, 1, 0, 1, 1, 1 },
-                    new double[] {0, 0, 0, 0, 0, 0 },
-                    new double[] {0, 1, 1, 1, 0, 0 },
-                    new double[] {0, 0, 1, 0, 0, 0 },
-                    new double[] {0, 0, 0, 0, 0, 0 },
-                    new double[] {0, 0, 0, 0, 1, 0 },
-                    }, 100);
+                    new double[] { 1, 0, 0, 0, 0, 0} , //front right
+                    new double[] { 1, 1, 0, 0, 0, 0} , //front right
+                    new double[] { 1, 0, 0, 0, 0, 1} , //front right
+                    new double[] { 0, 0, 0, 0, 1, 0} , //front left
+                    new double[] { 0, 0, 0, 1, 1, 0} , //front left
+                    new double[] { 0, 0, 0, 0, 1, 1} , //front left
+                    new double[] { 0, 0, 0, 0, 1, 1} , //front left
+                    new double[] { 1, 0, 0, 0, 1, 0} , //front
+                    new double[] { 0, 0, 0, 0, 0, 1} , //front
+                    new double[] { 1, 0, 0, 0, 1, 1} , //front
+                    new double[] { 1, 1, 1, 0, 0, 0} , //right
+                    new double[] { 0, 0, 1, 1, 1, 0} , //left
+                    new double[] { 1, 1, 1, 1, 1, 0 } , //back
+                    new double[] { 0, 0, 0, 0, 0, 1} , //front
+                    new double[] { 0, 0, 0, 0, 1, 1} , //front
+                    new double[] { 1, 0, 0, 0, 0, 1} , //front
+                    }, 1000);
 
                 this.network = network;
                 initizalized = true;
@@ -176,18 +164,22 @@ namespace TopDownRacer.States
                         var outputs = this.network.GetOutput();
                         if (outputs[0] >= 0.99)
                         {
+                            Debug.WriteLine("forward");
                             ((Player)sprite).DriveForward();
                         }
                         else if (outputs[1] >= 0.99)
                         {
+                            Debug.WriteLine("backward");
                             ((Player)sprite).DriveBackwards();
                         }
-                        if (outputs[2] >= outputs[3])
+                        if (outputs[2] >= 0.99)
                         {
+                            Debug.WriteLine("left");
                             ((Player)sprite).TurnLeft();
                         }
-                        else
+                        else if (outputs[2] >= 0.99)
                         {
+                            Debug.WriteLine("right");
                             ((Player)sprite).TurnRight();
                         }
                         //check outputs ---- checkpoint 14-6-2022
@@ -207,7 +199,11 @@ namespace TopDownRacer.States
                 sprite.Update(gameTime, _game._sprites);
             }
         }
+        public override void PostUpdate(GameTime gameTime)
+        {
+        }
 
+        // return 1 if there is a barier with in the search field. Return 0 if there is none
         private int findClosestBarrierDirectionalBoolean(Sprite sprite, int rotation = 0, int distance = 5)
         {
             int count = 0;

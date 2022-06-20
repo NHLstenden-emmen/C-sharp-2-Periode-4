@@ -7,41 +7,29 @@ using TopDownRacer.NeuralNetwork.Layers;
 
 namespace TopDownRacer.NeuralNetwork
 {
-    //De implementatie van het neural network om de race game te spelen
+    // The neural network class that will be used to play the topdownracing game
     internal class RaceNeuralNetwork
     {
-        //Eerst moet het mogelijk zijn om Neural Layers te maken dus maken we een factory aan
         private NeuralLayerFactory _layerFactory;
 
-        //Hierna moeten we wat basis elementen opstellen die nodig zijn voor het netwerk om te functioneren
-
-        //een lijst met alle neural layers
         internal List<NeuralLayer> _layers;
-
-        //een collectie van de errros van de neuronen aan de hand van een key/value paar
-        //internal Dictionary<int, double[]> _neuronErrors;
-
-        //De learningrate en verwachte uitkomst
         internal double _learningRate;
-
         internal double[][] _expectedResult;
 
-        //de constructor van het neural network, waarbij de het aantal neurons in de input layer de input is
+        // This is the constructor to create the neural network
+        // This function will also create the input layer of the neural network
         public RaceNeuralNetwork(int numberOfInputNeurons)
         {
-            //initialiseren van de list, dictionary en factory
             _layers = new List<NeuralLayer>();
-            //_neuronErrors = new Dictionary<int, double[]>();
             _layerFactory = new NeuralLayerFactory();
 
-            //ook moet een input layer worden aangemaakt om inputs te verzamelen
             CreateInputLayer(numberOfInputNeurons);
 
             _learningRate = 2.95;
         }
 
-        //een methode om een neural layer toe te voegen aan het neural network
-        //deze worden automatisch toegevoegd als de output layer als laatste layer in het netwerk
+        // This function is used to add a layer to the neural network
+        // This function will also change the last layer to the output layer
         public void AddLayer(NeuralLayer newLayer)
         {
             //any() kijkt of een element in een sequence voldoet aan een condition
@@ -55,19 +43,19 @@ namespace TopDownRacer.NeuralNetwork
             //_neuronErrors.Add(_layers.Count - 1, new double[newLayer.Neurons.Count]);
         }
 
-        //Een methode om input waarde in het neural network te zetten
+        // This function is used to set the input values which will be used to generate the output
         public void PushInputValues(double[] inputs)
         {
             _layers.First().Neurons.ForEach(x => x.PushValueOnInput(inputs[_layers.First().Neurons.IndexOf(x)]));
         }
 
-        //Een methode om de verwachte waardes te zetten
+        // This function is used to set the expected values so they can be used to train the neural network
         public void PushExpectedValues(double[][] expectedOutputs)
         {
             _expectedResult = expectedOutputs;
         }
 
-        //Een methode om de output van het netwerk te berekenen
+        // This function is used to calculate the output
         public List<double> GetOutput()
         {
             var returnValue = new List<double>();
@@ -80,10 +68,10 @@ namespace TopDownRacer.NeuralNetwork
             return returnValue;
         }
 
-        //De train functie voor het neural network, epochs is de parameter die representeert hoe vaak hij gaat trainen
+        // This function is used to train the neural network.
+        // The number of epochs is the amount of passes that will be done over the entire dataset
         public void Train(double[][] inputs, int numberOfEpochs)
         {
-            double totalError = 0;
 
             for (int i = 0; i < numberOfEpochs; i++)
             {
@@ -93,43 +81,16 @@ namespace TopDownRacer.NeuralNetwork
 
                     var outputs = new List<double>();
 
-                    //Halen van de outputs
                     _layers.Last().Neurons.ForEach(neuron => { outputs.Add(neuron.CalculateOutput()); });
 
-                    //Berekenen van errors door alle errors van de aparte neurons op te tellen
-                    totalError = CalculateTotalError(outputs, row);
-                    string testValues = "";
-                    foreach (double index in outputs)
-                    {
-                        testValues += "/ " + index;
-                    }
-                    //Debug.Write(testValues);
-                    //Debug.Write("/");
-                    //Debug.Write(j);
-                    //Debug.Write("/");
-                    //Debug.WriteLine(totalError);
-                    //Een handle  voor de output en hidden layer
                     HandleOutputLayer(row);
                     HandleHiddenLayers();
                 }
             }
         }
 
-        //Functie die de errors berekend
-        private double CalculateTotalError(List<double> outputs, int row)
-        {
-            double totalError = 0;
 
-            outputs.ForEach(output =>
-            {
-                var error = Math.Pow(output = _expectedResult[row][outputs.IndexOf(output)], 2);
-                totalError += error;
-            });
-
-            return totalError;
-        }
-
-        //Functie die een input layer van het neural network maakt
+        // This function creates the input layer and the connected input neurons
         private void CreateInputLayer(int numberOfInputNeurons)
         {
             var inputLayer = _layerFactory.CreateNeuralLayer(numberOfInputNeurons, new RectifiedActivationFuncion(), new WeightedSumFunction());
@@ -137,7 +98,7 @@ namespace TopDownRacer.NeuralNetwork
             this.AddLayer(inputLayer);
         }
 
-        //Een functie die wordt gebruikt voor de afgeleiden van de output layer, de row input is de verwachtte output row
+        // This function changes the weight of the synapses of the output layer based on the results
         private void HandleOutputLayer(int row)
         {
             _layers.Last().Neurons.ForEach(neuron =>
@@ -159,7 +120,7 @@ namespace TopDownRacer.NeuralNetwork
             });
         }
 
-        //Een functie die wordt gebruikt voor de afgeleiden van de hidden layer
+        // This function changes the weight of the synapses of the hidden layers based on the results
         private void HandleHiddenLayers()
         {
             for (int k = _layers.Count - 2; k > 0; k--)
