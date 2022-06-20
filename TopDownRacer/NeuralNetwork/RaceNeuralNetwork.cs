@@ -38,7 +38,7 @@ namespace TopDownRacer.NeuralNetwork
             //ook moet een input layer worden aangemaakt om inputs te verzamelen
             CreateInputLayer(numberOfInputNeurons);
 
-            _learningRate = 2.95;
+            _learningRate = 0.95;
         }
 
         //een methode om een neural layer toe te voegen aan het neural network
@@ -142,8 +142,6 @@ namespace TopDownRacer.NeuralNetwork
         //Een functie die wordt gebruikt voor de afgeleiden van de output layer, de row input is de verwachtte output row
         private void HandleOutputLayer(int row)
         {
-            Debug.WriteLine("outputlayer update");
-
             _layers.Last().Neurons.ForEach(neuron =>
             {
                 neuron.Inputs.ForEach(connection =>
@@ -155,7 +153,7 @@ namespace TopDownRacer.NeuralNetwork
 
                     var nodeDelta = (expectedOutput - output) * output * (1 - output);
                     var delta = -1 * netInput * nodeDelta;
-                    Debug.WriteLine(delta + " / " + nodeDelta + " / " + netInput + " / " + expectedOutput + " / " + output);
+                    //Debug.WriteLine(delta + " / " + nodeDelta + " / " + netInput + " / " + expectedOutput + " / " + output);
                     connection.UpdateWeight(_learningRate, delta);
 
                     neuron.PreviousPartialDerivate = nodeDelta;

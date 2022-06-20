@@ -39,6 +39,8 @@ namespace TopDownRacer.States
 
             var xmlMap = XmlMapReader.LoadMap("L-shape");
             game._sprites = xmlMap.getSprites();
+            Vector2 spawnpoint = xmlMap.getSpawnpoint();
+            float orientation = xmlMap.getOrientation();
 
             var player = new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - 130)
             {
@@ -46,6 +48,8 @@ namespace TopDownRacer.States
                 Input = new Input() { },
                 Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
             };
+            player.Position = spawnpoint;
+            player.Rotation = orientation;
             game._sprites.Add(player);
         }
 
@@ -127,12 +131,13 @@ namespace TopDownRacer.States
                     new double[] { 0, 1, 1, 0 }, //back left
                     new double[] { 0, 1, 0, 0 }, //back
                     new double[] { 1, 0, 0, 0 }, //front
+                    new double[] { 1, 0, 0, 0 }, //front
                     });
 
                 //hier moet de train methode komen
                 network.Train(
                     new double[][] {
-                    //inputs in the order of: speed, left, front-left, front, front-right, right, back
+                    //inputs in the order of: left, front-left, front, front-right, right, back
                     //new double[] { 5, 700, 300, 100, 150, 50, 1000 },
                     //new double[] { 5, 100, 200, 25, 10, 50,  200},
                     //new double[] { 5, 50, 60, 100, 150, 300,  1000},
@@ -157,29 +162,73 @@ namespace TopDownRacer.States
                     new double[] {0, 0, 1, 1, 1, 0 },
                     new double[] {1, 1, 1, 1, 1, 0 },
                     new double[] {1, 1, 0, 1, 1, 1 },
-                    }, 100);
+                    new double[] {0, 0, 0, 0, 0, 0 },
+                    }, 5000);
 
                 this.network = network;
                 initizalized = true;
             }
 
-            //push expected values
-            //this.network.PushInputValues(new double[] { 5, 50, 75, 1000, 75, 50, 500 });
-            this.network.PushInputValues(new double[] { 0, 0, 0, 1, 1, 1 });
-            var outputs = this.network.GetOutput();
-
-            //check outputs ---- checkpoint 14-6-2022
-            string testValues = "";
-            foreach (double index in outputs)
-            {
-                testValues += "/ " + index;
-            }
-            Debug.WriteLine(testValues);
+            //this.network.PushInputValues(new double[] {1, 1, 0, 1, 1, 1 });
             //Debug.WriteLine(network.GetOutput());
             foreach (Sprite sprite in _game._sprites)
             {
+                if (sprite is Player)
+                {
+                    this.network.PushInputValues(new double[] { findClosestBarrierDirectionalBoolean(sprite, 270), findClosestBarrierDirectionalBoolean(sprite, 315), findClosestBarrierDirectionalBoolean(sprite, 0), findClosestBarrierDirectionalBoolean(sprite, 45), findClosestBarrierDirectionalBoolean(sprite, 90), findClosestBarrierDirectionalBoolean(sprite, 180) });
+                    var outputs = this.network.GetOutput();
+                    if (outputs[0] >= 0.5)
+                    {
+                        ((Player)sprite).DriveForward();
+                    }
+                    else if (outputs[1] == 1)
+                    {
+                        ((Player)sprite).DriveBackwards();
+                    }
+                    if (outputs[2] == 1)
+                    {
+                        ((Player)sprite).TurnLeft();
+                    }
+                    if (outputs[3] == 1)
+                    {
+                        ((Player)sprite).TurnRight();
+                    }
+                    //check outputs ---- checkpoint 14-6-2022
+                    string testValues = "";
+                    foreach (double index in outputs)
+                    {
+                        testValues += "/ " + index;
+                    }
+                    Debug.WriteLine(testValues);
+                }
                 sprite.Update(gameTime, _game._sprites);
             }
+        }
+        private int findClosestBarrierDirectionalBoolean(Sprite sprite, int rotation = 0)
+        {
+            int count = 0;
+
+            while (count < 56 / 28)
+            {
+                count++;
+
+                double y = sprite.Position.Y + ((count * bumperTexture.Width / 2) * Math.Sin((sprite.Rotation + MathHelper.ToRadians(rotation))));
+
+                double x = sprite.Position.X + ((count * bumperTexture.Width / 2) * Math.Cos((sprite.Rotation + MathHelper.ToRadians(rotation))));
+
+                foreach (var sprite2 in _game._sprites)
+                {
+                    if (sprite2 is Bumper)
+                    {
+                        if (y < sprite2.Position.Y + sprite2.height && y > sprite2.Position.Y && x < sprite2.Position.X + sprite2.width && x > sprite2.Position.X)
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
 
         private Vector2 findClosestBarrierDirectional(Sprite sprite, int rotation = 0)

@@ -53,43 +53,23 @@ namespace TopDownRacer.Sprites
             // Rotate the car based on which key is pressed
             if (kstate.IsKeyDown(Input.Left[playerNumber]))
             {
-                if (RotationSpeed < MaxRotationSpeed)
-                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
-                if (CurrentPositionSpeed > 0.0f)
-                    Rotation -= MathHelper.ToRadians(RotationSpeed);
-                if (CurrentPositionSpeed < 0.0f)
-                    Rotation += MathHelper.ToRadians(RotationSpeed);
+                TurnLeft();
             }
 
             if (kstate.IsKeyDown(Input.Right[playerNumber]))
             {
-                if (RotationSpeed < MaxRotationSpeed)
-                    RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
-                if (CurrentPositionSpeed > 0.0f)
-                    Rotation += MathHelper.ToRadians(RotationSpeed);
-                if (CurrentPositionSpeed < 0.0f)
-                    Rotation -= MathHelper.ToRadians(RotationSpeed);
+                TurnRight();
             }
 
             Vector2 direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
 
             if (kstate.IsKeyDown(Input.Up[playerNumber]))
             {
-                // if the current speed is not above the max speed accelerate the car forwards
-                if (CurrentPositionSpeed < MaxPositionSpeed)
-                {
-                    ChangePositionSpeed += 0.15f;
-                    CurrentPositionSpeed += ChangePositionSpeed;
-                }
+                DriveForward();
             }
             else if (kstate.IsKeyDown(Input.Down[playerNumber]))
             {
-                // if the current speed is not above the max speed accelerate the car backwards
-                if (CurrentPositionSpeed > (0 - MaxPositionSpeed))
-                {
-                    ChangePositionSpeed += -0.15f;
-                    CurrentPositionSpeed += ChangePositionSpeed;
-                }
+                DriveBackwards();
             }
             else
             {
@@ -118,6 +98,46 @@ namespace TopDownRacer.Sprites
 
             // limit the positions in which the car can travel
             Position = Vector2.Clamp(Position, new Vector2(_texture.Width / 2, _texture.Height / 2), new Vector2(Game1.ScreenWidth - _texture.Width / 2, Game1.ScreenHeight - _texture.Height / 2));
+        }
+
+        public void DriveBackwards()
+        {
+            // if the current speed is not above the max speed accelerate the car backwards
+            if (CurrentPositionSpeed > (0 - MaxPositionSpeed))
+            {
+                ChangePositionSpeed += -0.15f;
+                CurrentPositionSpeed += ChangePositionSpeed;
+            }
+        }
+
+        public void DriveForward()
+        {
+            // if the current speed is not above the max speed accelerate the car forwards
+            if (CurrentPositionSpeed < MaxPositionSpeed)
+            {
+                ChangePositionSpeed += 0.15f;
+                CurrentPositionSpeed += ChangePositionSpeed;
+            }
+        }
+
+        public void TurnRight()
+        {
+            if (RotationSpeed < MaxRotationSpeed)
+                RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+            if (CurrentPositionSpeed > 0.0f)
+                Rotation += MathHelper.ToRadians(RotationSpeed);
+            if (CurrentPositionSpeed < 0.0f)
+                Rotation -= MathHelper.ToRadians(RotationSpeed);
+        }
+
+        public void TurnLeft()
+        {
+            if (RotationSpeed < MaxRotationSpeed)
+                RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+            if (CurrentPositionSpeed > 0.0f)
+                Rotation -= MathHelper.ToRadians(RotationSpeed);
+            if (CurrentPositionSpeed < 0.0f)
+                Rotation += MathHelper.ToRadians(RotationSpeed);
         }
     }
 }
