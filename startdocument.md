@@ -38,8 +38,8 @@ hierna voor een speler mogelijk zijn om een map tegen de AI af te leggen.
 
 ![Example 4](images/UI-Sketch/L-Shape.png "Schets van de baan L-shape")
 ![Example 5](images/UI-Sketch/Nascar.png "Schets van de baan Nascar")
-![Example 6](images/UI-Sketch/Player_Customization.png "Schets van de spele selectie")
-![Example 7](images/UI-Sketch/Start_Scherm.png "Schets van het start scherm")
+![Example 6](images/UI-Sketch/Player_customization.png "Schets van de spele selectie")
+![Example 7](images/UI-Sketch/Start_scherm.png "Schets van het start scherm")
 
 ### Input & Output
 
