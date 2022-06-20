@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ namespace TopDownRacer.States
             game._sprites = xmlMap.getSprites();
             player.Position = spawnpoint;
             player.Rotation = orientation;
-            game._sprites.Add(player);  
+            game._sprites.Add(player);
         }
 
         //Het starten van het spel

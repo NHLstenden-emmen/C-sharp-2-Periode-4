@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using TopDownRacer.NeuralNetwork.ActivationFunctions;
 using TopDownRacer.NeuralNetwork.InputFunctions;
 using TopDownRacer.NeuralNetwork.Layers;
 
 namespace TopDownRacer.NeuralNetwork
 {
-    //De implementatie van het neural network om de race game te spelen 
-    class RaceNeuralNetwork
+    //De implementatie van het neural network om de race game te spelen
+    internal class RaceNeuralNetwork
     {
         //Eerst moet het mogelijk zijn om Neural Layers te maken dus maken we een factory aan
         private NeuralLayerFactory _layerFactory;
@@ -23,9 +21,10 @@ namespace TopDownRacer.NeuralNetwork
         //een collectie van de errros van de neuronen aan de hand van een key/value paar
         //internal Dictionary<int, double[]> _neuronErrors;
 
-        //De learningrate en verwachte uitkomst 
+        //De learningrate en verwachte uitkomst
         internal double _learningRate;
-        internal double[][] _expectedResult; 
+
+        internal double[][] _expectedResult;
 
         //de constructor van het neural network, waarbij de het aantal neurons in de input layer de input is
         public RaceNeuralNetwork(int numberOfInputNeurons)
@@ -45,8 +44,8 @@ namespace TopDownRacer.NeuralNetwork
         //deze worden automatisch toegevoegd als de output layer als laatste layer in het netwerk
         public void AddLayer(NeuralLayer newLayer)
         {
-            //any() kijkt of een element in een sequence voldoet aan een condition 
-            if(_layers.Any())
+            //any() kijkt of een element in een sequence voldoet aan een condition
+            if (_layers.Any())
             {
                 var lastLayer = _layers.Last();
                 newLayer.ConnectLayers(lastLayer);
@@ -86,7 +85,7 @@ namespace TopDownRacer.NeuralNetwork
         {
             double totalError = 0;
 
-            for(int i = 0; i < numberOfEpochs; i++)
+            for (int i = 0; i < numberOfEpochs; i++)
             {
                 for (int row = 0; row < inputs.GetLength(0); row++)
                 {
@@ -95,7 +94,7 @@ namespace TopDownRacer.NeuralNetwork
                     var outputs = new List<double>();
 
                     //Halen van de outputs
-                    _layers.Last().Neurons.ForEach(neuron => { outputs.Add(neuron.CalculateOutput());});
+                    _layers.Last().Neurons.ForEach(neuron => { outputs.Add(neuron.CalculateOutput()); });
 
                     //Berekenen van errors door alle errors van de aparte neurons op te tellen
                     totalError = CalculateTotalError(outputs, row);

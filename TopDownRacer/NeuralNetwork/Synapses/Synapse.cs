@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using TopDownRace.NeuralNetwork.Neuron;
 using TopDownRacer.NeuralNetwork.Synapses;
 
@@ -13,7 +12,9 @@ namespace TopDownRace.NeuralNetwork.Synapses
 
         //De weging van de connectie
         //public double Weight { get { return _weight; } set { Debug.WriteLine(this.PreviousWeight == value ? "" : "verschil"); _weight = value; } }
-        public double Weight { get { return _weight; } set {_weight = value; } }
+        public double Weight
+        { get { return _weight; } set { _weight = value; } }
+
         private double _weight;
 
         //Weging van de vorige iteratie, belangrijk voor het training proces
@@ -45,7 +46,7 @@ namespace TopDownRace.NeuralNetwork.Synapses
             return _fromNeuron.CalculateOutput();
         }
 
-        //Controleert of een neuron een bepaald nummer als input neuron gebruikt 
+        //Controleert of een neuron een bepaald nummer als input neuron gebruikt
         //fromNeuronId is de neuron die wordt gechecked
         // True - Als de neuron gelijk is aan de input
         // False - Als de neuron niet gelijk is aan de input

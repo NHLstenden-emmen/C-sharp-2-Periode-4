@@ -14,10 +14,13 @@ namespace TopDownRace.NeuralNetwork.Neuron
         List<ISynapse> Outputs { get; set; }
 
         void AddInputNeuron(INeuron inputNeuron);
+
         void AddOutputNeuron(INeuron inputNeuron);
+
         double CalculateOutput();
 
         void AddInputSynapse(double inputValue);
+
         void PushValueOnInput(double inputValue);
     }
 }

@@ -33,6 +33,7 @@ namespace TopDownRacer.MenuControls
 
         //Methode om de text in de buttons te zetten
         public string Text { get; set; }
+
         public bool Active { get; internal set; }
         public bool Disabled { get; internal set; }
 

@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TopDownRacer.Controller;
 using TopDownRacer.Sprites;
 
@@ -31,7 +29,7 @@ namespace TopDownRacer.States
             Vector2 spawnpoint = xmlMap.getSpawnpoint();
             float orientation = xmlMap.getOrientation();
             game._sprites = xmlMap.getSprites();
-            foreach(Sprite player in players)
+            foreach (Sprite player in players)
             {
                 player.Position = spawnpoint;
                 player.Rotation = orientation;

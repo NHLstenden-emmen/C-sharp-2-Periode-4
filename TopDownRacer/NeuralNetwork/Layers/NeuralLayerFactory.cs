@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TopDownRace.NeuralNetwork.Neuron;
+﻿using TopDownRace.NeuralNetwork.Neuron;
 using TopDownRacer.NeuralNetwork.ActivationFunctions;
 using TopDownRacer.NeuralNetwork.InputFunctions;
 
 namespace TopDownRacer.NeuralNetwork.Layers
 {
-    class NeuralLayerFactory
+    internal class NeuralLayerFactory
     {
         //Een factory die gebruikt kan worden om neural layers te maken
         public NeuralLayer CreateNeuralLayer(int numberOfNeurons, IActivationFunction activationFunction, IInputFunction inputFunction)

@@ -29,7 +29,8 @@ namespace TopDownRacer.Sprites
             if (playerNumber < 0 || playerNumber > 3)
             {
                 this.playerNumber = 0;
-            } else
+            }
+            else
             {
                 this.playerNumber = playerNumber;
             }
@@ -46,18 +47,18 @@ namespace TopDownRacer.Sprites
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
-        { 
+        {
             Move();
 
             if (!Dead)
             {
                 if (CurrentPositionSpeed > (MaxPositionSpeed / 2))
                     Score++;
-            } else
+            }
+            else
             {
                 engineSound.Volume = 0f;
             }
-                
         }
 
         public void Move()

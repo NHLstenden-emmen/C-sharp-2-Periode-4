@@ -1,17 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using TopDownRacer.Controller;
+using TopDownRacer.Models;
 using TopDownRacer.NeuralNetwork;
 using TopDownRacer.NeuralNetwork.ActivationFunctions;
 using TopDownRacer.NeuralNetwork.InputFunctions;
 using TopDownRacer.NeuralNetwork.Layers;
-using TopDownRacer.Controller;
-using TopDownRacer.Models;
 using TopDownRacer.Sprites;
-using System.Diagnostics;
 
 namespace TopDownRacer.States
 {
@@ -24,9 +23,6 @@ namespace TopDownRacer.States
         public NeuralNetworkState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
-            
-      
-
             playerTexture.Insert(0, content.Load<Texture2D>("Player/car_small_1"));
             playerTexture.Insert(1, content.Load<Texture2D>("Player/car_small_2"));
             playerTexture.Insert(2, content.Load<Texture2D>("Player/car_small_3"));
@@ -58,7 +54,6 @@ namespace TopDownRacer.States
         //Het starten van het spel
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, List<Sprite> _sprites, SpriteFont _font)
         {
-
             spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearWrap, null, null);
 
             int fontY = 50;
@@ -185,12 +180,13 @@ namespace TopDownRacer.States
                         }
                         else if (outputs[1] >= 0.99)
                         {
-                            ((Player)sprite).DriveBackwards ();
+                            ((Player)sprite).DriveBackwards();
                         }
                         if (outputs[2] >= outputs[3])
                         {
                             ((Player)sprite).TurnLeft();
-                        }else
+                        }
+                        else
                         {
                             ((Player)sprite).TurnRight();
                         }
@@ -211,6 +207,7 @@ namespace TopDownRacer.States
                 sprite.Update(gameTime, _game._sprites);
             }
         }
+
         private int findClosestBarrierDirectionalBoolean(Sprite sprite, int rotation = 0, int distance = 5)
         {
             int count = 0;

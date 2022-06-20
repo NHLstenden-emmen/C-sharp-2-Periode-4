@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using TopDownRace.NeuralNetwork.Synapses;
-using TopDownRacer.NeuralNetwork.Synapses;
 using TopDownRacer.NeuralNetwork.ActivationFunctions;
 using TopDownRacer.NeuralNetwork.InputFunctions;
+using TopDownRacer.NeuralNetwork.Synapses;
 
 namespace TopDownRace.NeuralNetwork.Neuron
 {
@@ -35,7 +35,7 @@ namespace TopDownRace.NeuralNetwork.Neuron
             _inputFunction = inputFunction;
         }
 
-        //Verbind van de neurons Connect two neurons. 
+        //Verbind van de neurons Connect two neurons.
         //Input neuron zal werken als de input van de nieuwe connectie
         public void AddInputNeuron(INeuron inputNeuron)
         {
@@ -44,7 +44,7 @@ namespace TopDownRace.NeuralNetwork.Neuron
             inputNeuron.Outputs.Add(synapse);
         }
 
-        //Verbind van de neurons Connect two neurons. 
+        //Verbind van de neurons Connect two neurons.
         //Output neuron die de output van die nieuwe connectie zal weergeven
         public void AddOutputNeuron(INeuron outputNeuron)
         {
@@ -53,8 +53,8 @@ namespace TopDownRace.NeuralNetwork.Neuron
             outputNeuron.Inputs.Add(synapse);
         }
 
-        //Output van de neuron berekenen 
-        //returned de output neuron 
+        //Output van de neuron berekenen
+        //returned de output neuron
         public double CalculateOutput()
         {
             return _activationFunction.CalculateOutput(_inputFunction.CalculateInput(this.Inputs));
