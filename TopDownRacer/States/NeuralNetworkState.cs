@@ -102,13 +102,13 @@ namespace TopDownRacer.States
             {
                 //implementatie van Neural network moet hier komen
                 //inputs in the order of: speed, left, front-left, front, front-right, right, back
-                var network = new RaceNeuralNetwork(7);
+                var network = new RaceNeuralNetwork(6);
 
                 //Factory voor het maken van de layers
                 var layerFactory = new NeuralLayerFactory();
 
                 //Toevoegen van twee nieuwe layers aan het neural network
-                network.AddLayer(layerFactory.CreateNeuralLayer(7, new RectifiedActivationFuncion(), new WeightedSumFunction()));
+                network.AddLayer(layerFactory.CreateNeuralLayer(6, new RectifiedActivationFuncion(), new WeightedSumFunction()));
                 network.AddLayer(layerFactory.CreateNeuralLayer(4, new SigmoidActivationFunction(0.7), new WeightedSumFunction()));
 
                 //hier moeten de expected values komen te staan
@@ -133,26 +133,39 @@ namespace TopDownRacer.States
                 network.Train(
                     new double[][] {
                     //inputs in the order of: speed, left, front-left, front, front-right, right, back
-                    new double[] { 5, 700, 300, 100, 150, 50, 1000 },
-                    new double[] { 5, 100, 200, 25, 10, 50,  200},
-                    new double[] { 5, 50, 60, 100, 150, 300,  1000},
-                    new double[] { 5, 100, 50, 10, 25, 200,  200  },
-                    new double[] { 0, 100, 200, 25, 10, 50,  200},
-                    new double[] { 5, 50, 75, 1000, 75, 50, 500 },
-                    new double[] { 5, 750, 350, 150, 200, 100, 1050 },
-                    new double[] { 5, 150, 250, 75, 10, 50,  250},
-                    new double[] { 5, 50, 60, 150, 150, 350,  1500},
-                    new double[] { 5, 150, 50, 10, 75, 250,  250  },
-                    new double[] { 0, 150, 250, 75, 10, 50,  250},
-                    new double[] { 5, 50, 125, 1500, 125, 50, 550 },
-                    }, 10000);
+                    //new double[] { 5, 700, 300, 100, 150, 50, 1000 },
+                    //new double[] { 5, 100, 200, 25, 10, 50,  200},
+                    //new double[] { 5, 50, 60, 100, 150, 300,  1000},
+                    //new double[] { 5, 100, 50, 10, 25, 200,  200  },
+                    //new double[] { 0, 100, 200, 25, 10, 50,  200},
+                    //new double[] { 5, 50, 75, 1000, 75, 50, 500 },
+                    //new double[] { 5, 750, 350, 150, 200, 100, 1050 },
+                    //new double[] { 5, 150, 250, 75, 10, 50,  250},
+                    //new double[] { 5, 50, 60, 150, 150, 350,  1500},
+                    //new double[] { 5, 150, 50, 10, 75, 250,  250  },
+                    //new double[] { 0, 150, 250, 75, 10, 50,  250},
+                    //new double[] { 5, 50, 125, 1500, 125, 50, 550 },
+                    new double[] {0, 0, 0, 1, 1, 1 },
+                    new double[] {1, 1, 1, 0, 0, 0 },
+                    new double[] {1, 1, 0, 0, 0, 1 },
+                    new double[] {0, 0, 1, 1, 1, 0 },
+                    new double[] {1, 1, 1, 1, 1, 0 },
+                    new double[] {1, 1, 0, 1, 1, 1 },
+                    new double[] {0, 0, 0, 1, 1, 1 },
+                    new double[] {1, 1, 1, 0, 0, 0 },
+                    new double[] {1, 1, 0, 0, 0, 1 },
+                    new double[] {0, 0, 1, 1, 1, 0 },
+                    new double[] {1, 1, 1, 1, 1, 0 },
+                    new double[] {1, 1, 0, 1, 1, 1 },
+                    }, 100);
 
                 this.network = network;
                 initizalized = true;
             }
 
             //push expected values
-            this.network.PushInputValues(new double[] { 5, 50, 75, 1000, 75, 50, 500 });
+            //this.network.PushInputValues(new double[] { 5, 50, 75, 1000, 75, 50, 500 });
+            this.network.PushInputValues(new double[] { 0, 0, 0, 1, 1, 1 });
             var outputs = this.network.GetOutput();
 
             //check outputs ---- checkpoint 14-6-2022

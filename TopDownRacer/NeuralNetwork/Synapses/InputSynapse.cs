@@ -15,15 +15,15 @@ namespace TopDownRace.NeuralNetwork.Synapses
         public InputSynapse(INeuron toNeuron)
         {
             _toNeuron = toNeuron;
-            Weight = 1;
+            Weight = 0.7;
         }
 
         public InputSynapse(INeuron toNeuron, double output)
         {
             _toNeuron = toNeuron;
             Output = output;
-            Weight = 1;
-            PreviousWeight = 1;
+            Weight = 0.7;
+            PreviousWeight = 0.2;
         }
 
         public double GetOutput()

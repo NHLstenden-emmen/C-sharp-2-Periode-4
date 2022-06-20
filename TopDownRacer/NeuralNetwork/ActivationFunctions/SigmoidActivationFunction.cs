@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace TopDownRacer.NeuralNetwork.ActivationFunctions
 {
@@ -14,7 +15,9 @@ namespace TopDownRacer.NeuralNetwork.ActivationFunctions
 
         public double CalculateOutput(double input)
         {
-            return (1 / (1 + Math.Exp(-input * _coeficient)));
+
+            //Debug.WriteLine(input + " / " + (1 / (1 + Math.Exp(-(input/500) * _coeficient))));
+            return (1 / (1 + Math.Exp(-(input/500) * _coeficient)));
         }
     }
 }

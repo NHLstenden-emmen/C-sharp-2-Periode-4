@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using TopDownRace.NeuralNetwork.Neuron;
 using TopDownRacer.NeuralNetwork.Synapses;
 
@@ -11,23 +12,25 @@ namespace TopDownRace.NeuralNetwork.Synapses
         internal INeuron _toNeuron;
 
         //De weging van de connectie
-        public double Weight { get; set; }
+        //public double Weight { get { return _weight; } set { Debug.WriteLine(this.PreviousWeight == value ? "" : "verschil"); _weight = value; } }
+        public double Weight { get { return _weight; } set {_weight = value; } }
+        private double _weight;
 
-        //Weging van de vorige iteratie, belangrijk voor he training proces
+        //Weging van de vorige iteratie, belangrijk voor het training proces
         public double PreviousWeight { get; set; }
 
-        public Synapse(INeuron fromNeuraon, INeuron toNeuron, double weight)
+        public Synapse(INeuron fromNeuron, INeuron toNeuron, double weight)
         {
-            _fromNeuron = fromNeuraon;
+            _fromNeuron = fromNeuron;
             _toNeuron = toNeuron;
 
             Weight = weight;
             PreviousWeight = 0;
         }
 
-        public Synapse(INeuron fromNeuraon, INeuron toNeuron)
+        public Synapse(INeuron fromNeuron, INeuron toNeuron)
         {
-            _fromNeuron = fromNeuraon;
+            _fromNeuron = fromNeuron;
             _toNeuron = toNeuron;
 
             var tmpRandom = new Random();

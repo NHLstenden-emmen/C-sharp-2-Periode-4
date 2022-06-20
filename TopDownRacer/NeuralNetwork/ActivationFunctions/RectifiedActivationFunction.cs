@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace TopDownRacer.NeuralNetwork.ActivationFunctions
 {

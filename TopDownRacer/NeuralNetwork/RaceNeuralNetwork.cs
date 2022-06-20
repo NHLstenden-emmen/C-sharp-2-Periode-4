@@ -75,7 +75,6 @@ namespace TopDownRacer.NeuralNetwork
 
             _layers.Last().Neurons.ForEach(neuron =>
             {
-                Debug.WriteLine(neuron);
                 returnValue.Add(neuron.CalculateOutput());
             });
 
@@ -90,29 +89,29 @@ namespace TopDownRacer.NeuralNetwork
 
             for(int i = 0; i < numberOfEpochs; i++)
             {
-                for (int j = 0; j < inputs.GetLength(0); j++)
+                for (int row = 0; row < inputs.GetLength(0); row++)
                 {
-                    PushInputValues(inputs[j]);
+                    PushInputValues(inputs[row]);
 
                     var outputs = new List<double>();
 
                     //Halen van de outputs
-                    _layers.Last().Neurons.ForEach(x => { outputs.Add(x.CalculateOutput());});
+                    _layers.Last().Neurons.ForEach(neuron => { outputs.Add(neuron.CalculateOutput());});
 
                     //Berekenen van errors door alle errors van de aparte neurons op te tellen
-                    totalError = CalculateTotalError(outputs, j);
+                    totalError = CalculateTotalError(outputs, row);
                     string testValues = "";
                     foreach (double index in outputs)
                     {
                         testValues += "/ " + index;
                     }
-                    Debug.Write(testValues);
-                    Debug.Write("/");
-                    Debug.Write(j);
-                    Debug.Write("/");
-                    Debug.WriteLine(totalError);
+                    //Debug.Write(testValues);
+                    //Debug.Write("/");
+                    //Debug.Write(j);
+                    //Debug.Write("/");
+                    //Debug.WriteLine(totalError);
                     //Een handle  voor de output en hidden layer
-                    HandleOutputLayer(j);
+                    HandleOutputLayer(row);
                     HandleHiddenLayers();
                 }
             }
@@ -143,6 +142,8 @@ namespace TopDownRacer.NeuralNetwork
         //Een functie die wordt gebruikt voor de afgeleiden van de output layer, de row input is de verwachtte output row
         private void HandleOutputLayer(int row)
         {
+            Debug.WriteLine("outputlayer update");
+
             _layers.Last().Neurons.ForEach(neuron =>
             {
                 neuron.Inputs.ForEach(connection =>
@@ -154,7 +155,7 @@ namespace TopDownRacer.NeuralNetwork
 
                     var nodeDelta = (expectedOutput - output) * output * (1 - output);
                     var delta = -1 * netInput * nodeDelta;
-
+                    Debug.WriteLine(delta + " / " + nodeDelta + " / " + netInput + " / " + expectedOutput + " / " + output);
                     connection.UpdateWeight(_learningRate, delta);
 
                     neuron.PreviousPartialDerivate = nodeDelta;
