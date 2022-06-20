@@ -17,7 +17,7 @@ namespace TopDownRacer.NeuralNetwork.ActivationFunctions
         {
 
             //Debug.WriteLine(input + " / " + (1 / (1 + Math.Exp(-(input/500) * _coeficient))));
-            return (1 / (1 + Math.Exp(-(input/500) * _coeficient)));
+            return (1 / (1 + Math.Exp(-(input) * _coeficient)));
         }
     }
 }

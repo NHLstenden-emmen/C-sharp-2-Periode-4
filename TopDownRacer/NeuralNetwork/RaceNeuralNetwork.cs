@@ -81,7 +81,6 @@ namespace TopDownRacer.NeuralNetwork
             return returnValue;
         }
 
-        //hier moet nog een train functie komen
         //De train functie voor het neural network, epochs is de parameter die representeert hoe vaak hij gaat trainen
         public void Train(double[][] inputs, int numberOfEpochs)
         {
