@@ -79,7 +79,7 @@ namespace TopDownRacer.States
 
             List<String> maps = new List<string>
             {
-                "Nascar","L-shape","ZigZag"
+                "Nascar","L-shape","ZigZag","SandBox"
             };
             for (int i = 0; i < maps.Count; i++)
             {

@@ -57,7 +57,7 @@ namespace TopDownRacer.Sprites
                 //Debug.Write("CurrentPositionSpeed");
                 //Debug.WriteLine(CurrentPositionSpeed);
                 
-                if (CurrentPositionSpeed > 10.0)
+                if (CurrentPositionSpeed > (MaxPositionSpeed / 2))
                                     Score++;
             } else
             {
@@ -73,8 +73,13 @@ namespace TopDownRacer.Sprites
             // Rotate the car based on which key is pressed
             if (kstate.IsKeyDown(Input.Left[playerNumber]))
             {
-                if (RotationSpeed < MaxRotationSpeed)
+                if (CurrentPositionSpeed > -MaxRotationSpeed && CurrentPositionSpeed < MaxRotationSpeed)
+                    RotationSpeed = 0;
+                else if ((CurrentPositionSpeed <= -MaxRotationSpeed && CurrentPositionSpeed > (-MaxRotationSpeed * 3)) || (CurrentPositionSpeed >= MaxRotationSpeed && CurrentPositionSpeed < (MaxRotationSpeed * 3)))
+                    RotationSpeed = MaxRotationSpeed;
+                else
                     RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+
                 if (CurrentPositionSpeed > 0.0f)
                     Rotation -= MathHelper.ToRadians(RotationSpeed);
                 if (CurrentPositionSpeed < 0.0f)
@@ -83,8 +88,13 @@ namespace TopDownRacer.Sprites
 
             if (kstate.IsKeyDown(Input.Right[playerNumber]))
             {
-                if (RotationSpeed < MaxRotationSpeed)
+                if (CurrentPositionSpeed > -MaxRotationSpeed && CurrentPositionSpeed < MaxRotationSpeed)
+                    RotationSpeed = 0;
+                else if ((CurrentPositionSpeed <= -MaxRotationSpeed && CurrentPositionSpeed > (-MaxRotationSpeed * 3)) || (CurrentPositionSpeed >= MaxRotationSpeed && CurrentPositionSpeed < (MaxRotationSpeed * 3)))
+                    RotationSpeed = MaxRotationSpeed;
+                else
                     RotationSpeed = CurrentPositionSpeed / (MaxPositionSpeed / 2);
+
                 if (CurrentPositionSpeed > 0.0f)
                     Rotation += MathHelper.ToRadians(RotationSpeed);
                 if (CurrentPositionSpeed < 0.0f)
