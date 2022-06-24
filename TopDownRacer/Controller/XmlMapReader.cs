@@ -27,16 +27,21 @@ namespace TopDownRacer.Controller
             var serializer = new XmlSerializer(typeof(XmlMapReader));
             return (XmlMapReader)serializer.Deserialize(stream);
         }
+
         [XmlAttribute("x")]
         public int x;
+
         [XmlAttribute("y")]
         public int y;
+
         [XmlAttribute("o")]
         public int Orientation;
+
         internal Vector2 getSpawnpoint()
         {
             return new Vector2(x, y);
         }
+
         internal float getOrientation()
         {
             return MathHelper.ToRadians(Orientation);

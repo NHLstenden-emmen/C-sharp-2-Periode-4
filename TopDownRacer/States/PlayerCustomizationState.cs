@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TopDownRacer.MenuControls;
 using TopDownRacer.Models;
 using TopDownRacer.Sprites;
@@ -56,7 +55,7 @@ namespace TopDownRacer.States
             };
 
             StartGameButton.Click += StartGameButton_Click;
-            if(gameMode == "Multiplayer")
+            if (gameMode == "Multiplayer")
             {
                 Button AddPlayerButton = new Button(buttonTexture, buttonFont)
                 {
@@ -68,7 +67,7 @@ namespace TopDownRacer.States
 
                 _components.Add(AddPlayerButton);
             }
-            
+
             players = new List<Player>(){new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - 130)
                 {
                     Name = "test",
@@ -119,7 +118,7 @@ namespace TopDownRacer.States
             // Check of er een map geselecteerd is
             if (MapFileName == null)
                 return;
-            if (gameMode == "Multiplayer") 
+            if (gameMode == "Multiplayer")
                 _game.ChangeState(new MultiplayerState(_game, _graphicsDevice, _content, MapFileName, players));
             if (gameMode == "Single Player")
                 _game.ChangeState(new SinglePlayerState(_game, _graphicsDevice, _content, MapFileName, players[0]));
@@ -131,17 +130,15 @@ namespace TopDownRacer.States
             Game1._soundEffects[1].Play();
             if (players.Count >= 4)
                 return;
-                
+
             players.Add(new Player(State.playerTexture[Game1.rnd.Next(State.playerTexture.Count)], (Game1.ScreenWidth / 4 * 3) - 20, (Game1.ScreenHeight / 2) - (130 - (50 * players.Count)), players.Count)
             {
                 Name = "test",
                 Input = new Input() { },
                 Color = new Color(Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255), Game1.rnd.Next(0, 255)),
-
             });
             if (players.Count >= 4)
                 ((Button)sender).Disabled = true;
-
         }
 
         //De click om een map te selecteren
